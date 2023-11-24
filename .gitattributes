@@ -2,3 +2,4 @@
 *.py linguist-vendored
 *.css linguist-vendored
 *.html linguist-vendored
+*.shell linguist-vendored
