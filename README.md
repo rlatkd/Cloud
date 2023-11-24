@@ -44,7 +44,8 @@
 ### 1.4 전체 구조
 
 - Frontend GitHub Repository
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
 
 ```
 📁 client
@@ -54,7 +55,8 @@
 ```
 
 - Backend GitHub Repository
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
 
 ```
 📁 client
