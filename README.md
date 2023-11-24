@@ -15,6 +15,13 @@
 - 프로젝트 이름: DevOps
 - 프로젝트 목적:
   - FullStack web application project인 SSGBay를 배포
-    - AWS - deploy
-    - Terraform - Iac (Infrastructire as Code)
-    - GitHub Actions - CI/CD (Continuous Integration/Continuos Delivery)
+- 프로젝트 기간: 2023.11.22 ~ 진행중(Terraform)
+
+### 1.2 서비스
+
+- AWS
+  - Deployment
+- Terraform
+  - Iac (Infrastructire as Code)
+- GitHub Actions
+  - CI/CD (Continuous Integration/Continuos Delivery)
