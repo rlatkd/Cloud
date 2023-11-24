@@ -1,2 +1,2 @@
 * linguist-vendored
-HCL linguist-vendored=false
+.terraform.lock.hcl linguist-vendored=false
