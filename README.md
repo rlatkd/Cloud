@@ -43,6 +43,15 @@
 
 ### 1.4 전체 디렉터리 구조
 
+ <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
+
+```
+📁 client
+ └──── 📁 .github
+...     └──── 📁 workflows
+...            └──── 📄 deploy.yml
+```
+
 ```
 📁 project
  ├──── 📁 server
@@ -56,11 +65,6 @@
  │      └─────────── 📄 appspec.yml
 ...
 ...
- │
- └──── 📁 client
-        └──── 📁 .github
-               └──── 📁 workflows
-                      └──── 📄 deploy.yml
 
 ```
 
@@ -283,6 +287,8 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 ## 4. Github Actions
 
-### 4.1
+### 4.1 Frontend
 
 **(1) d**
+
+- GitHub Repository(DevOps-React)에 Secret을 추가
