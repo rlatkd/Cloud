@@ -265,6 +265,14 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
     - Bastion Host
       - 1
 
+- MySQL Workbench를 실행해서 RDS로의 연결 설정
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectWorkbench.jpg">
+
+**(3) Database 설정**
+
+- MySQL Workbench에서 schema 및 table 생성
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createSchemaTable.jpg">
+
 ```python
 ...
 ...
