@@ -85,7 +85,7 @@
 
 ### 2.1 Frontend
 
-**(1) 계정 생성**
+**(1) 초기 설정**
 
 - rlatkdReact 계정 생성 후 로그인
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
@@ -150,30 +150,92 @@
 
 ### 2.2 Backend
 
-**(1) 계정 생성**
+**(1) 초기 설정**
 
 - rlatkdFlask 계정 생성 후 로그인
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/addFlaskUser.jpg">
 
-**(1) 로그인**
+- VPC 생성
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createVPC.jpg">
 
-- 세션, 토큰
-  - HTTP 는 stateless 한 특성 때문에 각 통신의 상태는 저장되지 않음
-  - 서비스에서는 어떤 유저가 어떤 기능을 사용하는지 특정할 수 있어야 됨
-    → 세션(Session), 토큰(Token)이 사용됨
-- 세션 동작과정
+- 보안 그룹 생성
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createSg.jpg">
 
-<img src='https://github.com/rlatkd/SSGBay-k8s/blob/main/assets/readmeImage/sessionImage.png'/>
+**(2) EC2 인스턴스 설정**
 
-- 토큰 동작과정
+- 퍼블릭 서브넷에 EC2 인스턴스를 생성
 
-<img src='https://github.com/rlatkd/SSGBay-k8s/blob/main/assets/readmeImage/tokenImage.png'/>
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance3.jpg">
 
-- JWT 구조
+- EC2 인스턴스의 Public IP 주소로 SSH 접속
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessSSH.jpg">
 
-<img src='https://github.com/rlatkd/SSGBay-k8s/blob/main/assets/readmeImage/JWT.png'/>
+- Apache HTTP Server 설치
 
-- 토큰을 이용해 로그인 기능 구현
+```
+ubuntu@ip-10-0-3-255:~$ sudo apt update
+ubuntu@ip-10-0-3-255:~$ sudo apt -y upgrade
+ubuntu@ip-10-0-3-255:~$ sudo apt install -y apache2
+ubuntu@ip-10-0-3-255:~$ sudo systemctl status apache2
+ubuntu@ip-10-0-3-255:~$ sudo systemctl status apache2
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2023-11-22 09:37:20 UTC; 8s ago
+       Docs: https://httpd.apache.org/docs/2.4/
+   Main PID: 14846 (apache2)
+      Tasks: 55 (limit: 1121)
+     Memory: 5.0M
+        CPU: 33ms
+     CGroup: /system.slice/apache2.service
+             ├─14846 /usr/sbin/apache2 -k start
+             ├─14848 /usr/sbin/apache2 -k start
+             └─14849 /usr/sbin/apache2 -k start
+
+Nov 22 09:37:20 ip-10-0-3-255 systemd[1]: Starting The Apache HTTP Server...
+Nov 22 09:37:20 ip-10-0-3-255 systemd[1]: Started The Apache HTTP Server.
+```
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/installApache.jpg">
+```
+
+- PHP 설치
+
+```
+ubuntu@ip-10-0-3-255:~$ sudo apt install -y php
+ubuntu@ip-10-0-3-255:~$ sudo systemctl restart apache2
+ubuntu@ip-10-0-3-255:~$ sudo systemctl status apache2
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2023-11-22 09:40:07 UTC; 3s ago
+       Docs: https://httpd.apache.org/docs/2.4/
+    Process: 21605 ExecStart=/usr/sbin/apachectl start (code=exited, status=0/SUCCESS)
+   Main PID: 21609 (apache2)
+      Tasks: 6 (limit: 1121)
+     Memory: 10.0M
+        CPU: 47ms
+     CGroup: /system.slice/apache2.service
+             ├─21609 /usr/sbin/apache2 -k start
+             ├─21610 /usr/sbin/apache2 -k start
+             ├─21611 /usr/sbin/apache2 -k start
+             ├─21612 /usr/sbin/apache2 -k start
+             ├─21613 /usr/sbin/apache2 -k start
+             └─21614 /usr/sbin/apache2 -k start
+
+Nov 22 09:40:07 ip-10-0-3-255 systemd[1]: Starting The Apache HTTP Server...
+Nov 22 09:40:07 ip-10-0-3-255 systemd[1]: Started The Apache HTTP Server.
+```
+
+- 웹 루트 디렉터리 삭제
+
+```
+ubuntu@ip-10-0-3-255:~$ cd /var/www/html/
+ubuntu@ip-10-0-3-255:/var/www/html$ ls
+index.html
+ubuntu@ip-10-0-3-255:/var/www/html$ sudo rm -rf *
+ubuntu@ip-10-0-3-255:/var/www/html$ ls
+```
 
 ```python
 ...
