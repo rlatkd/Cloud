@@ -21,7 +21,7 @@
 
 **(1) Deployment**
 
-- AWS
+- Amazon Web Service
 
 **(2) Iac (Infrastructire as Code)**
 
