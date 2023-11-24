@@ -72,30 +72,14 @@
     - 하나의 코드 저장소(GitHub Repository)에 여러 개의 워크플로우 설정이 가능
     - 해당 워크플로우는 `on` 속성을 이용해 언제 실행되는지와 `job` 속성을 이용해 구체적으로 어떤 일을 하는지 명시
 
+- appspec.yml
+
+  - AWS CodeDeploy를 이용해 자동화한 작업 과정
+  - React 서버는 Amazon EC2가 아닌 Amazon S3 버킷에 정적 상태로 저장하기 때문에 사용하지 않음
+
 - scripts
 
   - appspec.yml에 사용할 셸 스크립트
-
-- appspec.yml
-
-  - - AWS CodeDeploy를 이용해 자동화한 작업 과정
-
-- api
-  - app.py
-    - 서버 통신용 api 요청을 수행 하는 코드
-  - database.py
-    - 원하는 데이터에 해당하는 sql 코드
-  - historyUpdate.py
-    - crontab을 이용해 실시간 데이터를 history 테이블에 반영할 수 있도록 하는 코드
-  - requirements.txt
-    - Python 모듈 및 패키지 버전 명시
-  - crontabFile
-    - 지정한 시간(1분)이 지나면 자동으로 설정한 명령어 수행
-  - Dockerfile-flask
-    - 명령어를 토대로 나열된 명령문을 수행하여 Flask Docker Image를 생성
-- test
-  - unitTest.py
-    - pytest를 이용한 단위 테스트 코드
 
 ## 2. Amazon Web Service
 
