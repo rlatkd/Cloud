@@ -75,7 +75,7 @@
 - appspec.yml
 
   - AWS CodeDeploy를 이용해 자동화한 작업 과정
-  - React 서버는 Amazon EC2가 아닌 Amazon S3 버킷에 정적 상태로 저장하기 때문에 사용하지 않음
+  - React 앱은 Amazon EC2가 아닌 Amazon S3 버킷에 정적 상태로 저장하기 때문에 사용하지 않음
 
 - scripts
 
@@ -83,7 +83,7 @@
 
 ## 2. Amazon Web Service
 
-### 2.1 Client
+### 2.1 Frontend
 
 **(1) 계정 생성**
 
@@ -144,7 +144,16 @@
 - 브라우저로 S3 버킷의 웹 사이트 앤드포인트로 접근
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
 
-### 2.2 애플리케이션 특징
+# CloudFront 해야함
+
+###
+
+### 2.2 Backend
+
+**(1) 계정 생성**
+
+- rlatkdFlask 계정 생성 후 로그인
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/addFlaskUser.jpg">
 
 **(1) 로그인**
 
