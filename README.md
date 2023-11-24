@@ -90,9 +90,24 @@
 - rlatkdReact 계정 생성 후 로그인
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
 
-**(2) S3 버킷에 배포**
+**(2) S3 버킷 설정**
 
-- React app 빌드
+- S3 버킷 생성
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket2.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket3.jpg">
+
+- 정적 웹 사이트 호스팅 활성화
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate1.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate2.jpg">
+
+- 버킷과 객체에 퍼블릭 액세스 권한 부여
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority1.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
+
+**(3) S3 버킷에 배포**
+
+- React 앱 빌드
 
 ```
 .\client>npm install
@@ -120,18 +135,14 @@
             main.37105d08.js.map
 ```
 
-- S3 버킷 생성
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket2.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket3.jpg">
+- 빌드한 React 앱 소스 코드를 버킷에 등록
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket1.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket2.jpg">
 
-- 정적 웹 사이트 호스팅 활성화
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate1.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate2.jpg">
+**(4) 서비스 정상 작동 확인**
 
-- 버킷과 객체에 퍼블릭 액세스 권한 부여
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority1.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
+- 브라우저로 S3 버킷의 웹 사이트 앤드포인트로 접근
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
 
 ### 2.2 애플리케이션 특징
 
