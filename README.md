@@ -1,4 +1,4 @@
-# deploy project using AWS & Terraform & GitHub Actions
+# deployment project using AWS & Terraform & GitHub Actions
 
 ## 0. 목차
 
@@ -13,8 +13,7 @@
 ### 1.1 프로젝트 개요
 
 - 프로젝트 이름: DevOps
-- 프로젝트 목적:
-  - FullStack web application project인 SSGBay를 배포
+- 프로젝트 목적: FullStack web application project인 SSGBay를 배포
 - 프로젝트 기간: 2023.11.22 ~ 진행중(Terraform)
 
 ### 1.2 서비스
@@ -33,13 +32,13 @@
 
 ### 1.3 프로젝트 진행 과정
 
-| 일별                    | 내용 |
-| ----------------------- | ---- |
-| 1일차 (11.22)           | - 11 |
-| 2일차 (10.27)           | - 22 |
-| 3~6일차 (10.28 ~ 10.31) | - 33 |
-| 7일차 (11.01)           | - 44 |
-| 8일차 (11.02)           | - 55 |
+| 일별                    | 내용                                  |
+| ----------------------- | ------------------------------------- |
+| 1일차 (11.22)           | - AWS를 이용한 기본 배포              |
+| 2일차 (11.23)           | - Terraform을 이용한 인프라 구축      |
+| 3~4일차 (11.24 ~ 11.25) | - GitHub Actions를 이용한 배포 자동화 |
+| 7일차 (11.01)           | - 44                                  |
+| 8일차 (11.02)           | - 55                                  |
 
 ### 1.4 전체 구조
 
@@ -75,13 +74,12 @@
 
 **(3) 디렉터리 구조**
 
-- workflows
+- workflows/deploy.yml
 
-  - deploy.yml
-    - Github Actions를 이용해 자동화한 작업 과정
-    - 폴더 아래에 위치한 YAML 파일로 작업 과정을 설정
-    - 하나의 코드 저장소(GitHub Repository)에 여러 개의 워크플로우 설정이 가능
-    - 해당 워크플로우는 `on` 속성을 이용해 언제 실행되는지와 `job` 속성을 이용해 구체적으로 어떤 일을 하는지 명시
+  - Github Actions를 이용해 자동화한 작업 과정
+  - 폴더 아래에 위치한 YAML 파일로 작업 과정을 설정
+  - 하나의 코드 저장소(GitHub Repository)에 여러 개의 워크플로우 설정이 가능
+  - 해당 워크플로우는 `on` 속성을 이용해 언제 실행되는지와 `job` 속성을 이용해 구체적으로 어떤 일을 하는지 명시
 
 - appspec.yml
 
@@ -102,9 +100,9 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
 
-**(2) S3 버킷 설정**
+**(2) S3 Bucket 설정**
 
-- S3 버킷 생성
+- S3 Bucket 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
 
@@ -124,7 +122,7 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
 
-**(3) S3 버킷에 배포**
+**(3) S3 Bucket에 배포**
 
 - React 앱 빌드
 
@@ -154,7 +152,7 @@
             main.37105d08.js.map
 ```
 
-- 빌드한 React 앱 소스 코드를 버킷에 등록
+- 빌드한 React 앱 소스 코드를 S3 Bucket에 등록
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket1.jpg">
 
@@ -162,7 +160,7 @@
 
 **(4) 서비스 정상 작동 확인**
 
-- 브라우저로 S3 버킷의 웹 사이트 앤드포인트로 접근
+- 브라우저로 S3 Bucket의 웹 사이트 앤드포인트로 접근
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
 
@@ -327,3 +325,5 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 **(1) d**
 
 - GitHub Repository(DevOps-React)에 Secret을 추가
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubSecrets.jpg">
