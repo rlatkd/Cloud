@@ -59,13 +59,6 @@
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
 
 ```
-📁 client
- ├──── 📁 .github
-...     └──── 📁 workflows
-...            └──── 📄 deploy.yml
-```
-
-```
 📁 server
  ├──── 📁 .github
  │      └──── 📁 workflows
