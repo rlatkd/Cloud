@@ -43,7 +43,7 @@
 
 ### 1.4 전체 구조
 
-- Frontend GitHub Repository
+**(1) Frontend Github Repository**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
 
@@ -54,7 +54,7 @@
 ...            └──── 📄 deploy.yml
 ```
 
-- Backend GitHub Repository
+**(2) Backend Github Repository**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
 
