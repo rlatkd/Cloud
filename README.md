@@ -63,50 +63,14 @@
 
 ```
 
-### 1.5 API 명세서
+- workflows
 
-| Index         | Method   | URI                 | Page                        | Description                                              |
-| ------------- | -------- | ------------------- | --------------------------- | -------------------------------------------------------- |
-| 0. 메인       | GET      | /                   |                             | 검색어, 필터링 기능 추가                                 |
-|               |          |                     |                             |                                                          |
-| 1. 회원       |          |                     |                             |                                                          |
-| 1.1           | GET POST | /login              | 로그인                      | 로그인 시 토큰 발급                                      |
-| 1.2           | POST     | /login/signup       | 회원가입                    |                                                          |
-|               |          |                     |                             |                                                          |
-| 2. 상품       |          |                     |                             |                                                          |
-| 2.1           | POST     | /create             | 경매상품등록                | 사진 등록 가능                                           |
-| 2.2           | PUT      | /detail/${상품번호} | 상품 디테일 및 입찰         | 메인, 마이페이지에서 접근 가능 / 본인 상품이면 입찰 불가 |
-| 2.3           | DELETE   | /detail/${상품번호} | 상품 삭제                   | 본인 상품이 아니면 삭제 불가                             |
-|               |          |                     |                             |                                                          |
-| 3. 마이페이지 |          |                     |                             |                                                          |
-| 3.1           | GET      | /mypage             | 마이페이지 메인             |                                                          |
-| 3.2           | GET      | /mypage             | 마이페이지 - 구매내역       | JavaScript 탭을 이용                                     |
-| 3.3           | GET      | /mypage             | 마이페이지 - 내 게시글 목록 | JavaScript 탭을 이용                                     |
+  - deploy.yml
+    - 자동화한 작업 과정
+    - 폴더 아래에 위치한 YAML 파일로 작업 과정을 설정
+    - 하나의 코드 저장소(GitHub Repository)에 여러 개의 워크플로우 설정이 가능
+    - 해당 워크플로우는 `on` 속성을 이용해 언제 실행되는지와 `job` 속성을 이용해 구체적으로 어떤 일을 하는지 명시
 
-### 1.6 ER Diagram
-
-<img src='https://github.com/rlatkd/SSGBay-k8s/blob/main/assets/readmeImage/ERDiagram.png'/>
-
-## 2. Backend
-
-### 2.1 디렉터리 구조
-
-```
-📁 server
- ├──── 📁 resources
- ├──── 📁 api
- │      ├──── 📄 app.py
- │      ├──── 📄 database.py
- │      ├──── 📄 historyUpdate.py
- │      ├──── 📄 requirements.txt
- │      ├──── 📄 crontabFile
- │      └──── 📄 Dockerfile-flask
- └──── 📁 test
-        └──── 📄 unitTest.py
-```
-
-- resources
-  - 사진 업로드 파일 저장 공간
 - api
   - app.py
     - 서버 통신용 api 요청을 수행 하는 코드
@@ -123,6 +87,10 @@
 - test
   - unitTest.py
     - pytest를 이용한 단위 테스트 코드
+
+## 2. Amazon Web Service
+
+### 2.1 Client
 
 ### 2.2 애플리케이션 특징
 
