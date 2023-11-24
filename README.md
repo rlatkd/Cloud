@@ -247,7 +247,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 - rlatkdMySQL 계정 생성 후 로그인
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/addMySQLUser.jpg">
 
-\*\*(2) RDS 설정
+**(2) RDS 설정**
 
 - Private Subnet에 RDS를 생성
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS1.jpg">
@@ -261,7 +261,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance2.jpg">
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance3.jpg">
 
-  - Flask EC2 Instance는 Backend server이자 Bastion Host 역할을 함
+  - Flask EC2 Instance는 Backend server를 포함하며 Bastion Host 역할을 함
     - Bastion Host
       - 1
 
