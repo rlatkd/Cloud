@@ -95,10 +95,10 @@
 - React app 빌드
 
 ```
-C:\Users\User\Desktop\client>npm install
-C:\Users\User\Desktop\client>npm run build
+.\client>npm install
+.\client>npm run build
 
-C:\USERS\USER\DESKTOP\CLIENT\BUILD
+.\CLIENT\BUILD
 │   asset-manifest.json
 │   favicon.ico
 │   index.html
@@ -119,6 +119,19 @@ C:\USERS\USER\DESKTOP\CLIENT\BUILD
             main.37105d08.js.LICENSE.txt
             main.37105d08.js.map
 ```
+
+- S3 버킷 생성
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket2.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket3.jpg">
+
+- 정적 웹 사이트 호스팅 활성화
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate1.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate2.jpg">
+
+- 버킷과 객체에 퍼블릭 액세스 권한 부여
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority1.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
 
 ### 2.2 애플리케이션 특징
 
