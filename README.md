@@ -44,7 +44,7 @@
 
 **(1) Frontend GitHub Repository**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact1.jpg">
 
 ```
 📁 client
@@ -55,7 +55,7 @@
 
 **(2) Backend GitHub Repository**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask1.jpg">
 
 ```
 📁 server
