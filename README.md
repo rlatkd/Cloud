@@ -83,7 +83,7 @@
 
 ## 2. Amazon Web Service
 
-### 2.1 Frontend
+### 2.1 Frontend (Amazon S3 Bucket)
 
 **(1) 초기 설정**
 
@@ -148,7 +148,7 @@
 
 ###
 
-### 2.2 Backend
+### 2.2 Backend (Amazon EC2)
 
 **(1) 초기 설정**
 
@@ -163,7 +163,7 @@
 
 **(2) EC2 인스턴스 설정**
 
-- 퍼블릭 서브넷에 EC2 인스턴스를 생성
+- Public Subnet에 EC2 인스턴스를 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance1.jpg">
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance2.jpg">
@@ -180,6 +180,7 @@ ubuntu@ip-10-0-3-255:~$ sudo apt -y upgrade
 ubuntu@ip-10-0-3-255:~$ sudo apt install -y apache2
 ubuntu@ip-10-0-3-255:~$ sudo systemctl status apache2
 ubuntu@ip-10-0-3-255:~$ sudo systemctl status apache2
+
 ● apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
      Active: active (running) since Wed 2023-11-22 09:37:20 UTC; 8s ago
@@ -206,6 +207,7 @@ Nov 22 09:37:20 ip-10-0-3-255 systemd[1]: Started The Apache HTTP Server.
 ubuntu@ip-10-0-3-255:~$ sudo apt install -y php
 ubuntu@ip-10-0-3-255:~$ sudo systemctl restart apache2
 ubuntu@ip-10-0-3-255:~$ sudo systemctl status apache2
+
 ● apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
      Active: active (running) since Wed 2023-11-22 09:40:07 UTC; 3s ago
@@ -233,9 +235,26 @@ Nov 22 09:40:07 ip-10-0-3-255 systemd[1]: Started The Apache HTTP Server.
 ubuntu@ip-10-0-3-255:~$ cd /var/www/html/
 ubuntu@ip-10-0-3-255:/var/www/html$ ls
 index.html
+
 ubuntu@ip-10-0-3-255:/var/www/html$ sudo rm -rf *
 ubuntu@ip-10-0-3-255:/var/www/html$ ls
 ```
+
+### 2.3 Database (Amazon RDS)
+
+**(1) 초기 설정**
+
+- rlatkdMySQL 계정 생성 후 로그인
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/addMySQLUser.jpg">
+
+\*\*(2) RDS 설정
+
+- Private Subnet에 RDS를 생성
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS1.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS2.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS3.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS4.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS5.jpg">
 
 ```python
 ...
