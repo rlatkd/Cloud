@@ -41,9 +41,10 @@
 | 7일차 (11.01)           | - 44 |
 | 8일차 (11.02)           | - 55 |
 
-### 1.4 전체 디렉터리 구조
+### 1.4 전체 구조
 
- <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
+- Frontend GitHub Repository
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
 
 ```
 📁 client
@@ -52,17 +53,26 @@
 ...            └──── 📄 deploy.yml
 ```
 
+- Backend GitHub Repository
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
+
 ```
-📁 project
- ├──── 📁 server
- │      ├──── 📁 .github
- │      │      └──── 📁 workflows
- │      │             └──── 📄 deploy.yml
- │      ├──── 📁 scripts
- │      │      ├──── 📄 afterInstall.sh
- │      │      ├──── 📄 beforeInstall.sh
- │      │      └──── 📄 runServer.sh
- │      └─────────── 📄 appspec.yml
+📁 client
+ ├──── 📁 .github
+...     └──── 📁 workflows
+...            └──── 📄 deploy.yml
+```
+
+```
+📁 server
+ ├──── 📁 .github
+ │      └──── 📁 workflows
+ │             └──── 📄 deploy.yml
+ ├──── 📁 scripts
+ │      ├──── 📄 afterInstall.sh
+ │      ├──── 📄 beforeInstall.sh
+ │      └──── 📄 runServer.sh
+ ├─────────── 📄 appspec.yml
 ...
 ...
 
