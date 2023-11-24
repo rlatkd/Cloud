@@ -85,6 +85,11 @@
 
 ### 2.1 Client
 
+**(1) 계정 생성**
+
+- rlatkdReact 계정 생성 후 로그인
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
+
 ### 2.2 애플리케이션 특징
 
 **(1) 로그인**
