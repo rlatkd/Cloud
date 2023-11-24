@@ -44,7 +44,7 @@
 
 **(1) Frontend GitHub Repository**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
 
 ```
 📁 client
@@ -55,7 +55,7 @@
 
 **(2) Backend GitHub Repository**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
 
 ```
 📁 server
@@ -110,6 +110,8 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket3.jpg">
 
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket4.jpg">
+
 - 정적 웹 사이트 호스팅 활성화
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate1.jpg">
@@ -121,6 +123,8 @@
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority1.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority3.jpg">
 
 **(3) S3 Bucket에 배포**
 
