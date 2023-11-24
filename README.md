@@ -46,58 +46,21 @@
 ```
 📁 project
  ├──── 📁 server
- │      ├──── 📁 resources
- │      ├──── 📁 api
- │      │      ├──── 📄 app.py
- │      │      ├──── 📄 database.py
- │      │      ├──── 📄 historyUpdate.py
- │      │      ├──── 📄 requirements.txt
- │      │      ├──── 📄 crontabFile
- │      │      └──── 📄 Dockerfile-flask
- │      └──── 📁 test
- │             └──── 📄 unitTest.py
+ │      ├──── 📁 .github
+ │      │      └──── 📁 workflows
+ │      │             └──── 📄 deploy.yml
+ │      └──── 📁 scripts
+ │             ├──── 📄 afterInstall.sh
+ │             ├──── 📄 beforeInstall.sh
+ │             └──── 📄 runServer.sh
+...
+...
  │
- ├──── 📁 database
- │      ├──── 📄 init.sql
- │      └──── 📄 Dockerfile-mysql
- │
- ├──── 📁 client
- │      ├──── 📁 node_modules
- │      ├──── 📁 src
- │      │      ├──── 📁 styles
- │      │      │      ├──── 📄 Card.js
- │      │      │      ├──── 📄 Footer.js
- │      │      │      ├──── 📄 Header.js
- │      │      │      ├──── 📄 Card.module.css
- │      │      │      ├──── 📄 CreatePage.module.css
- │      │      │      ├──── 📄 DetailPage.module.css
- │      │      │      ├──── 📄 Footer.module.css
- │      │      │      ├──── 📄 Header.module.css
- │      │      │      ├──── 📄 LoginPage.module.css
- │      │      │      ├──── 📄 MainPage.module.css
- │      │      │      └──── 📄 MyPage.module.css
- │      │      ├──── 📁 pages
- │      │      │      ├──── 📄 CreatePage.js
- │      │      │      ├──── 📄 DetailPage.js
- │      │      │      ├──── 📄 LoginPage.js
- │      │      │      ├──── 📄 MainPage.js
- │      │      │      ├──── 📄 MyPage.js
- │      │      │      └──── 📄 SignupPage.js
- │      │      ├──── 📄 App.js
- │      │      └──── 📄 App.css
- │      │──── 📄 package-lock.json
- │      │──── 📄 package.json
- │      └──── 📄 Dockerfile-react
- │
- └──── 📁 k8s
-        ├──── 📁 nfs
-        │      ├──── 📄 nfs-deployment-service.yaml
-        │      ├──── 📄 nfs-persistentvolume.yaml
-        │      └──── 📄 nfs-persistentvolumeclaim-pod.yaml
-        └──── 📁 service
-               ├──── 📄 flask-deployment.yaml
-               ├──── 📄 mysql-deployment.yaml
-               └──── 📄 react-deployment.yaml
+ └──── 📁 client
+        └──── 📁 .github
+               └──── 📁 workflows
+                      └──── 📄 deploy.yml
+
 ```
 
 ### 1.5 API 명세서

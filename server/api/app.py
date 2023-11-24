@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import database
-from os import path, remove
+from os import path
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token
 import os

@@ -1,8 +1,5 @@
 FROM pymysql import connect
 FROM datetime import datetime
-import shutil
-FROM flask import Flask, json, jsonify
-FROM os import path
 import pymysql
 
 

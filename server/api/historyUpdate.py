@@ -41,7 +41,6 @@ def moveExpiredItemsToHistory():
                         insert_sql = "INSERT INTO history (item_id, user_id) VALUES (%s, %s)"
                         cursor.execute(insert_sql, (item['item_id'], item['user_id']))
                         con.commit()
-
             print("Expired items moved to history table successfully.")
 
     except Exception as e:
