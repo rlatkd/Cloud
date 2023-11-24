@@ -161,15 +161,15 @@
 - 보안 그룹 생성
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createSg.jpg">
 
-**(2) EC2 인스턴스 설정**
+**(2) EC2 Instance 설정**
 
-- Public Subnet에 EC2 인스턴스를 생성
+- Public Subnet에 EC2 Instance를 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance1.jpg">
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance2.jpg">
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance3.jpg">
 
-- EC2 인스턴스의 Public IP 주소로 SSH 접속
+- EC2 Instance의 Public IP 주소로 SSH 접속
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessSSH.jpg">
 
 - Apache HTTP Server 설치
@@ -255,6 +255,15 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS3.jpg">
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS4.jpg">
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS5.jpg">
+
+- RDS에서 Flask EC2 Instance로의 연결 설정
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance1.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance2.jpg">
+  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance3.jpg">
+
+  - Flask EC2 Instance는 Backend server이자 Bastion Host 역할을 함
+    - Bastion Host
+      - 1
 
 ```python
 ...
