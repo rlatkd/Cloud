@@ -23,7 +23,7 @@
 
 - Amazon Web Service
 
-**(2) Iac (Infrastructire as Code)**
+**(2) Iac (Infrastructure as Code)**
 
 - Terraform
 
@@ -89,6 +89,36 @@
 
 - rlatkdReact 계정 생성 후 로그인
   <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
+
+**(2) S3 버킷에 배포**
+
+- React app 빌드
+
+```
+C:\Users\User\Desktop\client>npm install
+C:\Users\User\Desktop\client>npm run build
+
+C:\USERS\USER\DESKTOP\CLIENT\BUILD
+│   asset-manifest.json
+│   favicon.ico
+│   index.html
+│   logo192.png
+│   logo512.png
+│   manifest.json
+│   robots.txt
+│
+└───static
+    ├───css
+    │       main.3b876a84.css
+    │       main.3b876a84.css.map
+    │
+    └───js
+            787.cda612ba.chunk.js
+            787.cda612ba.chunk.js.map
+            main.37105d08.js
+            main.37105d08.js.LICENSE.txt
+            main.37105d08.js.map
+```
 
 ### 2.2 애플리케이션 특징
 
