@@ -1,4 +1,4 @@
-# Development & Operation project using AWS & Terraform & GitHub Actions
+# deploy project using AWS & Terraform & GitHub Actions
 
 ## 0. 목차
 
