@@ -116,8 +116,6 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate2.jpg">
-
 - 버킷과 객체에 퍼블릭 액세스 권한 부여
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority1.jpg">
