@@ -19,9 +19,14 @@
 
 ### 1.2 서비스
 
+**(1) Deployment**
+
 - AWS
-  - Deployment
+
+**(2) Iac (Infrastructire as Code)**
+
 - Terraform
-  - Iac (Infrastructire as Code)
+
+**(3) CI/CD (Continuous Integration/Continuos Delivery)**
+
 - GitHub Actions
-  - CI/CD (Continuous Integration/Continuos Delivery)
