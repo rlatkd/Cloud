@@ -43,7 +43,7 @@
 
 ### 1.4 전체 구조
 
-**(1) Frontend Github Repository**
+**(1) Frontend GitHub Repository**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
 
@@ -54,7 +54,7 @@
 ...            └──── 📄 deploy.yml
 ```
 
-**(2) Backend Github Repository**
+**(2) Backend GitHub Repository**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
 
@@ -72,6 +72,8 @@
 ...
 
 ```
+
+**(3) 디렉터리 구조**
 
 - workflows
 
@@ -97,22 +99,30 @@
 **(1) 초기 설정**
 
 - rlatkdReact 계정 생성 후 로그인
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
 
 **(2) S3 버킷 설정**
 
 - S3 버킷 생성
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket2.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket3.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket3.jpg">
 
 - 정적 웹 사이트 호스팅 활성화
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate1.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate2.jpg">
 
 - 버킷과 객체에 퍼블릭 액세스 권한 부여
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority1.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
 
 **(3) S3 버킷에 배포**
 
@@ -145,13 +155,16 @@
 ```
 
 - 빌드한 React 앱 소스 코드를 버킷에 등록
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket1.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket2.jpg">
 
 **(4) 서비스 정상 작동 확인**
 
 - 브라우저로 S3 버킷의 웹 사이트 앤드포인트로 접근
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
 
 # CloudFront 해야함
 
@@ -162,24 +175,30 @@
 **(1) 초기 설정**
 
 - rlatkdFlask 계정 생성 후 로그인
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/addFlaskUser.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/addFlaskUser.jpg">
 
 - VPC 생성
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createVPC.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createVPC.jpg">
 
 - 보안 그룹 생성
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createSg.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createSg.jpg">
 
 **(2) EC2 Instance 설정**
 
 - Public Subnet에 EC2 Instance를 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance1.jpg">
+
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance2.jpg">
+
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance3.jpg">
 
 - EC2 Instance의 Public IP 주소로 SSH 접속
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessSSH.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessSSH.jpg">
 
 - Apache HTTP Server 설치
 
@@ -208,7 +227,6 @@ Nov 22 09:37:20 ip-10-0-3-255 systemd[1]: Started The Apache HTTP Server.
 ```
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/installApache.jpg">
-```
 
 - PHP 설치
 
@@ -254,33 +272,45 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 **(1) 초기 설정**
 
 - rlatkdMySQL 계정 생성 후 로그인
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/addMySQLUser.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/addMySQLUser.jpg">
 
 **(2) RDS 설정**
 
 - Private Subnet에 RDS를 생성
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS1.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS2.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS3.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS4.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS5.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS3.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS4.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS5.jpg">
 
 - RDS에서 Flask EC2 Instance로의 연결 설정
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance1.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance2.jpg">
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance3.jpg">
 
-  - Flask EC2 Instance는 Backend server를 포함하며 Bastion Host 역할을 함
-    - Bastion Host
-      - 1
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance3.jpg">
+
+- Flask EC2 Instance는 Backend server를 포함하며 Bastion Host 역할을 함
+
+  - Bastion Host
+    - 1
 
 - MySQL Workbench를 실행해서 RDS로의 연결 설정
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectWorkbench.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectWorkbench.jpg">
 
 **(3) Database 설정**
 
 - MySQL Workbench에서 schema 및 table 생성
-  <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createSchemaTable.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createSchemaTable.jpg">
 
 # Terraform 해야됨
 
