@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/ssgbay
+
+hooks:
+  BeforeInstall:
+    - location: scripts/beforeInstall.sh
+      runas: root
+  AfterInstall:
+    - location: scripts/afterInstall.sh
+      runas: root
+    - location: scripts/runServer.sh
+      runas: ubuntu

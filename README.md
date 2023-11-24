@@ -49,10 +49,11 @@
  │      ├──── 📁 .github
  │      │      └──── 📁 workflows
  │      │             └──── 📄 deploy.yml
- │      └──── 📁 scripts
- │             ├──── 📄 afterInstall.sh
- │             ├──── 📄 beforeInstall.sh
- │             └──── 📄 runServer.sh
+ │      ├──── 📁 scripts
+ │      │      ├──── 📄 afterInstall.sh
+ │      │      ├──── 📄 beforeInstall.sh
+ │      │      └──── 📄 runServer.sh
+ │      └─────────── 📄 appspec.yml
 ...
 ...
  │
@@ -66,10 +67,18 @@
 - workflows
 
   - deploy.yml
-    - 자동화한 작업 과정
+    - Github Actions를 이용해 자동화한 작업 과정
     - 폴더 아래에 위치한 YAML 파일로 작업 과정을 설정
     - 하나의 코드 저장소(GitHub Repository)에 여러 개의 워크플로우 설정이 가능
     - 해당 워크플로우는 `on` 속성을 이용해 언제 실행되는지와 `job` 속성을 이용해 구체적으로 어떤 일을 하는지 명시
+
+- scripts
+
+  - appspec.yml에 사용할 셸 스크립트
+
+- appspec.yml
+
+  - - AWS CodeDeploy를 이용해 자동화한 작업 과정
 
 - api
   - app.py
