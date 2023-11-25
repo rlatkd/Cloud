@@ -13,14 +13,17 @@
 ### 1.1 프로젝트 개요
 
 - 프로젝트 이름: DevOps
-- 프로젝트 목적: FullStack web application project인 SSGBay를 배포
+- 프로젝트 목적:
+  - Public Cloud의 인프라를 코드로 자동 구성
+  - CI/CD를 통해 배포 자동화 설정
+  - 해당 서비스 앱의 main branch에서 커밋하면 자동으로 배포
 - 프로젝트 기간: 2023.11.22 ~ 진행중(Terraform)
 
 ### 1.2 서비스
 
 **(1) Deployment**
 
-- Amazon Web Service
+- Amazon Web Service (EC2, S3, RDS)
 
 **(2) Iac (Infrastructure as Code)**
 
@@ -28,7 +31,7 @@
 
 **(3) CI/CD (Continuous Integration/Continuos Delivery)**
 
-- GitHub Actions
+- GitHub Actions & AWS CodeDeploy
 
 ### 1.3 프로젝트 진행 과정
 
