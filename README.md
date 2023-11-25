@@ -506,6 +506,8 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 ...
 ```
 
+# 미완
+
 - AWS CodeDeploy에서 사용할 역할 생성
 
 `rlatkdCodeDeployRole`
