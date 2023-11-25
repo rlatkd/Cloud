@@ -45,17 +45,17 @@
 
   - 5.1 Frontend
     - (1) autoprefixer
-    - (2) eslint - <img> alt
-    - (3) eslint - eqeqeq
+    - (2) eslint: <img> alt
+    - (3) eslint: eqeqeq
   - 5.2 Backend
     - (1) 배포했으나 연결할 수 없음
     - (2) 해결 방법
     - (3) 정상 작동 확인
-  - 5.3 Backend-Database
+  - 5.3 Backend - Database
     - (1) Backend와 Database 연동이 안 됨
     - (2) 해결 방법
     - (3) 재 배포 시 정상으로 작동하는 것을 확인
-  - 5.4 Backend-Frontend
+  - 5.4 Backend - Frontend
     - (1) Backend와 Frontend 연동이 안 됨
 
 - [후기](#6-후기)
@@ -904,7 +904,7 @@ Warning
 
 ---
 
-**(2) eslint - `<img> alt`**
+**(2) eslint: `<img> alt`**
 
 ```
 Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
@@ -933,7 +933,7 @@ Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tag
 
 ---
 
-**(3) eslint - `eqeqeq`**
+**(3) eslint: `eqeqeq`**
 
 ```
 ...
@@ -1098,7 +1098,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
   Press CTRL+C to quit
 ```
 
-### 5.3 Backend-Database
+### 5.3 Backend - Database
 
 **(1) Backend와 Database 연동이 안 됨**
 
@@ -1231,6 +1231,6 @@ connectionString = {
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/reDeployJSON.jpg">
 
-### 5.4 Backend-Frontend
+### 5.4 Backend - Frontend
 
 **(1) Backend와 Frontend 연동이 안 됨**
