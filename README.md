@@ -5,7 +5,7 @@
 - [개요](#1-개요)
 - [Amazon Web Service](#2-Amazon-Web-Service)
 - [Terraform](#3-Terraform)
-- [Github Actions & AWS CodeDeploy](#4-Github-Actions-&-AWS-CodeDeploy)
+- [Github Actions & AWS CodeDeploy](#4-Github-Actions--AWS-CodeDeploy)
 - [후기](#5-후기)
 
 ## 1. 개요
@@ -337,6 +337,6 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 - GitHub Repository(DevOps-React)에 Secret을 추가
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubSecrets.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubReposSecrets.jpg">
 
 -
