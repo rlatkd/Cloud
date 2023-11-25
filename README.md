@@ -775,6 +775,8 @@ Warning
 >
 > - 일일히 `start`에서 `flex-start`로 변경하는 방법도 있지만 무시하고 진행하려면 `sourceMap`의 설정 값을 `true`로 하는 방법도 있음
 
+---
+
 **(2) eslint - `<img> alt`**
 
 ```
@@ -802,7 +804,9 @@ Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tag
 > ...
 > ```
 
-**(2) eslint - `eqeqeq`**
+---
+
+**(3) eslint - `eqeqeq`**
 
 ```
 ...
