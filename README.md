@@ -1009,7 +1009,7 @@ Command 'pip' not found, but can be installed with:
 sudo apt install python3-pip
 ```
 
----
+**(2) 해결 방법**
 
 - pip를 다운로드
 
@@ -1077,9 +1077,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 ```
 
----
-
-- 정상작동 확인
+**(3) 정상 작동 확인**
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-G5SGOXI12/deployment-archive$ python3 app.py
@@ -1094,6 +1092,8 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 ```
 
 ### 5.2 Database
+
+**(1) Backend와 Database 연동이 안 됨**
 
 - Flask EC2 내부에서 접속
 
@@ -1133,3 +1133,91 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 ```
+
+```
+mysql> show databases;
+
++--------------------+
+| Database           |
++--------------------+
+| auction            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+```
+
+- dummy data를 넣은 후 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/dummyData.jpg">
+
+- Flask EC2에서도 정상으로 작동하는 것을 확인
+
+```
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| auction            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use auction;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_auction |
++-------------------+
+| history           |
+| item              |
+| prehistory        |
+| user              |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from history
+    -> ;
++----+---------+---------+
+| id | user_id | item_id |
++----+---------+---------+
+| 11 | 11      |      11 |
++----+---------+---------+
+1 row in set (0.00 sec)
+```
+
+- 연결이 안됨
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
+
+**(2) 해결 방법**
+
+- database.py historyupdate.py 의 dbconnection을 수정
+
+```
+...
+...
+connectionString = {
+    'host': 'database-1.cyu7qnoubf3u.ap-northeast-2.rds.amazonaws.com',
+    'port': 3306,
+    'database': 'auction',
+    'user': 'rlatkdMySQL',
+    'password': '!wl1075337',
+    'charset': 'utf8',
+    'cursorclass': pymysql.cursors.DictCursor
+}
+...
+...
+```
+
+**(3) 재 배포 시 정상으로 작동하는 것을 확인**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/reDeployJSON.jpg">
