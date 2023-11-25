@@ -341,11 +341,11 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 - Access Key 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/acessKey1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/accessKey1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/acessKey2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/accessKey2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/acessKey3.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/accessKey3.jpg">
 
 - GitHub Repository(DevOps-React)에 Secret을 추가
 
@@ -545,8 +545,8 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 
 - Access Key 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/acessKey1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/acessKey2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/acessKey3.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey3.jpg">
