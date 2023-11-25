@@ -337,7 +337,16 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 **(1) GitHub Actions**
 
-- React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 AWS CodeDeploy가 필요하지 않음
+**React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 AWS CodeDeploy가 필요하지 않음**
+
+- Access Key 생성
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/acessKey1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/acessKey2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/acessKey3.jpg">
+
 - GitHub Repository(DevOps-React)에 Secret을 추가
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubReposSecrets.jpg">
@@ -461,7 +470,7 @@ jobs:
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role3.jpg">
 
-- Code Deploy Agent 설치
+- AWS Code Deploy Agent 설치
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployAgent.jpg">
 
@@ -494,7 +503,7 @@ Nov 22 09:48:20 ip-10-0-3-255 codedeploy-agent[22738]: Starting codedeploy-agent
 Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent.
 ```
 
-- 아래와 같이 나오면 정상 agent가 정상 작동중임
+- 아래와 같이 나오면 정상 Agent가 정상 작동중임
 
 ```
 ...
@@ -528,6 +537,16 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployGroup3.jpg">
 
-- CodeDeploy Agent가 앱을 가져올 S3 Bucket 생성
+- AWS CodeDeploy Agent가 앱을 가져올 S3 Bucket 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/flaskS3Bucket.jpg">
+
+**(2) GitHub Actions**
+
+- Access Key 생성
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/acessKey1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/acessKey2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/acessKey3.jpg">
