@@ -428,6 +428,37 @@ jobs:
 
 **(1) AWS CodeDeploy**
 
+- rlatkdWebServer EC2 Instance에 적용할 정책 생성
+  `rlatkdCodeDeployEC2Policy`
+
+```
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "Statement1",
+			"Effect": "Allow",
+			"Action": [
+			    "s3:Get*",
+			    "s3:List*"
+			],
+			"Resource": "*"
+		}
+	]
+}
+```
+
+- rlatkdWebServer EC2 Instance에 적용할 역할 생성
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/codedeployEC2role1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/codedeployEC2role2.jpg">
+
+- 1111
+
 - AWS CodeDeploy에서 사용할 역할 생성
 
-- GitHub Repository(DevOps-React)에 Secret을 추가
+`rlatkdCodeDeployRole`
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/createCodeDeployGroupRole1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/createCodeDeployGroupRole2.jpg">
