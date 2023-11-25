@@ -902,6 +902,8 @@ Line 38:20:  Expected '===' and instead saw '=='                   eqeqeq
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/cannotAccess.jpg">
 
+---
+
 - deployment-archive 에서 확인하면 파일들이 제대로 있음
 
 ```
@@ -910,6 +912,8 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 app.py       crontabFile  historyUpdate.py  package-lock.json  requirements.txt  scripts
 appspec.yml  database.py  node_modules      package.json       resources
 ```
+
+---
 
 - 그러나 pip가 인스턴스 내부에 안 깔려있음
 
@@ -933,6 +937,8 @@ Command 'pip' not found, but can be installed with:
 sudo apt install python3-pip
 ```
 
+---
+
 - pip를 다운로드
 
 ```
@@ -940,6 +946,8 @@ ubuntu@ip-10-0-3-255:/$ sudo apt-get install python3-pip
 ubuntu@ip-10-0-3-255:/$ pip --version
 pip 22.0.2 from /usr/lib/python3/dist-packages/pip (python 3.10)
 ```
+
+---
 
 - python3 app.py로 테스트
 
@@ -956,6 +964,8 @@ Traceback (most recent call last):
 ImportError: cannot import name 'DecodeError' from 'jwt' (/usr/local/lib/python3.10/dist-packages/jwt/__init__.py)
 ```
 
+---
+
 - jwt가 문제인거같아 pip install jwt
 
 ```
@@ -968,13 +978,12 @@ Requirement already satisfied: cffi>=1.12 in /usr/local/lib/python3.10/dist-pack
 Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi>=1.12->cryptography!=3.4.0,>=3.1->jwt) (2.21)
 ```
 
+---
+
 - PyJWT에 문제가 있는것을 발견
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive$ pip list
-
-```
-
 ...
 ...
 PyGObject 3.42.1
@@ -987,18 +996,20 @@ pyOpenSSL 21.0.0
 
 ```
 
-- PyJWT 버전 변경
-```
+---
 
+- PyJWT 버전 변경
+
+```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-G5SGOXI12/deployment-archive$ sudo pip install PyJWT==v1.7.1
 
 ```
 
+---
 
 - 정상작동 확인
 
 ```
-
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-G5SGOXI12/deployment-archive$ python3 app.py
 
 - Serving Flask app 'app'
@@ -1008,8 +1019,4 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 - Running on http://127.0.0.1:5000
 - Running on http://10.0.3.255:5000
   Press CTRL+C to quit
-
-```
-
-
 ```
