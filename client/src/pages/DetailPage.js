@@ -27,12 +27,12 @@ function DetailPage() {
     console.log('이미 입찰된 가격:',data.price); 
     purchaseId = localStorage.getItem('userId')
     
-    if (data.user_id == purchaseId) { 
+    if (data.user_id === purchaseId) { 
       alert('본인 물건은 입찰 불가능입니다. ');
       return;
     }
 
-    if (purchaseId == '') { 
+    if (purchaseId === '') { 
       alert('로그인 후 입찰 가능합니다. ');
       return;
     }
