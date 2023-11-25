@@ -429,7 +429,8 @@ jobs:
 **(1) AWS CodeDeploy**
 
 - rlatkdWebServer EC2 Instance에 적용할 정책 생성
-  `rlatkdCodeDeployEC2Policy`
+
+`rlatkdCodeDeployEC2Policy`
 
 ```
 {
