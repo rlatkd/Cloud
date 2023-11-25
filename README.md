@@ -100,25 +100,25 @@
 
 ### 1.4 AWS 설정 구조
 
-| 계정        | 권한                                    |
+| User        | Authority                               |
 | ----------- | --------------------------------------- |
 | rlatkdReact | AmazonS3FullAccess                      |
 | rlatkdFlask | AmazonEC2FullAccess                     |
 | rlatkdMySQL | AmazonS3FullAccess, AmazonRDSFullAccess |
 
-| 서비스                | 키                        |
+| Service               | Key                       |
 | --------------------- | ------------------------- |
 | Amazon EC2            | KeyPair: rlatkdKeyPair    |
 | GitHubActions - React | AccessKey: rlatkdReact AK |
 | GitHubActions - Flask | AccessKey: rlatkdFlask AK |
 
-| 인바운드규칙 | 보안그룹: rlatkdFlaskWebServserSg |
-| ------------ | --------------------------------- |
-| Protocol     | TCP                               |
-| Port         | 5000                              |
-| Source       | 0.0.0.0/0                         |
+| InBound Rule | Security Group: rlatkdFlaskWebServserSg |
+| ------------ | --------------------------------------- |
+| Protocol     | TCP                                     |
+| Port         | 5000                                    |
+| Source       | 0.0.0.0/0                               |
 
-| 서비스                | 역할                                              |
+| Service               | Role                                              |
 | --------------------- | ------------------------------------------------- |
 | Amazon EC2            | rlatkdEC2AccessS3Role (rlatkdCodeDeployEC2Policy) |
 | AWS CodeDeploy Group  | rlatkdCodeDeployRole                              |
