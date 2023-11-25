@@ -102,11 +102,15 @@
 
 ### 2.1 Frontend (Amazon S3 Bucket)
 
+---
+
 **(1) 초기 설정**
 
 - rlatkdReact 계정 생성 후 로그인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
+## <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
+
+---
 
 **(2) S3 Bucket 설정**
 
@@ -133,6 +137,8 @@
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority3.jpg">
+
+---
 
 **(3) S3 Bucket에 배포**
 
@@ -170,6 +176,8 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket2.jpg">
 
+---
+
 **(4) 서비스 정상 작동 확인**
 
 - 브라우저로 S3 Bucket의 웹 사이트 앤드포인트로 접근
@@ -197,6 +205,8 @@
 `rlatkdFlaskWebServerSg`
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createSg.jpg">
+
+---
 
 **(2) EC2 Instance 설정**
 
@@ -281,11 +291,15 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 ### 2.3 Database (Amazon RDS)
 
+---
+
 **(1) 초기 설정**
 
 - rlatkdMySQL 계정 생성 후 로그인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/addMySQLUser.jpg">
+
+---
 
 **(2) RDS 설정**
 
@@ -317,6 +331,8 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 - MySQL Workbench를 실행해서 RDS로의 연결 설정
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectWorkbench.jpg">
+
+---
 
 **(3) Database 설정**
 
