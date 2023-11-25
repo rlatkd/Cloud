@@ -506,8 +506,6 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 ...
 ```
 
-# 미완
-
 - AWS CodeDeploy에서 사용할 역할 생성
 
 `rlatkdCodeDeployRole`
@@ -515,3 +513,21 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createCodeDeployGroupRole1.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createCodeDeployGroupRole2.jpg">
+
+- AWS CodeDeploy 애플리케이션과 배포 그룹을 생성
+
+**애플리케이션**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployApp.jpg">
+
+**배포 그룹**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployGroup1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployGroup2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployGroup3.jpg">
+
+- CodeDeploy Agent가 앱을 가져올 S3 Bucket 생성
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/flaskS3Bucket.jpg">
