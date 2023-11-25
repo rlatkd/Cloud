@@ -351,7 +351,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubReposSecrets.jpg">
 
-- deploy.yml
+- ./.github/workflows/deploy.yml
 
 ```
 name: Deploy to Amazon S3 bucket
@@ -541,6 +541,89 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/flaskS3Bucket.jpg">
 
+- AWS CodeDeploy를 이용해 자동화한 과정을 명시
+  **appspec.yml**
+
+```
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/ssgbay
+
+hooks:
+  BeforeInstall:
+    - location: scripts/beforeInstall.sh
+      runas: root
+  AfterInstall:
+    - location: scripts/afterInstall.sh
+      runas: root
+    - location: scripts/runServer.sh
+      runas: ubuntu
+```
+
+- appspec.yml에 사용할 shell scripts
+
+**beforeInstall.sh**
+
+```
+#!/bin/bash
+
+var=$(ps -ef | grep 'python3 -u app.py' | grep -v 'grep')
+pid=$(echo ${var} | cut -d " " -f2)
+if [ -n "${pid}" ]
+then
+   kill -9 ${pid}
+   echo ${pid} is terminated.
+else
+   echo ${pid} is not running.
+fi
+
+rm -rf /home/ubuntu/ssgbay
+mkdir  /home/ubuntu/ssgbay
+```
+
+**afterInstall.sh**
+
+```
+#!/bin/bash
+
+cd   /home/ubuntu/ssgbay
+
+echo ">>> make static directory for upload images ----------------------"
+mkdir resources
+
+echo ">>> pip install ---------------------------------------------------"
+pip install -r requirements.txt
+
+echo ">>> cron settings -------------------------------------------------"
+crontab -l | { cat; echo "* * * * * /usr/bin/python3 /home/ubuntu/ssgbay/historyUpdate.py >> /var/log/cron.log 2>&1"; } | crontab -
+
+echo ">>> npm install ---------------------------------------------------"
+npm install
+npm run build
+
+echo ">>> remove template files -----------------------------------------"
+rm -rf appspec.yml requirements.txt
+
+echo ">>> change owner to ubuntu -----------------------------------------"
+chown -R ubuntu /home/ubuntu/ssgbay
+```
+
+**runServer.sh**
+
+```
+#!/bin/bash
+
+cd  /home/ubuntu/ssgbay
+
+echo ">>> run app -------------------------------------------------------"
+
+cron
+python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
+
+```
+
 **(2) GitHub Actions**
 
 - Access Key 생성
@@ -550,3 +633,60 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey2.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey3.jpg">
+
+- GitHub Repository(DevOps-Flask)에 Secret을 추가
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/githubReposSecrets.jpg">
+
+- ./.github/workflows/deploy.yml
+
+```
+name: Deploy to Amazon EC2
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  AWS_REGION: ap-northeast-2
+  S3_BUCKET_NAME: rlatkd-flask-bucket
+  CODE_DEPLOY_APPLICATION_NAME: rlatkdFlaskApp
+  CODE_DEPLOY_DEPLOY_GROUP_NAME: rlatkdFlaskDeployGroup
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Upload to AWS S3
+      run: |
+        aws deploy push \
+          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
+          --s3-location s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip \
+          --ignore-hidden-files \
+          --source .
+
+    - name: Deploy to AWS EC2 from S3
+      run: |
+        aws deploy create-deployment \
+          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
+          --deployment-config-name CodeDeployDefault.AllAtOnce \
+          --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOY_GROUP_NAME }} \
+          --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
+```
+
+**(3) AWS CodeDeploy GitHub Actions**
