@@ -91,7 +91,7 @@
 - appspec.yml
 
   - AWS CodeDeploy를 이용해 자동화한 작업 과정
-  - React 앱은 Amazon EC2가 아닌 Amazon S3 버킷에 정적 상태로 저장하기 때문에 사용하지 않음
+  - React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 사용하지 않음
 
 - scripts
 
@@ -335,6 +335,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 **(1) CI/CD 파이프라인 구축**
 
+- React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 AWS CodeDeploy가 필요하지 않음
 - GitHub Repository(DevOps-React)에 Secret을 추가
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubReposSecrets.jpg">
@@ -409,7 +410,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ```
 
-**(2) React코드를 수정 후 GitHub에 커밋하면 자동 배포 확인**
+**(2) React코드를 수정 후 GitHub에 commit 시 자동으로 배포**
 
 - 배포 진행
 
@@ -422,3 +423,9 @@ jobs:
 - 수정된 코드가 자동으로 배포되어 적용된 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/commitedReact.jpg">
+
+### 4.2 Backend
+
+**(1) CI/CD 파이프라인 구축**
+
+- GitHub Repository(DevOps-React)에 Secret을 추가
