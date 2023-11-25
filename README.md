@@ -714,8 +714,24 @@ jobs:
 
 **(1) Frontend**
 
-**image `alt` tag error**
+**`<img>` `alt` error**
 
 ```
 Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
+```
+
+**Card.js**
+
+```
+...
+...
+<img className={styles.itemImg} src={`${cardInfo.image}`}  alt="itemImage" />
+...
+...
+```
+
+- 이미 <image> 태그에서 이미지라는 것을 알았으니 alt 속성에서 image, photo, picture 이라는 단어를 다시 사용할 필요가 없다는 의미
+
+```
+<img className={styles.itemImg} src={`${cardInfo.image}`}  alt="item" />
 ```
