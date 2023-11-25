@@ -709,3 +709,13 @@ jobs:
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/commitedFlask.jpg">
 
 ## 5. 후기
+
+### 5.1 Trouble Shooting
+
+**(1) Frontend**
+
+**image `alt` tag error**
+
+```
+Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
+```
