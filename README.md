@@ -329,11 +329,11 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 **(1) d**
 
-## 4. Github Actions & AWS CodeDeploy
+## 4. GitHub Actions & AWS CodeDeploy
 
 ### 4.1 Frontend
 
-**(1) CI/CD 파이프라인 구축**
+**(1) GitHub Actions**
 
 - React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 AWS CodeDeploy가 필요하지 않음
 - GitHub Repository(DevOps-React)에 Secret을 추가
@@ -426,6 +426,8 @@ jobs:
 
 ### 4.2 Backend
 
-**(1) CI/CD 파이프라인 구축**
+**(1) AWS CodeDeploy**
+
+- AWS CodeDeploy에서 사용할 역할 생성
 
 - GitHub Repository(DevOps-React)에 Secret을 추가
