@@ -6,7 +6,8 @@
 - [Amazon Web Service](#2-Amazon-Web-Service)
 - [Terraform](#3-Terraform)
 - [Github Actions & AWS CodeDeploy](#4-Github-Actions--AWS-CodeDeploy)
-- [후기](#5-후기)
+- [Trouble Shooting](#5-Trouble-Shooting)
+- [후기](#6-후기)
 
 ## 1. 개요
 
