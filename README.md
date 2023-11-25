@@ -3,10 +3,54 @@
 ## 0. 목차
 
 - [개요](#1-개요)
+  - 1.1 프로젝트 개요
+  - 1.2 서비스
+    - (1) Deployment
+    - (2) Iac (Infrastructure as Code)
+    - (3) CI/CD (Continuous Integration/Continuos Delivery)
+  - 1.3 프로젝트 진행 과정
+  - 1.4 전체 구조
+    - (1) Frontend GitHub Repository
+    - (2) Backend GitHub Repository
+    - (3) 디렉터리 구조
+  - 1.5 AWS 설정 구조
+    - (1) 계정 권한
+    - (2) 키
+    - (3) 그룹 당 규칙
+    - (4) 역할
+  - 1.6 인프라 구조
 - [Amazon Web Service](#2-Amazon-Web-Service)
+  - 2.1 Frontend (Amazon S3 Bucket)
+    - (1) 초기 설정
+    - (2) S3 Bucket 설정
+    - (3) S3 Bucket에 배포
+    - (4) 서비스 정상 작동 확인
+  - 2.2 Backend (Amazon EC2)
+    - (1) 초기 설정
+    - (2) EC2 Instance 설정
+  - 2.3 Database (Amazon RDS)
+    - (1) 초기 설정
+    - (2) RDS 설정
+    - (3) Database 설정
 - [Terraform](#3-Terraform)
 - [Github Actions & AWS CodeDeploy](#4-Github-Actions--AWS-CodeDeploy)
+  - 4.1 Frontend
+    - (1) GitHub Actions
+    - (2) React test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
+  - 4.2 Backend
+    - (1) AWS CodeDeploy
+    - (2) GitHub Actions
+    - (3) Flask test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
 - [Trouble Shooting](#5-Trouble-Shooting)
+
+  - 5.1 Frontend
+    - (1) autoprefixer
+    - (2) eslint - <img> alt
+    - (3) eslint - eqeqeq
+  - 5.2 Backend
+    - (1) 배포했으나 연결할 수 없음
+  - 5.2 Database
+
 - [후기](#6-후기)
 
 ## 1. 개요
@@ -108,6 +152,8 @@
 | rlatkdFlask | AmazonEC2FullAccess                     |
 | rlatkdMySQL | AmazonS3FullAccess, AmazonRDSFullAccess |
 
+---
+
 **(2) 키**
 
 | Service               | Key                       |
@@ -115,6 +161,8 @@
 | Amazon EC2            | KeyPair: rlatkdKeyPair    |
 | GitHubActions - React | AccessKey: rlatkdReact AK |
 | GitHubActions - Flask | AccessKey: rlatkdFlask AK |
+
+---
 
 **(3) 그룹 당 규칙**
 
@@ -137,6 +185,8 @@
 | Protocol     | TCP                               |
 | Port         | 3306                              |
 | Source       | rlatkd-ec2-rds-Sg                 |
+
+---
 
 **(4) 역할**
 
@@ -1046,3 +1096,40 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 ### 5.2 Database
 
 - Flask EC2 내부에서 접속
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/ec2rdsrule.jpg">
+
+```
+ubuntu@ip-10-0-3-255:~$ sudo apt-get update
+ubuntu@ip-10-0-3-255:~$ sudo apt-get install mysql-client
+ubuntu@ip-10-0-3-255:~$ sudo mysql -h database-1.cyu7qnoubf3u.ap-northeast-2.rds.amazonaws.com -u rlatkdMySQL -p
+Enter password:
+```
+
+```
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 33
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+```
+
+```
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 33
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+```
