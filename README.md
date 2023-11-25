@@ -51,10 +51,12 @@
     - (1) 배포했으나 연결할 수 없음
     - (2) 해결 방법
     - (3) 정상 작동 확인
-  - 5.2 Database
+  - 5.3 Backend-Database
     - (1) Backend와 Database 연동이 안 됨
     - (2) 해결 방법
     - (3) 재 배포 시 정상으로 작동하는 것을 확인
+  - 5.4 Backend-Frontend
+    - (1) Backend와 Frontend 연동이 안 됨
 
 - [후기](#6-후기)
 
@@ -1096,7 +1098,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
   Press CTRL+C to quit
 ```
 
-### 5.2 Backend-Database
+### 5.3 Backend-Database
 
 **(1) Backend와 Database 연동이 안 됨**
 
@@ -1229,6 +1231,6 @@ connectionString = {
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/reDeployJSON.jpg">
 
-### 5.3 Backend-Frontend
+### 5.4 Backend-Frontend
 
 **(1) Backend와 Frontend 연동이 안 됨**
