@@ -49,7 +49,12 @@
     - (3) eslint - eqeqeq
   - 5.2 Backend
     - (1) 배포했으나 연결할 수 없음
+    - (2) 해결 방법
+    - (3) 정상 작동 확인
   - 5.2 Database
+    - (1) Backend와 Database 연동이 안 됨
+    - (2) 해결 방법
+    - (3) 재 배포 시 정상으로 작동하는 것을 확인
 
 - [후기](#6-후기)
 
@@ -1210,7 +1215,7 @@ connectionString = {
     'port': 3306,
     'database': 'auction',
     'user': 'rlatkdMySQL',
-    'password': '!wl1075337',
+    'password': '****',
     'charset': 'utf8',
     'cursorclass': pymysql.cursors.DictCursor
 }
