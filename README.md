@@ -53,8 +53,11 @@
 ```
 📁 client
  ├──── 📁 .github
-...     └──── 📁 workflows
-...            └──── 📄 deploy.yml
+ │      └──── 📁 workflows
+ │             └──── 📄 deploy.yml
+ │             └──── 📄 deploy.yml
+...
+...
 ```
 
 **(2) Backend GitHub Repository**
