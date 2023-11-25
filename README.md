@@ -716,32 +716,6 @@ jobs:
 
 **(1) Frontend**
 
-**`<img> alt` error**
-
-```
-Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
-```
-
-> **.src/pages/CreatePage.js**
->
-> ```
-> ...
-> ...
-> {imagePreview && (<img className={styles.previewImage} src={imagePreview} alt="Selected Image" />)}
-> ...
-> ...
-> ```
->
-> - 이미 <image> 태그에서 이미지라는 것을 알았으니 alt 속성에서 image, photo, picture 이라는 단어를 다시 사용할 필요가 없다고 추천
->
-> ```
-> ...
-> ...
-> {imagePreview && (<img className={styles.previewImage} src={imagePreview} alt="Selected Image" />)}
-> ...
-> ...
-> ```
-
 **autoprefixer**
 
 ```
@@ -799,5 +773,31 @@ Warning
 > ```
 >
 > - 일일히 `start`에서 `flex-start`로 변경하는 방법도 있지만 무시하고 진행하려면 `sourceMap`의 설정 값을 `true`로 하는 방법도 있음
+
+**eslint - `<img> alt`**
+
+```
+Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
+```
+
+> **.src/pages/CreatePage.js**
+>
+> ```
+> ...
+> ...
+> {imagePreview && (<img className={styles.previewImage} src={imagePreview} alt="Selected Image" />)}
+> ...
+> ...
+> ```
+>
+> - 이미 <image> 태그에서 이미지라는 것을 알았으니 alt 속성에서 image, photo, picture 이라는 단어를 다시 사용할 필요가 없다고 추천
+>
+> ```
+> ...
+> ...
+> {imagePreview && (<img className={styles.previewImage} src={imagePreview} alt="Selected" />)}
+> ...
+> ...
+> ```
 
 **(2) Backend**
