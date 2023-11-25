@@ -542,7 +542,8 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/flaskS3Bucket.jpg">
 
 - AWS CodeDeploy를 이용해 자동화한 과정을 명시
-  **appspec.yml**
+
+**appspec.yml**
 
 ```
 version: 0.0
