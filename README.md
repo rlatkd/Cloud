@@ -5,7 +5,7 @@
 - [개요](#1-개요)
 - [Amazon Web Service](#2-Amazon-Web-Service)
 - [Terraform](#3-Terraform)
-- [Github Actions](#4-Github-Actions)
+- [Github Actions & AWS CodeDeploy](#4-Github-Actions-&-AWS-CodeDeploy)
 - [후기](#5-후기)
 
 ## 1. 개요
@@ -95,7 +95,7 @@
 
 - scripts
 
-  - appspec.yml에 사용할 셸 스크립트
+  - appspec.yml에 사용할 shell script들이 있는 폴더
 
 ## 2. Amazon Web Service
 
@@ -329,7 +329,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 **(1) d**
 
-## 4. Github Actions
+## 4. Github Actions & AWS CodeDeploy
 
 ### 4.1 Frontend
 
@@ -338,3 +338,5 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 - GitHub Repository(DevOps-React)에 Secret을 추가
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubSecrets.jpg">
+
+-
