@@ -100,11 +100,15 @@
 
 ### 1.5 AWS 설정 구조
 
+**(1) 계정 권한**
+
 | User        | Authority                               |
 | ----------- | --------------------------------------- |
 | rlatkdReact | AmazonS3FullAccess                      |
 | rlatkdFlask | AmazonEC2FullAccess                     |
 | rlatkdMySQL | AmazonS3FullAccess, AmazonRDSFullAccess |
+
+**(2) 키**
 
 | Service               | Key                       |
 | --------------------- | ------------------------- |
@@ -112,11 +116,29 @@
 | GitHubActions - React | AccessKey: rlatkdReact AK |
 | GitHubActions - Flask | AccessKey: rlatkdFlask AK |
 
+**(3) 그룹 당 규칙**
+
 | InBound Rule | Security Group: rlatkdFlaskWebServserSg |
 | ------------ | --------------------------------------- |
 | Protocol     | TCP                                     |
 | Port         | 5000                                    |
 | Source       | 0.0.0.0/0                               |
+
+| OutBound Rule | Security Group: rlatkd-ec2-rds-Sg |
+| ------------- | --------------------------------- |
+| Type          | MySQL/Aurora                      |
+| Protocol      | TCP                               |
+| Port          | 3306                              |
+| Target        | rlatkd-rds-ec2-Sg                 |
+
+| InBound Rule | Security Group: rlatkd-rds-ec2-Sg |
+| ------------ | --------------------------------- |
+| Type         | MySQL/Aurora                      |
+| Protocol     | TCP                               |
+| Port         | 3306                              |
+| Source       | rlatkd-ec2-rds-Sg                 |
+
+**(4) 역할**
 
 | Service               | Role                                              |
 | --------------------- | ------------------------------------------------- |
@@ -1020,3 +1042,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 - Running on http://10.0.3.255:5000
   Press CTRL+C to quit
 ```
+
+### 5.2 Database
+
+- Flask EC2 내부에서 접속
