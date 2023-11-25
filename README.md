@@ -102,8 +102,6 @@
 
 ### 2.1 Frontend (Amazon S3 Bucket)
 
----
-
 **(1) 초기 설정**
 
 - rlatkdReact 계정 생성 후 로그인
@@ -291,8 +289,6 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 ### 2.3 Database (Amazon RDS)
 
----
-
 **(1) 초기 설정**
 
 - rlatkdMySQL 계정 생성 후 로그인
@@ -351,8 +347,6 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 ## 4. GitHub Actions & AWS CodeDeploy
 
 ### 4.1 Frontend
-
----
 
 **(1) GitHub Actions**
 
@@ -459,8 +453,6 @@ jobs:
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/commitedReact.jpg">
 
 ### 4.2 Backend
-
----
 
 **(1) AWS CodeDeploy**
 
@@ -740,8 +732,6 @@ jobs:
 ## 5. Trouble Shooting
 
 ### 5.1 Frontend
-
----
 
 **(1) autoprefixer**
 
