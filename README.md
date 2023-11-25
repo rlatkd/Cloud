@@ -702,7 +702,9 @@ jobs:
 
 - 배포 성공
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploySuccess.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploySuccess1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploySuccess2.jpg">
 
 - 수정된 코드가 자동으로 배포되어 적용된 것을 확인
 
@@ -781,7 +783,7 @@ Warning
 > ...
 > ```
 
-> **package.json**
+> **./package.json**
 >
 > ```
 > ...
@@ -796,4 +798,6 @@ Warning
 > ...
 > ```
 >
-> -일일히 `start`에서 `flex-start`로 변경하는 방법도 있지만 무시하고 진행하려면 `sourceMap`의 설정 값을 `true`로 하는 방법도 있음
+> - 일일히 `start`에서 `flex-start`로 변경하는 방법도 있지만 무시하고 진행하려면 `sourceMap`의 설정 값을 `true`로 하는 방법도 있음
+
+**(2) Backend**
