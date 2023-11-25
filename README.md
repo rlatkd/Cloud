@@ -1096,9 +1096,11 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
   Press CTRL+C to quit
 ```
 
-### 5.2 Database
+### 5.2 Backend-Database
 
 **(1) Backend와 Database 연동이 안 됨**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
 
 - Flask EC2 내부에서 접속
 
@@ -1199,7 +1201,7 @@ mysql> select * from history
 1 row in set (0.00 sec)
 ```
 
-- 연결이 안됨
+- 그래도 연결이 안됨
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
 
@@ -1226,3 +1228,7 @@ connectionString = {
 **(3) 재 배포 시 정상으로 작동하는 것을 확인**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/reDeployJSON.jpg">
+
+### 5.3 Backend-Frontend
+
+**(1) Backend와 Frontend 연동이 안 됨**
