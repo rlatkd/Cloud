@@ -9,7 +9,7 @@ function Card({ cardInfo }) {
   return (
     <div className={styles.cardContainer}>
       <Link to={`/detail/${id}`}>
-        <img className={styles.itemImg} src={`${cardInfo.image}`}  alt="itemImage" />
+        <img className={styles.itemImg} src={`${cardInfo.image}`}  alt="item" />
         <div>
           <div className={styles.title}>{cardInfo.title}</div>
           <div className={styles.info}>

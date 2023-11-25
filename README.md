@@ -714,13 +714,13 @@ jobs:
 
 **(1) Frontend**
 
-**`<img>` `alt` error**
+**`<img> alt` error**
 
 ```
 Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
 ```
 
-**Card.js**
+**.src/styles/Card.js**
 
 ```
 ...
@@ -730,8 +730,70 @@ Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tag
 ...
 ```
 
-- 이미 <image> 태그에서 이미지라는 것을 알았으니 alt 속성에서 image, photo, picture 이라는 단어를 다시 사용할 필요가 없다는 의미
+- 이미 <image> 태그에서 이미지라는 것을 알았으니 alt 속성에서 image, photo, picture 이라는 단어를 다시 사용할 필요가 없다고 추천
 
 ```
+...
+...
 <img className={styles.itemImg} src={`${cardInfo.image}`}  alt="item" />
+...
+...
+```
+
+**autoprefixer**
+
+```
+Warning
+(11:5) autoprefixer: start value has mixed support, consider using flex-start instead
+```
+
+**./src/styles/MainPage.module.css**
+
+```
+...
+...
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  max-width: 1024px;
+  min-width: 1024px;
+  gap: 70px;
+}
+...
+...
+```
+
+- Webpack 구성 파일의 모듈 규칙 안에서 로더를 설정하여 작동하는데, justify-content 항목은 start 보다 `flex-start`로 하는게 더 호환성이 좋다고 추천
+
+```
+...
+...
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 1024px;
+  min-width: 1024px;
+  gap: 70px;
+}
+...
+...
+```
+
+일일히 `start`에서 `flex-start`로 변경하는 방법도 있지만 무시하고 진행하려면 `sourceMap`의 설정 값을 `true`로 하는 방법도 있음
+
+**package.json**
+
+```
+...
+...
+{
+  loader: "sass-loader",
+  options: {
+    sourceMap: true,
+  },
+},
+...
+...
 ```
