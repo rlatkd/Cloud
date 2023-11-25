@@ -449,13 +449,19 @@ jobs:
 }
 ```
 
-- rlatkdWebServer EC2 Instance에 적용할 역할 생성
+- rlatkdWebServer EC2 Instance에 적용할 역할 생성 후 적용
+
+`rlatkdEC2AccessS3Role`
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role1.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role2.jpg">
 
-- 1111
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role3.jpg">
+
+- Code Deploy Agent 설치
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployAgent.jpg">
 
 - AWS CodeDeploy에서 사용할 역할 생성
 
