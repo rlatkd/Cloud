@@ -476,6 +476,7 @@ ubuntu@ip-10-0-3-255:~$ wget https://aws-codedeploy-ap-northeast-2.s3.ap-northea
 ubuntu@ip-10-0-3-255:~$ chmod +x ./install
 ubuntu@ip-10-0-3-255:~$ sudo ./install auto
 ubuntu@ip-10-0-3-255:~$ sudo service codedeploy-agent status
+
 ● codedeploy-agent.service - LSB: AWS CodeDeploy Host Agent
      Loaded: loaded (/etc/init.d/codedeploy-agent; generated)
      Active: active (running) since Wed 2023-11-22 09:48:20 UTC; 7s ago
@@ -500,7 +501,7 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 ...
      CGroup: /system.slice/codedeploy-agent.service
              ├─22744 "codedeploy-agent: master 22744" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" >
-             └─22746 "codedeploy-agent: InstanceAgent::Plugins::CodeDeployPlugin::CommandPoller of >
+이 부분 확인 >>>             └─22746 "codedeploy-agent: InstanceAgent::Plugins::CodeDeployPlugin::CommandPoller of >
 ...
 ...
 ```
