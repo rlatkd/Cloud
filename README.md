@@ -423,7 +423,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ```
 
-**(2) React코드를 수정 후 GitHub에 commit 시 자동으로 배포**
+**(2) React test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포**
 
 - 배포 진행
 
@@ -694,4 +694,16 @@ jobs:
           --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
 ```
 
-**(3) AWS CodeDeploy GitHub Actions**
+**(3) Flask test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포**
+
+- 배포 진행
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploy.jpg">
+
+- 배포 성공
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploySuccess.jpg">
+
+- 수정된 코드가 자동으로 배포되어 적용된 것을 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/comittedFlask.jpg">
