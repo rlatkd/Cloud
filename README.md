@@ -765,7 +765,7 @@ Warning
 > ```
 >
 > - Webpack 구성 파일의 모듈 규칙 안에서 로더를 설정하여 작동하는데, justify-content 항목은 start 보다 `flex-start`로 하는게 더 호환성이 좋다고 추천
-
+>
 > ```
 > ...
 > ...
@@ -780,7 +780,7 @@ Warning
 > ...
 > ...
 > ```
->
+
 > **package.json**
 >
 > ```
