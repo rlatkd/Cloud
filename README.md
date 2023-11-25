@@ -1,4 +1,4 @@
-# deployment project using AWS & Terraform & GitHub Actions
+# Development Operations project using AWS & Terraform & GitHub Actions
 
 ## 0. 목차
 
@@ -14,8 +14,9 @@
 
 - 프로젝트 이름: DevOps
 - 프로젝트 목적:
-  - Public Cloud의 인프라를 코드로 자동 구성
-  - CI/CD를 통해 배포 자동화 설정
+  - 기존의 SSGBay 애플리케이션을 AWS에 배포
+  - Terraform을 이용해 인프라를 코드로 자동 구성
+  - GitHub Actions와 AWS CodeDeploy를 이용해 CI/CD 파이프라인 구축
   - 해당 서비스 앱의 main branch에서 커밋하면 자동으로 배포
 - 프로젝트 기간: 2023.11.22 ~ 진행중(Terraform)
 
