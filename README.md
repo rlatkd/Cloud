@@ -37,13 +37,13 @@
 
 ### 1.3 프로젝트 진행 과정
 
-| 일별                    | 내용                                  |
-| ----------------------- | ------------------------------------- |
-| 1일차 (11.22)           | - AWS를 이용한 기본 배포              |
-| 2일차 (11.23)           | - Terraform을 이용한 인프라 구축      |
-| 3~4일차 (11.24 ~ 11.25) | - GitHub Actions를 이용한 배포 자동화 |
-| 7일차 (11.01)           | - 44                                  |
-| 8일차 (11.02)           | - 55                                  |
+| 일별                    | 내용                                |
+| ----------------------- | ----------------------------------- |
+| 1일차 (11.22)           | AWS를 이용한 기본 배포              |
+| 2일차 (11.23)           | Terraform을 이용한 인프라 구축      |
+| 3~4일차 (11.24 ~ 11.25) | GitHub Actions를 이용한 배포 자동화 |
+| 7일차 (11.01)           | 44                                  |
+| 8일차 (11.02)           | 55                                  |
 
 ### 1.4 전체 구조
 
@@ -97,6 +97,34 @@
 - scripts
 
   - appspec.yml에 사용할 shell script들이 있는 폴더
+
+### 1.4 AWS 설정 구조
+
+| 계정        | 권한                                    |
+| ----------- | --------------------------------------- |
+| rlatkdReact | AmazonS3FullAccess                      |
+| rlatkdFlask | AmazonEC2FullAccess                     |
+| rlatkdMySQL | AmazonS3FullAccess, AmazonRDSFullAccess |
+
+| 서비스                | 키                        |
+| --------------------- | ------------------------- |
+| Amazon EC2            | KeyPair: rlatkdKeyPair    |
+| GitHubActions - React | AccessKey: rlatkdReact AK |
+| GitHubActions - Flask | AccessKey: rlatkdFlask AK |
+
+| 인바운드규칙 | 보안그룹: rlatkdFlaskWebServserSg |
+| ------------ | --------------------------------- |
+| Protocol     | TCP                               |
+| Port         | 5000                              |
+| Source       | 0.0.0.0/0                         |
+
+| 서비스                | 역할                                              |
+| --------------------- | ------------------------------------------------- |
+| Amazon EC2            | rlatkdEC2AccessS3Role (rlatkdCodeDeployEC2Policy) |
+| AWS CodeDeploy Group  | rlatkdCodeDeployRole                              |
+| GitHubActions - Flask | AccessKey: rlatkdFlask AK                         |
+
+### 1.5 인프라 구조
 
 ## 2. Amazon Web Service
 
@@ -773,8 +801,12 @@ Warning
 > ...
 > ...
 > ```
-
+>
+> ---
+>
 > **./package.json**
+>
+> - 일일히 `start`에서 `flex-start`로 변경하는 방법도 있지만 무시하고 진행하려면 `sourceMap`의 설정 값을 `true`로 하는 방법도 있음
 >
 > ```
 > ...
@@ -788,8 +820,6 @@ Warning
 > ...
 > ...
 > ```
->
-> - 일일히 `start`에서 `flex-start`로 변경하는 방법도 있지만 무시하고 진행하려면 `sourceMap`의 설정 값을 `true`로 하는 방법도 있음
 
 ---
 
