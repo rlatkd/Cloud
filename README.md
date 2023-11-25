@@ -351,6 +351,8 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubReposSecrets.jpg">
 
+- GitHub Actions를 이용해 자동화한 과정을 명시
+
 **./.github/workflows/deploy.yml**
 
 ```
@@ -638,6 +640,8 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 - GitHub Repository(DevOps-Flask)에 Secret을 추가
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/githubReposSecrets.jpg">
+
+- GitHub Actions를 이용해 자동화한 과정을 명시
 
 **./.github/workflows/deploy.yml**
 
