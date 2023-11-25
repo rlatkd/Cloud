@@ -707,3 +707,5 @@ jobs:
 - 수정된 코드가 자동으로 배포되어 적용된 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/commitedFlask.jpg">
+
+## 5. 후기
