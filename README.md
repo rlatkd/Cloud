@@ -743,77 +743,57 @@ Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tag
 **autoprefixer**
 
 ```
-
 Warning
 (11:5) autoprefixer: start value has mixed support, consider using flex-start instead
-
 ```
 
-**./src/styles/MainPage.module.css**
+> **./src/styles/MainPage.module.css**
+>
+> ```
+> ...
+> ...
+> .cardContainer {
+> display: flex;
+> flex-wrap: wrap;
+> justify-content: start;
+> max-width: 1024px;
+> min-width: 1024px;
+> gap: 70px;
+> }
+> ...
+> ...
+> ```
+>
+> - Webpack 구성 파일의 모듈 규칙 안에서 로더를 설정하여 작동하는데, justify-content 항목은 start 보다 `flex-start`로 하는게 더 호환성이 좋다고 추천
 
-```
-
-...
-...
-.cardContainer {
-display: flex;
-flex-wrap: wrap;
-justify-content: start;
-max-width: 1024px;
-min-width: 1024px;
-gap: 70px;
-}
-...
-...
-
-```
-
-- Webpack 구성 파일의 모듈 규칙 안에서 로더를 설정하여 작동하는데, justify-content 항목은 start 보다 `flex-start`로 하는게 더 호환성이 좋다고 추천
-
-```
-
-...
-...
-.cardContainer {
-display: flex;
-flex-wrap: wrap;
-justify-content: flex-start;
-max-width: 1024px;
-min-width: 1024px;
-gap: 70px;
-}
-...
-...
-
-```
-
-일일히 `start`에서 `flex-start`로 변경하는 방법도 있지만 무시하고 진행하려면 `sourceMap`의 설정 값을 `true`로 하는 방법도 있음
-
-**package.json**
-
-```
-
-...
-...
-{
-loader: "sass-loader",
-options: {
-sourceMap: true,
-},
-},
-...
-...
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
+> ```
+> ...
+> ...
+> .cardContainer {
+> display: flex;
+> flex-wrap: wrap;
+> justify-content: flex-start;
+> max-width: 1024px;
+> min-width: 1024px;
+> gap: 70px;
+> }
+> ...
+> ...
+> ```
+>
+> **package.json**
+>
+> ```
+> ...
+> ...
+> {
+> loader: "sass-loader",
+> options: {
+> sourceMap: true,
+> },
+> },
+> ...
+> ...
+> ```
+>
+> -일일히 `start`에서 `flex-start`로 변경하는 방법도 있지만 무시하고 진행하려면 `sourceMap`의 설정 값을 `true`로 하는 방법도 있음
