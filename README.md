@@ -193,6 +193,8 @@
 
 - 보안 그룹 생성
 
+`rlatkdFlaskWebServerSg`
+
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createSg.jpg">
 
 **(2) EC2 Instance 설정**
@@ -462,6 +464,46 @@ jobs:
 - Code Deploy Agent 설치
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployAgent.jpg">
+
+```
+ubuntu@ip-10-0-3-255:/var/www/html$ sudo apt update
+ubuntu@ip-10-0-3-255:/var/www/html$ sudo apt update
+ubuntu@ip-10-0-3-255:/var/www/html$ sudo apt install ruby-full
+ubuntu@ip-10-0-3-255:/var/www/html$ sudo apt install wget
+ubuntu@ip-10-0-3-255:/var/www/html$ cd /home/ubuntu
+ubuntu@ip-10-0-3-255:~$
+ubuntu@ip-10-0-3-255:~$ wget https://aws-codedeploy-ap-northeast-2.s3.ap-northeast-2.amazonaws.com/latest/install
+ubuntu@ip-10-0-3-255:~$ chmod +x ./install
+ubuntu@ip-10-0-3-255:~$ sudo ./install auto
+ubuntu@ip-10-0-3-255:~$ sudo service codedeploy-agent status
+● codedeploy-agent.service - LSB: AWS CodeDeploy Host Agent
+     Loaded: loaded (/etc/init.d/codedeploy-agent; generated)
+     Active: active (running) since Wed 2023-11-22 09:48:20 UTC; 7s ago
+       Docs: man:systemd-sysv-generator(8)
+    Process: 22738 ExecStart=/etc/init.d/codedeploy-agent start (code=exited, status=0/SUCCESS)
+      Tasks: 2 (limit: 1121)
+     Memory: 57.4M
+        CPU: 1.085s
+     CGroup: /system.slice/codedeploy-agent.service
+             ├─22744 "codedeploy-agent: master 22744" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" >
+             └─22746 "codedeploy-agent: InstanceAgent::Plugins::CodeDeployPlugin::CommandPoller of >
+
+Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Starting LSB: AWS CodeDeploy Host Agent...
+Nov 22 09:48:20 ip-10-0-3-255 codedeploy-agent[22738]: Starting codedeploy-agent:
+Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent.
+```
+
+- 아래와 같이 나오면 정상 agent가 정상 작동중임
+
+```
+...
+...
+     CGroup: /system.slice/codedeploy-agent.service
+             ├─22744 "codedeploy-agent: master 22744" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" >
+             └─22746 "codedeploy-agent: InstanceAgent::Plugins::CodeDeployPlugin::CommandPoller of >
+...
+...
+```
 
 - AWS CodeDeploy에서 사용할 역할 생성
 
