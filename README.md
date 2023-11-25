@@ -333,10 +333,92 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 ### 4.1 Frontend
 
-**(1) d**
+**(1) CI/CD 파이프라인 구축**
 
 - GitHub Repository(DevOps-React)에 Secret을 추가
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubReposSecrets.jpg">
 
--
+- deploy.yml
+
+```
+name: Deploy to Amazon S3 bucket
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  AWS_REGION: ap-northeast-2
+  S3_BUCKET_NAME: rlatkd-react-bucket
+  CLOUDFRONT_NAME: E28M3K5TF5L3PV
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - if: steps.npm-cache.outputs.cache-hit == 'true'
+        run: echo 'npm cache hit!'
+      - if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: echo 'npm cache missed!'
+
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Remove template files
+        run: rm -rf node_modules public src index.html package*
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: upload to S3
+        run: aws s3 sync build/ s3://${{ env.S3_BUCKET_NAME }} --acl public-read
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: CloudFront delete cache
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ env.CLOUDFRONT_NAME }}
+          PATHS: "/*"
+          AWS_REGION: ${{ env.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+```
+
+**(2) React코드를 수정 후 GitHub에 커밋하면 자동 배포 확인**
+
+- 배포 진행
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/deploy.jpg">
+
+- 배포 성공
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/deploySuccess.jpg">
+
+- 수정된 코드가 자동으로 배포되어 적용된 것을 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/commitedReact.jpg">
