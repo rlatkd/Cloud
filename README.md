@@ -351,7 +351,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubReposSecrets.jpg">
 
-- ./.github/workflows/deploy.yml
+**./.github/workflows/deploy.yml**
 
 ```
 name: Deploy to Amazon S3 bucket
@@ -441,7 +441,7 @@ jobs:
 
 - rlatkdWebServer EC2 Instance에 적용할 정책 생성
 
-`rlatkdCodeDeployEC2Policy`
+**rlatkdCodeDeployEC2Policy**
 
 ```
 {
@@ -462,7 +462,7 @@ jobs:
 
 - rlatkdWebServer EC2 Instance에 적용할 역할 생성 후 적용
 
-`rlatkdEC2AccessS3Role`
+**rlatkdEC2AccessS3Role**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role1.jpg">
 
@@ -517,7 +517,7 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 
 - AWS CodeDeploy에서 사용할 역할 생성
 
-`rlatkdCodeDeployRole`
+**rlatkdCodeDeployRole**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createCodeDeployGroupRole1.jpg">
 
@@ -543,7 +543,7 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 
 - AWS CodeDeploy를 이용해 자동화한 과정을 명시
 
-**appspec.yml**
+**./appspec.yml**
 
 ```
 version: 0.0
@@ -565,7 +565,7 @@ hooks:
 
 - appspec.yml에 사용할 shell scripts
 
-**beforeInstall.sh**
+**./scripts/beforeInstall.sh**
 
 ```
 #!/bin/bash
@@ -584,7 +584,7 @@ rm -rf /home/ubuntu/ssgbay
 mkdir  /home/ubuntu/ssgbay
 ```
 
-**afterInstall.sh**
+**./scripts/afterInstall.sh**
 
 ```
 #!/bin/bash
@@ -611,7 +611,7 @@ echo ">>> change owner to ubuntu -----------------------------------------"
 chown -R ubuntu /home/ubuntu/ssgbay
 ```
 
-**runServer.sh**
+**./scripts/runServer.sh**
 
 ```
 #!/bin/bash
@@ -639,7 +639,7 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/githubReposSecrets.jpg">
 
-- ./.github/workflows/deploy.yml
+**./.github/workflows/deploy.yml**
 
 ```
 name: Deploy to Amazon EC2
