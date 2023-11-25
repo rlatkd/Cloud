@@ -352,6 +352,8 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 ### 4.1 Frontend
 
+---
+
 **(1) GitHub Actions**
 
 **React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 AWS CodeDeploy가 필요하지 않음**
@@ -440,6 +442,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ```
 
+---
+
 **(2) React test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포**
 
 - 배포 진행
@@ -455,6 +459,8 @@ jobs:
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/commitedReact.jpg">
 
 ### 4.2 Backend
+
+---
 
 **(1) AWS CodeDeploy**
 
@@ -644,6 +650,8 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ```
 
+---
+
 **(2) GitHub Actions**
 
 - Access Key 생성
@@ -710,6 +718,8 @@ jobs:
           --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOY_GROUP_NAME }} \
           --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
 ```
+
+---
 
 **(3) Flask test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포**
 
