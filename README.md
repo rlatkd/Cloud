@@ -451,15 +451,16 @@ jobs:
 
 - rlatkdWebServer EC2 Instance에 적용할 역할 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/codedeployEC2role1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/codedeployEC2role2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role2.jpg">
 
 - 1111
 
 - AWS CodeDeploy에서 사용할 역할 생성
 
 `rlatkdCodeDeployRole`
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/createCodeDeployGroupRole1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/createCodeDeployGroupRole2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createCodeDeployGroupRole1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createCodeDeployGroupRole2.jpg">
