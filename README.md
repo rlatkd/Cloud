@@ -98,7 +98,7 @@
 
   - appspec.yml에 사용할 shell script들이 있는 폴더
 
-### 1.4 AWS 설정 구조
+### 1.5 AWS 설정 구조
 
 | User        | Authority                               |
 | ----------- | --------------------------------------- |
@@ -124,7 +124,9 @@
 | AWS CodeDeploy Group  | rlatkdCodeDeployRole                              |
 | GitHubActions - Flask | AccessKey: rlatkdFlask AK                         |
 
-### 1.5 인프라 구조
+### 1.6 인프라 구조
+
+# 미완
 
 ## 2. Amazon Web Service
 
@@ -899,3 +901,115 @@ Line 38:20:  Expected '===' and instead saw '=='                   eqeqeq
 **(1) 배포했으나 연결할 수 없음**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/cannotAccess.jpg">
+
+- deployment-archive 에서 확인하면 파일들이 제대로 있음
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive$ ls
+
+app.py       crontabFile  historyUpdate.py  package-lock.json  requirements.txt  scripts
+appspec.yml  database.py  node_modules      package.json       resources
+```
+
+- 그러나 pip가 인스턴스 내부에 안 깔려있음
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3L7DPAI12/deployment-archive$ python app.py
+Command 'python' not found, did you mean:
+  command 'python3' from deb python3
+  command 'python' from deb python-is-python3
+
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3L7DPAI12/deployment-archive$ python3 app.py
+Traceback (most recent call last):
+  File "/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3L7DPAI12/deployment-archive/app.py", line 1, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'
+```
+
+```
+c55d7/d-VTU4ZNI12/deployment-archive$ pip --version
+
+Command 'pip' not found, but can be installed with:
+sudo apt install python3-pip
+```
+
+- pip를 다운로드
+
+```
+ubuntu@ip-10-0-3-255:/$ sudo apt-get install python3-pip
+ubuntu@ip-10-0-3-255:/$ pip --version
+pip 22.0.2 from /usr/lib/python3/dist-packages/pip (python 3.10)
+```
+
+- python3 app.py로 테스트
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive$ python3 app.py
+
+Traceback (most recent call last):
+  File "/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive/app.py", line 5, in <module>
+    from flask_jwt_extended import JWTManager
+  File "/usr/local/lib/python3.10/dist-packages/flask_jwt_extended/__init__.py", line 1, in <module>
+    from .jwt_manager import JWTManager as JWTManager
+  File "/usr/local/lib/python3.10/dist-packages/flask_jwt_extended/jwt_manager.py", line 8, in <module>
+    from jwt import DecodeError
+ImportError: cannot import name 'DecodeError' from 'jwt' (/usr/local/lib/python3.10/dist-packages/jwt/__init__.py)
+```
+
+- jwt가 문제인거같아 pip install jwt
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive$ pip install jwt
+
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jwt in /usr/local/lib/python3.10/dist-packages (1.3.1)
+Requirement already satisfied: cryptography!=3.4.0,>=3.1 in /usr/local/lib/python3.10/dist-packages (from jwt) (41.0.5)
+Requirement already satisfied: cffi>=1.12 in /usr/local/lib/python3.10/dist-packages (from cryptography!=3.4.0,>=3.1->jwt) (1.16.0)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi>=1.12->cryptography!=3.4.0,>=3.1->jwt) (2.21)
+```
+
+- PyJWT에 문제가 있는것을 발견
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive$ pip list
+
+```
+
+...
+...
+PyGObject 3.42.1
+PyHamcrest 2.0.2
+PyJWT 2.8.0
+PyMySQL 1.1.0
+pyOpenSSL 21.0.0
+...
+...
+
+```
+
+- PyJWT 버전 변경
+```
+
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-G5SGOXI12/deployment-archive$ sudo pip install PyJWT==v1.7.1
+
+```
+
+
+- 정상작동 확인
+
+```
+
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-G5SGOXI12/deployment-archive$ python3 app.py
+
+- Serving Flask app 'app'
+- Debug mode: off
+  WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+- Running on all addresses (0.0.0.0)
+- Running on http://127.0.0.1:5000
+- Running on http://10.0.3.255:5000
+  Press CTRL+C to quit
+
+```
+
+
+```
