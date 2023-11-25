@@ -24,8 +24,7 @@ function DetailPage() {
   const handlerSubmit = (e) => {
     e.preventDefault();
     console.log('입력한 입찰가:',price);
-    console.log('이미 입찰된 가격:',data.price);
-    const parsedDataPrice = parseFloat(data.price);  
+    console.log('이미 입찰된 가격:',data.price); 
     purchaseId = localStorage.getItem('userId')
     
     if (data.user_id == purchaseId) { 

@@ -14,7 +14,6 @@ function CreatePage() {
     userId:''
   });
 
-  const refendTime = useRef();
   const refitemName = useRef();
   const refitemContent = useRef();
   const refitemPrice = useRef();
