@@ -1392,9 +1392,8 @@ This request has been blocked; the content must be served over HTTPS.
 
 ---
 
-**(2) EC2 Instance**
-
-- Flask EC2 Instance 내부로 들어가서 확인
+**(2) 직접 EC2 Instance 내부로 들어가서 작업**
+**(2-1) Flask EC2 Instance 내부로 들어가서 확인**
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ps -ef | grep python3
@@ -1409,7 +1408,7 @@ ubuntu     38537   38323  0 23:14 pts/0    00:00:00 grep --color=auto python3
 
 ---
 
-**백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인**
+**(2-2) 백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인**
 
 - 서비스 중인 Flask App 종료
 
@@ -1460,3 +1459,91 @@ Press CTRL+C to quit
 [Errno 2] No such file or directory: './resources/우영미1.JPEG'
 121.166.242.167 - - [23/Nov/2023 23:17:14] "POST /create HTTP/1.1" 500 -
 ```
+
+---
+
+- server 전체 구성 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/server.jpg">
+
+- resources라는 정적 디렉터리에 이미지 파일을 저장하는 형식
+
+```
+...
+...
+app = Flask(__name__, static_folder='./resources/')
+UPLOAD_FOLDER = path.join('.', 'resources/')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+...
+...
+@app.route('/create', methods=['POST'])
+def create():
+    try:
+        file = request.files['itemImage']
+        filename = file.filename
+        itemName = request.form.get('itemName')
+        itemContent = request.form.get('itemContent')
+        itemPrice = request.form.get('itemPrice')
+        itemImage = filename
+        userId = request.form.get('userId')
+        endTime = request.form.get('endTime')
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+        image_url = 'http://43.202.66.215:5000/resources/' + file.filename
+        print(image_url)
+        return database.addItemInfo( itemName, itemContent, itemPrice, image_url, endTime, userId)
+
+    except Exception as e:
+        print(e)
+        return jsonify({"message": "요청중 에러가 발생"}), 500, {'Content-Type': 'application/json'}
+...
+...
+```
+
+- 근데 배포한 code deploy agent에 resources라는 디렉터리가 없음
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ls
+app.py       crontabFile  historyUpdate.py  package-lock.json  requirements.txt
+appspec.yml  database.py  node_modules      package.json       scripts
+```
+
+---
+
+**(2-3) 디렉터리가 존재하지 않는 이유**
+
+- 테스트용 빈 디렉터리(testDir)를 하나 더 만들어서 실험
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/testDir.jpg">
+
+---
+
+- 깃허브 커밋을 하면 빈 디렉터리는 커밋되지 않음
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/commitedGitHub1.jpg">
+
+---
+
+- `touch` 명령어를 이용하여 크기가 0인 파일 생성
+
+```
+(venv) C:\Users\User\Desktop\project123\server\resources>touch .placeholder
+```
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/commitedGitHub2.jpg">
+
+- 정상적으로 커밋됨
+
+---
+
+- 그러나 여전히 다시 배포한 code deploy agent에 resources라는 디렉터리가 없음
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-BCL59RJ22/deployment-archive$ ls
+
+app.py       crontabFile  historyUpdate.py  package-lock.json  requirements.txt
+appspec.yml  database.py  node_modules      package.json       scripts
+```
+
+---
+
+**(3) AWS CodeDeploy를 잘못 이해하고 있었음**
