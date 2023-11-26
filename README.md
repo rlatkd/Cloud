@@ -1323,12 +1323,58 @@ This request has been blocked; the content must be served over HTTPS.
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/disconnectFrontend2.jpg">
 
+**(2) 해결 방법**
+
 - https로 접속하여 오류가 난 것
 
 - http로 접속 후 다시 확인
+
+**(3) 정상 작동 확인**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/connectedFrontend.jpg">
 
 # SSL 인증서 관리 해야됨
 
 ### 5.5 시연
+
+**(1) 이미지 업로드가 안 됨**
+
+- 현재 아무런 데이터도 없음
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/emptyDatas1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/emptyDatas2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/emptyDatas3.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/emptyDatas4.jpg">
+
+---
+
+- 임의의 아이디와 비밀번호로 로그인 시도
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/randUser.jpg">
+
+---
+
+- 테스트용 임의의 계정을 생성하여 로그인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/testUser.jpg">
+
+---
+
+- 데이터베이스에 추가된 것을 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/testUserDb.jpg">
+
+---
+
+- 토근 정상 발급 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/token1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/token2.jpg">
+
+- 로그인 상태에서 경매 물품 등록 글쓰기
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/createBoard.jpg">
