@@ -61,6 +61,7 @@
     - (3) 재 배포 시 정상으로 작동하는 것을 확인
   - 5.5 시연
     - (1) 이미지 업로드가 안 됨
+    - (2) EC2 Instance
 
 - [후기](#6-후기)
 
@@ -1379,6 +1380,25 @@ This request has been blocked; the content must be served over HTTPS.
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/token2.jpg">
 
+---
+
 - 로그인 상태에서 경매 물품 등록 글쓰기
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/createBoard.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/createBoard1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/createBoard2.jpg">
+
+- POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
+
+**(2) EC2 Instance**
+
+- Flask EC2 Instance 내부로 들어가서 확인
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ps -ef | grep python3
+
+root         398       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root         567       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+ubuntu     38514       1  0 23:12 ?        00:00:00 python3 -u app.py
+ubuntu     38537   38323  0 23:14 pts/0    00:00:00 grep --color=auto python3
+```
