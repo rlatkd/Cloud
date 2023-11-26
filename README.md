@@ -443,6 +443,85 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 - MySQL Workbench에서 schema 및 table 생성
 
+```
+CREATE SCHEMA IF NOT EXISTS `auction` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `auction` ;
+
+
+-- -----------------------------------------------------
+-- Table `auction`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `auction`.`user` (
+  `id` VARCHAR(50) NOT NULL,
+  `phone` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(50) NOT NULL,
+  `nickname` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `auction`.` history`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `auction`.`history` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(50) NOT NULL,
+  `item_id` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `auction`.`item`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `auction`.`item` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `endTime` DATETIME NOT NULL,
+  `startTime` DATETIME NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  `content` TEXT NULL DEFAULT NULL,
+  `price` DOUBLE NOT NULL,
+  `user_id` VARCHAR(50) NOT NULL,
+  `image` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_item_user_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_item_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `auction`.`user` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 32
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `auction`.`prehistory`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `auction`.`prehistory` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(50) NOT NULL,
+  `item_id` int NOT NULL,
+  `endTime` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_prehistory_user1_idx` (`user_id`),
+  KEY `fk_prehistory_item1_idx` (`item_id`),
+  CONSTRAINT `fk_prehistory_item1` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`),
+  CONSTRAINT `fk_prehistory_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+)
+
+ENGINE = InnoDB
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+CREATE USER 'user1'@'%' IDENTIFIED BY '1234';
+GRANT ALL ON auction.* TO 'user1'@'%';
+```
+
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createSchemaTable.jpg">
 
 # Terraform 해야됨
@@ -1231,6 +1310,25 @@ connectionString = {
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/reDeployJSON.jpg">
 
-### 5.4 Backend - Frontend
+### 5.4 Frontend - Backend
 
-**(1) Backend와 Frontend 연동이 안 됨**
+**(1) Frontend와 Backend 연동이 안 됨**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/disconnectFrontend1.jpg">
+
+```
+Mixed Content: The page at 'https://d3u6h8k7brrkx6.cloudfront.net/'    xhr. js:256 was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://43.202.66.215:5000/?sor=date&keyword='.
+This request has been blocked; the content must be served over HTTPS.
+```
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/disconnectFrontend2.jpg">
+
+- https로 접속하여 오류가 난 것
+
+- http로 접속 후 다시 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/connectedFrontend.jpg">
+
+# SSL 인증서 관리 해야됨
+
+### 5.5 시연
