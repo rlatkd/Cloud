@@ -1390,6 +1390,8 @@ This request has been blocked; the content must be served over HTTPS.
 
 - POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
 
+---
+
 **(2) EC2 Instance**
 
 - Flask EC2 Instance 내부로 들어가서 확인
@@ -1401,4 +1403,60 @@ root         398       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/bin/ne
 root         567       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
 ubuntu     38514       1  0 23:12 ?        00:00:00 python3 -u app.py
 ubuntu     38537   38323  0 23:14 pts/0    00:00:00 grep --color=auto python3
+```
+
+- Flask 서버는 현재 잘 작동되고 있음 (당연히 다른 서비스가 잘 동작하니 서버에 문제가 생긴 건 아님)
+
+---
+
+**백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인**
+
+- 서비스 중인 Flask App 종료
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ kill -9 38514
+```
+
+---
+
+- 종료된지 확인
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ps -ef | grep python3
+
+root         398       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root         567       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+ubuntu     38547   38323  0 23:15 pts/0    00:00:00 grep --color=auto python3
+```
+
+- 정상적으로 종료됨
+
+---
+
+- 다시 포그라운드로 실행
+
+```
+ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ python3 app.py
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.3.255:5000
+Press CTRL+C to quit
+```
+
+---
+
+- 재시도
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/retry.jpg">
+
+- 파일이나 디렉터리를 찾을 수 없음
+
+```
+121.166.242.167 - - [23/Nov/2023 23:16:45] "GET /?sort=date&keyword= HTTP/1.1" 200 -
+[Errno 2] No such file or directory: './resources/우영미1.JPEG'
+121.166.242.167 - - [23/Nov/2023 23:17:14] "POST /create HTTP/1.1" 500 -
 ```
