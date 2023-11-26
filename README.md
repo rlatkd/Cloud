@@ -55,8 +55,12 @@
     - (1) Backend와 Database 연동이 안 됨
     - (2) 해결 방법
     - (3) 재 배포 시 정상으로 작동하는 것을 확인
-  - 5.4 Backend - Frontend
-    - (1) Backend와 Frontend 연동이 안 됨
+  - 5.4 Frontend - Backend
+    - (1) Frotnend와 Backend 연동이 안 됨
+    - (2) 해결 방법
+    - (3) 재 배포 시 정상으로 작동하는 것을 확인
+  - 5.5 시연
+    - (1) 이미지 업로드가 안 됨
 
 - [후기](#6-후기)
 
