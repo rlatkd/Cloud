@@ -303,11 +303,39 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
 
-# CloudFront 해야함
+### 2.2 Frontend (AWS CloudFront)
 
-###
+**(1) S3 버킷만으로 정적 웹을 호스팅으로 서비스할 때 문제점**
 
-### 2.2 Backend (Amazon EC2)
+- `https`가 아닌 `http` 통신을 해야 한다는 점
+- Amazon S3 Bucket이 퍼블릭 공개라는 점
+- Amazon S3 Bucket의 엔드포인트 주소를 그대로 사용해야 한다는 점
+- 해결하기 위해선 AWS CloudFront를 이용
+
+**(2) AWS CloudFront**
+
+**AWS CloudFront란**
+
+- AWS Global Edge Server를 통해 CDN(Content Delivery Network) 역할을 해주는 AWS 서비스
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/OAI.jpg">
+
+- OAI를 설정하면 Amazon S3 Bucket에 퍼블릭으로 공개하지 않고도 AWS CloudFront를 통해서 Amazon S3 Bucket에 퍼블릭으로 접근할 수 있음
+- 동시에 AWS CloudFront를 우회하여 Amazon S3 Bucket에 직접 액세스할 수 없음
+
+---
+
+**Origin Shield**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/originShield1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/originShield2.jpg">
+
+- AWS CloudFront에서 캐싱 계층을 하나 더 추가하여 사용자(클라이언트)와 엣지 서버간의 거리를 줄이는 기능
+- 캐시 적중률을 높이고 오리진 서버의 부하를 줄여주어 로드 속도를 향상시키는 효과가 있음
+- Origin Shield를 활성화하면 요청이 Origin Shield를 경유할 때마다 비용이 추가로 발생
+
+### 2.3 Backend (Amazon EC2)
 
 **(1) 초기 설정**
 
@@ -408,7 +436,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ sudo rm -rf *
 ubuntu@ip-10-0-3-255:/var/www/html$ ls
 ```
 
-### 2.3 Database (Amazon RDS)
+### 2.4 Database (Amazon RDS)
 
 **(1) 초기 설정**
 
