@@ -1727,3 +1727,5 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 **2023-11-24 am10:30 후**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/preHistory2.jpg">
+
+## 6. 후기
