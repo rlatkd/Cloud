@@ -65,6 +65,10 @@
     - (3) AWS CodeDeploy를 잘못 이해하고 있었음
     - (4) 해결 방법
     - (5) 재 배포 시 정상적으로 작동하는 것을 확인
+  - 5.6 Crontab
+    - (1) Crontab 작동이 안함
+    - (2) 해결 바법
+    - (3) 재 배포 시 정상적으로 작동하는 것을 확인
 
 - [후기](#6-후기)
 
@@ -1634,7 +1638,7 @@ app.py       database.py  node_modules      package.json       scripts
 
 ### 5.6 Crontab
 
-**(1) Crontab 동작이 안함**
+**(1) Crontab 작동이 안함**
 
 - Crontab: 정해 놓은 일정 시각이 되면 설정해둔 작업을 실행
   - 경매글 쓰기에서 경매 만료 시간을 설정
