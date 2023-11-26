@@ -22,15 +22,19 @@
 - [Amazon Web Service](#2-Amazon-Web-Service)
   - 2.1 Frontend (Amazon S3 Bucket)
     - (1) 초기 설정
-    - (2) S3 Bucket 설정
-    - (3) S3 Bucket에 배포
+    - (2) Amazon S3 Bucket 설정
+    - (3) Amazon S3 Bucket에 배포
     - (4) 서비스 정상 작동 확인
-  - 2.2 Backend (Amazon EC2)
+  - 2.2 Frontend (AWS CloudFront)
+    - (1) Amazon S3 Bucket만으로 정적 웹 호스팅을 서비스할 때 문제점
+    - (2) AWS CloudFront
+    - (3) 기타 설정
+  - 2.3 Backend (Amazon EC2)
     - (1) 초기 설정
-    - (2) EC2 Instance 설정
-  - 2.3 Database (Amazon RDS)
+    - (2) Amazon EC2 Instance 설정
+  - 2.4 Database (Amazon RDS)
     - (1) 초기 설정
-    - (2) RDS 설정
+    - (2) Amazon RDS 설정
     - (3) Database 설정
 - [Terraform](#3-Terraform)
 - [Github Actions & AWS CodeDeploy](#4-Github-Actions--AWS-CodeDeploy)
@@ -231,9 +235,9 @@
 
 ---
 
-**(2) S3 Bucket 설정**
+**(2) Amazon S3 Bucket 설정**
 
-- S3 Bucket 생성
+- Amazon S3 Bucket 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
 
@@ -259,7 +263,7 @@
 
 ---
 
-**(3) S3 Bucket에 배포**
+**(3) Amazon S3 Bucket에 배포**
 
 - React 앱 빌드
 
@@ -299,13 +303,13 @@
 
 **(4) 서비스 정상 작동 확인**
 
-- 브라우저로 S3 Bucket의 웹 사이트 앤드포인트로 접근
+- 브라우저로 Amazon S3 Bucket의 웹 사이트 앤드포인트로 접근
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
 
 ### 2.2 Frontend (AWS CloudFront)
 
-**(1) S3 버킷만으로 정적 웹을 호스팅으로 서비스할 때 문제점**
+**(1) Amazon S3 Bucket만으로 정적 웹을 호스팅으로 서비스할 때 문제점**
 
 - `https`가 아닌 `http` 통신을 해야 한다는 점
 - Amazon S3 Bucket이 퍼블릭 공개라는 점
@@ -337,7 +341,7 @@
 
 ---
 
-**기타 설정**
+**기타 설정-1**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings1.jpg">
 
@@ -347,11 +351,15 @@
 
 ---
 
+**기타 설정-2**
+
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings2.jpg">
 
 - 캐시 키 및 원본 요청은 **CachingOptimized**를 선택 -> 대부분의 상황에서 적절한 캐시 정책을 바로 적용할 수 있음
 
 ---
+
+**기타 설정-3**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings3.jpg">
 
@@ -359,12 +367,16 @@
 
 ---
 
+**기타 설정-4**
+
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings4.jpg">
 
 - 기본값 루트 객체에 인덱스 페이지의 파일명을 입력
 - `/`는 입력하면 안 됨
 
 ---
+
+**기타 설정-5**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings5.jpg">
 
@@ -390,9 +402,9 @@
 
 ---
 
-**(2) EC2 Instance 설정**
+**(2) Amazon EC2 Instance 설정**
 
-- Public Subnet에 EC2 Instance를 생성
+- Public Subnet에 Amazon EC2 Instance를 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance1.jpg">
 
@@ -400,7 +412,7 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance3.jpg">
 
-- EC2 Instance의 Public IP 주소로 SSH 접속
+- Amazon EC2 Instance의 Public IP 주소로 SSH 접속
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessSSH.jpg">
 
