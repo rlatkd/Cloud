@@ -1523,7 +1523,7 @@ appspec.yml  database.py  node_modules      package.json       scripts
 
 ---
 
-- 깃허브 커밋을 하면 빈 디렉터리는 커밋되지 않음
+- GitHub commit을 하면 빈 디렉터리는 commit되지 않음
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/commitedGitHub1.jpg">
 
@@ -1537,7 +1537,7 @@ appspec.yml  database.py  node_modules      package.json       scripts
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/commitedGitHub2.jpg">
 
-- 정상적으로 커밋됨
+- 정상적으로 commit됨
 
 ---
 
@@ -1631,3 +1631,95 @@ app.py       database.py  node_modules      package.json       scripts
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/normal1.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/normal2.jpg">
+
+### 5.6 Crontab
+
+**(1) Crontab 동작이 안함**
+
+- Crontab: 정해 놓은 일정 시각이 되면 설정해둔 작업을 실행
+  - 경매글 쓰기에서 경매 만료 시간을 설정
+  - 다른 유저가 해당 상품을 입찰
+  - 경매 만료 시간까지 자신의 입찰가가 최고가이면 구매 확정이 되어 해당 상품의 입찰 내역을 구매내역에서 볼 수 있음
+
+**./server/scripts/afterInstall.sh**
+
+```
+#!/bin/bash
+
+cd      /home/ubuntu/ssgbay
+
+echo    ">>> make static directory for upload images -----------------------"
+mkdir   resources
+
+echo    ">>> pip install ---------------------------------------------------"
+pip     install -r requirements.txt
+
+echo     ">>> npm install --------------------------------------------------"
+npm     install
+npm     run build
+
+echo    ">>> remove template files -----------------------------------------"
+rm      -rf  appspec.yml requirements.txt
+
+echo    ">>> change owner to ubuntu ----------------------------------------"
+chown   -R ubuntu /home/ubuntu/ssgbay
+```
+
+- 당연히 Crontab 관련 명시를 안 했으니 동작이 할리가 없음
+
+---
+
+**(2) 해결 방법**
+
+- 다음의 내용들을 추가
+
+**./server/scripts/afterInstall.sh**
+
+```
+#!/bin/bash
+
+...
+...
+echo    ">>> cron settings -------------------------------------------------"
+crontab -l | { cat; echo "* * * * * /usr/bin/python3 /home/ubuntu/ssgbay/historyUpdate.py >> /var/log/cron.log 2>&1"; } | crontab -
+...
+...
+```
+
+**./server/scripts/runServer.sh**
+
+```
+#!/bin/bash
+
+cd      /home/ubuntu/ssgbay
+
+echo    ">>> run app -------------------------------------------------------"
+
+cron
+
+python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
+```
+
+---
+
+**(3) 재 배포 시 정상적으로 작동하는 것을 확인**
+
+- test1 user가 등록한 우영미 반팔1을 test2 user가 입찰
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/buyTshirt1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/buyTshirt2.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/buyTshirt3.jpg">
+
+---
+
+- 작동 확인
+
+**2023-11-24 am10:30 전**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/preHistory1.jpg">
+
+**2023-11-24 am10:30 후**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/preHistory2.jpg">
