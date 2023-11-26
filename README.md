@@ -63,6 +63,8 @@
     - (1) 이미지 업로드가 안 됨
     - (2) 직접 EC2 Instance 내부로 들어가서 작업
     - (3) AWS CodeDeploy를 잘못 이해하고 있었음
+    - (4) 해결 방법
+    - (5) 재 배포 시 정상적으로 작동하는 것을 확인
 
 - [후기](#6-후기)
 
@@ -1594,7 +1596,7 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ---
 
-**(4) 해결방법**
+**(4) 해결 방법**
 
 - 서비스가 작동하고 있는 디렉터리에 resources 디렉터리를 만들어 static folder 경로로 사용하면 됨
 
@@ -1624,7 +1626,7 @@ app.py       database.py  node_modules      package.json       scripts
 
 ---
 
-**(5) 정상적으로 작동하는 것을 확인**
+**(5) 재 배포 시 정상적으로 작동하는 것을 확인**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/normal1.jpg">
 
