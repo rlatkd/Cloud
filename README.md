@@ -61,7 +61,8 @@
     - (3) 재 배포 시 정상으로 작동하는 것을 확인
   - 5.5 시연
     - (1) 이미지 업로드가 안 됨
-    - (2) EC2 Instance
+    - (2) 직접 EC2 Instance 내부로 들어가서 작업
+    - (3) AWS CodeDeploy를 잘못 이해하고 있었음
 
 - [후기](#6-후기)
 
@@ -799,26 +800,26 @@ mkdir  /home/ubuntu/ssgbay
 ```
 #!/bin/bash
 
-cd   /home/ubuntu/ssgbay
+cd      /home/ubuntu/ssgbay
 
-echo ">>> make static directory for upload images ----------------------"
-mkdir resources
+echo    ">>> make static directory for upload images -----------------------"
+mkdir   resources
 
-echo ">>> pip install ---------------------------------------------------"
-pip install -r requirements.txt
+echo    ">>> pip install ---------------------------------------------------"
+pip     install -r requirements.txt
 
-echo ">>> cron settings -------------------------------------------------"
+echo    ">>> cron settings -------------------------------------------------"
 crontab -l | { cat; echo "* * * * * /usr/bin/python3 /home/ubuntu/ssgbay/historyUpdate.py >> /var/log/cron.log 2>&1"; } | crontab -
 
-echo ">>> npm install ---------------------------------------------------"
-npm install
-npm run build
+echo     ">>> npm install --------------------------------------------------"
+npm     install
+npm     run build
 
-echo ">>> remove template files -----------------------------------------"
-rm -rf appspec.yml requirements.txt
+echo    ">>> remove template files -----------------------------------------"
+rm      -rf  appspec.yml requirements.txt
 
-echo ">>> change owner to ubuntu -----------------------------------------"
-chown -R ubuntu /home/ubuntu/ssgbay
+echo    ">>> change owner to ubuntu ----------------------------------------"
+chown   -R ubuntu /home/ubuntu/ssgbay
 ```
 
 **./scripts/runServer.sh**
@@ -826,11 +827,12 @@ chown -R ubuntu /home/ubuntu/ssgbay
 ```
 #!/bin/bash
 
-cd  /home/ubuntu/ssgbay
+cd      /home/ubuntu/ssgbay
 
-echo ">>> run app -------------------------------------------------------"
+echo    ">>> run app -------------------------------------------------------"
 
 cron
+
 python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ```
@@ -1504,6 +1506,7 @@ def create():
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ls
+
 app.py       crontabFile  historyUpdate.py  package-lock.json  requirements.txt
 appspec.yml  database.py  node_modules      package.json       scripts
 ```
@@ -1548,3 +1551,81 @@ appspec.yml  database.py  node_modules      package.json       scripts
 ---
 
 **(3) AWS CodeDeploy를 잘못 이해하고 있었음**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/awsCodeDeploy.jpg">
+
+- AWS CodeDeploy는 Amazon S3 Bucket에서 빌드 산출물을 압축 파일로 가져와서 배포해줌
+- AWS CodeDeploy에는 빌드 기능이 없기 때문에 별도의 빌드 과정이 필요함
+- AWS CodeDeploy가 시행되기 위해선 Amazon EC2의 CodeDeploy Agent가 반드시 실행중이어야함
+
+```
+ubuntu@ip-10-0-3-255:$ sudo service codedeploy-agent status
+
+● codedeploy-agent.service - LSB: AWS CodeDeploy Host Agent
+     Loaded: loaded (/etc/init.d/codedeploy-agent; generated)
+     Active: active (running) since Wed 2023-11-22 10:32:17 UTC; 1 day 14h ago
+       Docs: man:systemd-sysv-generator(8)
+      Tasks: 4 (limit: 1121)
+     Memory: 91.5M
+        CPU: 29.000s
+     CGroup: /system.slice/codedeploy-agent.service
+             ├─22869 "codedeploy-agent: master 22869" "" "" "" "" "" "" "" "" "" "" "" "">
+             └─22871 "codedeploy-agent: InstanceAgent::Plugins::CodeDeployPlugin::Command>
+```
+
+---
+
+- 실제 Flask App 서비스가 작동하고 있는 WorkDirectory는 `.server/scripts/runServer.sh`에 명시된 대로 `./home/ubuntu/ssgbay` 였음
+
+**./server/scrpts/runServer.sh**
+
+```
+#!/bin/bash
+
+cd  /home/ubuntu/ssgbay
+
+echo ">>> run app -------------------------------------------------------"
+
+cron
+python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
+```
+
+- `./opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/${DEPLOY_LATEST_DIRECTORY}/deployment-archive` 는 Amazon S3 Bucket에서 zip파일을 가져올 tmp 디렉터리였음
+
+---
+
+**(4) 해결방법**
+
+- 서비스가 작동하고 있는 디렉터리에 resources 디렉터리를 만들어 static folder 경로로 사용하면 됨
+
+**./server/scripts/afterInstall.sh**
+
+```
+#!/bin/bash
+
+cd      /home/ubuntu/ssgbay
+
+echo    ">>> make static directory for upload images -----------------------"
+mkdir   resources
+...
+...
+```
+
+---
+
+- 정상적으로 폴더가 만들어진 것을 확인
+
+```
+ubuntu@ip-10-0-3-255:~/ssgbay$ ls
+
+__pycache__  crontabFile  historyUpdate.py  package-lock.json  resources
+app.py       database.py  node_modules      package.json       scripts
+```
+
+---
+
+**(5) 정상적으로 작동하는 것을 확인**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/normal1.jpg">
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/normal2.jpg">
