@@ -9,7 +9,9 @@
 ### 1.2 서비스
 
 (1) Deployment
+
 (2) Iac (Infrastructure as Code)
+
 (3) CI/CD (Continuous Integration/Continuos Delivery)
 
 ### 1.3 프로젝트 진행 과정
