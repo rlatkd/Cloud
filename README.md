@@ -63,6 +63,8 @@
     - (1) Frotnend와 Backend 연동이 안 됨
     - (2) 해결 방법
     - (3) 재 배포 시 정상으로 작동하는 것을 확인
+    - (4) SSL 인증-1
+    - (5) SSL 인증-2
   - 5.5 시연
     - (1) 이미지 업로드가 안 됨
     - (2) 직접 EC2 Instance 내부로 들어가서 작업
@@ -1527,7 +1529,110 @@ server {
 
 - 3개월 마다 자동 갱신을 하도록 해줄 수도 있음 - crontab 이용
 
+```
+$ [cron 형식] /usr/bin/certbot renew --renew-hook="sudo systemctl restart apache2"
+```
+
+---
+
 **(5) SSL 인증-2**
+
+- Caddy config 생성
+
+```
+sudo vi /etc/systemd/system/caddy.service
+```
+
+```
+[Unit]
+Description=Caddy
+Documentation=https://caddyserver.com/docs/
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+Type=notify
+User=caddy
+Group=caddy
+ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile --force
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+LimitNPROC=512
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+```
+
+---
+
+- Caddyfile 생성
+
+```
+sudo vi /etc/caddy/Caddyfile
+```
+
+```
+{
+    admin 0.0.0.0:2020
+}
+<EC2 인스턴스의 퍼블릭 IPv4 주소>.nip.io {
+    reverse_proxy localhost:8080    # 들어오는 요청을 8080포트로 포워딩
+}
+# 예시 :
+10.100.100.100.nip.io {
+    reverse_proxy localhost:8080
+}
+```
+
+---
+
+- Caddy 동작 확인
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable --now caddy
+sudo systemctl status -l caddy
+```
+
+```
+$ sudo systemctl status caddy.service
+
+● caddy.service - Caddy
+   Loaded: loaded (/etc/systemd/system/caddy.service; enabled; vendor preset: disabled)
+   Active: active (running) since 화 2023-04-11 13:27:50 UTC; 5s ago
+     Docs: https://caddyserver.com/docs/
+ Main PID: 11243 (caddy)
+   CGroup: /system.slice/caddy.service
+           └─11243 /usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+```
+
+---
+
+- 설정 상태
+
+```
+2023/11/25 13:56:33.748	INFO	using adjacent Caddyfile
+2023/11/25 13:56:33.749	WARN	Caddyfile input is not formatted; run the 'caddy fmt' command to fix inconsistencies	{"adapter": "caddyfile", "file": "Caddyfile", "line": 2}
+2023/11/25 13:56:33.749	INFO	admin	admin endpoint started	{"address": "0.0.0.0:2020", "enforce_origin": false, "origins": ["//0.0.0.0:2020"]}
+2023/11/25 13:56:33.750	WARN	admin	admin endpoint on open interface; host checking disabled	{"address": "0.0.0.0:2020"}
+2023/11/25 13:56:33.750	INFO	http	server is listening only on the HTTPS port but has no TLS connection policies; adding one to enable TLS	{"server_name": "srv0", "https_port": 443}
+2023/11/25 13:56:33.750	INFO	http	enabling automatic HTTP->HTTPS redirects	{"server_name": "srv0"}
+2023/11/25 13:56:33.751	INFO	http	enabling HTTP/3 listener	{"addr": ":443"}
+2023/11/25 13:56:33.751	INFO	failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 2048 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Receive-Buffer-Size for details.
+2023/11/25 13:56:33.751	INFO	http.log	server running	{"name": "srv0", "protocols": ["h1", "h2", "h3"]}
+2023/11/25 13:56:33.751	INFO	http.log	server running	{"name": "remaining_auto_https_redirects", "protocols": ["h1", "h2", "h3"]}
+2023/11/25 13:56:33.752	INFO	http	enabling automatic TLS certificate management	{"domains": ["10.100.100.100.nip.io"]}
+2023/11/25 13:56:33.752	INFO	autosaved config (load with --resume flag)	{"file": "/root/.config/caddy/autosave.json"}
+2023/11/25 13:56:33.752	INFO	serving initial configuration
+2023/11/25 13:56:33.753	INFO	tls	cleaning storage unit	{"description": "FileStorage:/root/.local/share/caddy"}
+2023/11/25 13:56:33.754	INFO	tls	finished cleaning storage units
+2023/11/25 13:56:33.754	INFO	tls.cache.maintenance	started background certificate maintenance	{"cache": "0xc000335490"}
+Successfully started Caddy (pid=23624) - Caddy is running in the background
+```
 
 ### 5.5 시연
 
