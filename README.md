@@ -54,7 +54,7 @@
 
 (2) AWS CloudFront
 
-(3) 기타 설정
+(3) 초기 설정
 
 ### 2.3 Backend (Amazon EC2)
 
@@ -72,7 +72,7 @@
 
 ## [Terraform](#3-Terraform)
 
-### 3.1 초기 설정
+### 3.1 Terraform 설정
 
 (1) 초기 설정-1
 
@@ -441,7 +441,7 @@
 
 ### (2) AWS CloudFront
 
-**AWS CloudFront란**
+### (2-1) AWS CloudFront란
 
 - AWS Global Edge Server를 통해 CDN(Content Delivery Network) 역할을 해주는 AWS 서비스
 
@@ -450,7 +450,7 @@
 - OAI를 설정하면 Amazon S3 Bucket에 퍼블릭으로 공개하지 않고도 AWS CloudFront를 통해서 Amazon S3 Bucket에 퍼블릭으로 접근할 수 있음
 - 동시에 AWS CloudFront를 우회하여 Amazon S3 Bucket에 직접 액세스할 수 없음
 
-**Origin Shield**
+### (2-2) Origin Shield
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/originShield1.jpg">
 
@@ -460,7 +460,9 @@
 - 캐시 적중률을 높이고 오리진 서버의 부하를 줄여주어 로드 속도를 향상시키는 효과가 있음
 - Origin Shield를 활성화하면 요청이 Origin Shield를 경유할 때마다 비용이 추가로 발생
 
-**기타 설정-1**
+### (3) 기타 설정
+
+### (3-1) 기타 설정-1
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings1.jpg">
 
@@ -468,26 +470,26 @@
 - 뷰어 프로토콜 정책는 **Redirect HTTP to HTTPS**로 설정 -> HTTP 프로토콜로 접속 시 자동으로 HTTPS로 리다이렉트됨
 - 허용된 HTTP 방법은 **GET, HEAD**로 설정 -> 정적 리소스를 배포할 것이기 때문에 다른 HTTP Method를 허용하지 않아도 됨
 
-**기타 설정-2**
+### (3-2) 기타 설정-2
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings2.jpg">
 
 - 캐시 키 및 원본 요청은 **CachingOptimized**를 선택 -> 대부분의 상황에서 적절한 캐시 정책을 바로 적용할 수 있음
 
-**기타 설정-3**
+### (3-3) 기타 설정-3
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings3.jpg">
 
 - 보통 모든 엣지 로케이션에서 사용(최고의 성능)을 사용하면 되지만, 비용을 절약해야 하는 상황이거나 서비스 지역 타겟이 정해져 있을 때 적절한 항목을 선택하면 됨
 
-**기타 설정-4**
+### (3-4) 기타 설정-4
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings4.jpg">
 
 - 기본값 루트 객체에 인덱스 페이지의 파일명을 입력
 - `/`는 입력하면 안 됨
 
-**기타 설정-5**
+### (3-5) 기타 설정-5
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings5.jpg">
 
@@ -495,17 +497,17 @@
 
 ## 2.3 Backend (Amazon EC2)
 
-## (1) 초기 설정
+### (1) 초기 설정
 
-- rlatkdFlask 계정 생성 후 로그인
+### (1-1) rlatkdFlask 계정 생성 후 로그인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/addFlaskUser.jpg">
 
-- VPC 생성
+### (1-2) VPC 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createVPC.jpg">
 
-- 보안 그룹 생성
+### (1-3) 보안 그룹 생성
 
 `rlatkdFlaskWebServerSg`
 
@@ -513,7 +515,7 @@
 
 ### (2) Amazon EC2 Instance 설정
 
-- Public Subnet에 Amazon EC2 Instance를 생성
+### (2-1) Public Subnet에 Amazon EC2 Instance를 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance1.jpg">
 
@@ -521,11 +523,11 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance3.jpg">
 
-- Amazon EC2 Instance의 Public IP 주소로 SSH 접속
+### (2-2) Amazon EC2 Instance의 Public IP 주소로 SSH 접속
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessSSH.jpg">
 
-- Apache HTTP Server 설치
+### (2-3) Apache HTTP Server 설치
 
 ```
 ubuntu@ip-10-0-3-255:~$ sudo apt update
@@ -553,7 +555,7 @@ Nov 22 09:37:20 ip-10-0-3-255 systemd[1]: Started The Apache HTTP Server.
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/installApache.jpg">
 
-- PHP 설치
+### (2-4) PHP 설치
 
 ```
 ubuntu@ip-10-0-3-255:~$ sudo apt install -y php
@@ -581,7 +583,7 @@ Nov 22 09:40:07 ip-10-0-3-255 systemd[1]: Starting The Apache HTTP Server...
 Nov 22 09:40:07 ip-10-0-3-255 systemd[1]: Started The Apache HTTP Server.
 ```
 
-- 웹 루트 디렉터리 삭제
+### (2-5) 웹 루트 디렉터리 삭제
 
 ```
 ubuntu@ip-10-0-3-255:~$ cd /var/www/html/
@@ -596,15 +598,13 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 ### (1) 초기 설정
 
-- rlatkdMySQL 계정 생성 후 로그인
+### (1-1) rlatkdMySQL 계정 생성 후 로그인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/addMySQLUser.jpg">
 
----
+### (2) Amazon RDS 설정
 
-### (2) RDS 설정
-
-- Private Subnet에 RDS를 생성
+### (2-1) Private Subnet에 Amazon RDS를 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS1.jpg">
 
@@ -616,7 +616,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS5.jpg">
 
-- RDS에서 Flask EC2 Instance로의 연결 설정
+### (2-2) Amazon RDS에서 Flask EC2 Instance로의 연결 설정
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance1.jpg">
 
@@ -626,18 +626,19 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 - Flask EC2 Instance는 Backend server를 포함하며 Bastion Host 역할을 함
 
-  - Bastion Host
-    - 1
+### (2-3) Bastion Host
+
+- 1
 
 # 바스티온 해야함
 
-- MySQL Workbench를 실행해서 RDS로의 연결 설정
+### (2-4) MySQL Workbench를 실행해서 RDS로의 연결 설정
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectWorkbench.jpg">
 
 ### (3) Database 설정
 
-- MySQL Workbench에서 schema 및 table 생성
+### (3-1) MySQL Workbench에서 schema 및 table 생성
 
 ```
 CREATE SCHEMA IF NOT EXISTS `auction` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
@@ -722,21 +723,21 @@ GRANT ALL ON auction.* TO 'user1'@'%';
 
 # 3. Terraform
 
-## 3.1 초기 설정
+## 3.1 Terraform 설정
 
 ### (1) 초기 설정-1
 
-- rlatkdTerraform 계정 생성 후 로그인
+### (1-1) rlatkdTerraform 계정 생성 후 로그인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/tfUser.jpg">
 
-- 액세스 키 생성
+### (1-2) 액세스 키 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/tfAccessKey.jpg">
 
 ### (2) 초기 설정-2
 
-- AWS CLI에 로그인
+### (2-1) AWS CLI에 로그인
 
 ```
 .\terraform>aws configure
@@ -747,7 +748,7 @@ Default region name [ap-northeast-2]:
 Default output format [json]:
 ```
 
-- AWS 명령어 작동 확인
+### (2-2) AWS 명령어 작동 확인
 
 ```
 .\terraform>aws s3 ls
@@ -760,7 +761,7 @@ Default output format [json]:
 2023-11-22 14:36:01 rlatkd-react-bucket
 ```
 
-- Terraform 설정 초기화
+### (2-3) Terraform 설정 초기화
 
 ```
 .\terraform>terraform init
@@ -862,8 +863,6 @@ Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 ### (2) Amazon EC2 Instance 확인
 
-- Amazon EC2 Instance 확인
-
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/ec2.jpg">
 
 ### (3) Amazon S3 Bucket 확인
@@ -882,7 +881,7 @@ Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 **React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 AWS CodeDeploy가 필요하지 않음**
 
-- Access Key 생성
+### (1-1) Access Key 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/accessKey1.jpg">
 
@@ -890,11 +889,11 @@ Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/accessKey3.jpg">
 
-- GitHub Repository(DevOps-React)에 Secret을 추가
+### (1-2) GitHub Repository(DevOps-React)에 Secret을 추가
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubReposSecrets.jpg">
 
-- GitHub Actions를 이용해 자동화한 과정을 명시
+### (1-3) GitHub Actions를 이용해 자동화한 과정을 명시
 
 **./.github/workflows/deploy.yml**
 
@@ -968,15 +967,15 @@ jobs:
 
 ### (2) React test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
 
-- 배포 진행
+### (2-1) 배포 진행
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/deploy.jpg">
 
-- 배포 성공
+### (2-2) 배포 성공
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/deploySuccess.jpg">
 
-- 수정된 코드가 자동으로 배포되어 적용된 것을 확인
+### (2-3) 수정된 코드가 자동으로 배포되어 적용된 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/commitedReact.jpg">
 
@@ -984,7 +983,7 @@ jobs:
 
 ### (1) AWS CodeDeploy
 
-- rlatkdWebServer EC2 Instance에 적용할 정책 생성
+### (1-1) rlatkdWebServer EC2 Instance에 적용할 정책 생성
 
 **rlatkdCodeDeployEC2Policy**
 
@@ -1005,7 +1004,7 @@ jobs:
 }
 ```
 
-- rlatkdWebServer EC2 Instance에 적용할 역할 생성 후 적용
+### (1-2) rlatkdWebServer EC2 Instance에 적용할 역할 생성 후 적용
 
 **rlatkdEC2AccessS3Role**
 
@@ -1015,7 +1014,7 @@ jobs:
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role3.jpg">
 
-- AWS Code Deploy Agent 설치
+### (1-3) AWS Code Deploy Agent 설치
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployAgent.jpg">
 
@@ -1048,7 +1047,7 @@ Nov 22 09:48:20 ip-10-0-3-255 codedeploy-agent[22738]: Starting codedeploy-agent
 Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent.
 ```
 
-- 아래와 같이 나오면 정상 Agent가 정상 작동중임
+### (1-4) 아래와 같이 나오면 정상 Agent가 정상 작동중임
 
 ```
 ...
@@ -1060,7 +1059,7 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 ...
 ```
 
-- AWS CodeDeploy에서 사용할 역할 생성
+### (1-5) AWS CodeDeploy에서 사용할 역할 생성
 
 **rlatkdCodeDeployRole**
 
@@ -1068,7 +1067,7 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createCodeDeployGroupRole2.jpg">
 
-- AWS CodeDeploy 애플리케이션과 배포 그룹을 생성
+### (1-6) AWS CodeDeploy 애플리케이션과 배포 그룹을 생성
 
 **애플리케이션**
 
@@ -1082,11 +1081,11 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployGroup3.jpg">
 
-- AWS CodeDeploy Agent가 앱을 가져올 S3 Bucket 생성
+### (1-7) AWS CodeDeploy Agent가 앱을 가져올 S3 Bucket 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/flaskS3Bucket.jpg">
 
-- AWS CodeDeploy를 이용해 자동화한 과정을 명시
+### (1-8) AWS CodeDeploy를 이용해 자동화한 과정을 명시
 
 **./appspec.yml**
 
@@ -1108,7 +1107,7 @@ hooks:
       runas: ubuntu
 ```
 
-- appspec.yml에 사용할 shell scripts
+### (1-9) appspec.yml에 사용할 shell scripts
 
 **./scripts/beforeInstall.sh**
 
@@ -1173,7 +1172,7 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ### (2) GitHub Actions
 
-- Access Key 생성
+### (2-1) Access Key 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey1.jpg">
 
@@ -1181,11 +1180,11 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey3.jpg">
 
-- GitHub Repository(DevOps-Flask)에 Secret을 추가
+### (2-2) GitHub Repository(DevOps-Flask)에 Secret을 추가
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/githubReposSecrets.jpg">
 
-- GitHub Actions를 이용해 자동화한 과정을 명시
+### (2-3) GitHub Actions를 이용해 자동화한 과정을 명시
 
 **./.github/workflows/deploy.yml**
 
@@ -1240,17 +1239,17 @@ jobs:
 
 ### (3) Flask test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
 
-- 배포 진행
+### (3-1) 배포 진행
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploy.jpg">
 
-- 배포 성공
+### (3-2) 배포 성공
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploySuccess1.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploySuccess2.jpg">
 
-- 수정된 코드가 자동으로 배포되어 적용된 것을 확인
+### (3-3) 수정된 코드가 자동으로 배포되어 적용된 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/commitedFlask.jpg">
 
