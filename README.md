@@ -1789,12 +1789,12 @@ WantedBy=multi-user.target
 
 - Caddyfile 생성
 
+```
 sudo vi /etc/caddy/Caddyfile
 
 ```
 
 ```
-
 {
 admin 0.0.0.0:2020
 }
@@ -1810,12 +1810,9 @@ reverse_proxy localhost:8080
 
 ```
 
-
-
 - Caddy 동작 확인
 
 ```
-
 sudo systemctl daemon-reload
 sudo systemctl enable --now caddy
 sudo systemctl status -l caddy
@@ -1823,7 +1820,6 @@ sudo systemctl status -l caddy
 ```
 
 ```
-
 $ sudo systemctl status caddy.service
 
 ● caddy.service - Caddy
@@ -1835,8 +1831,6 @@ CGroup: /system.slice/caddy.service
 └─11243 /usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
 
 ```
-
-
 
 - 설정 상태
 
@@ -1876,33 +1870,23 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas4.jpg">
 
-
-
 - 임의의 아이디와 비밀번호로 로그인 시도
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/randUser.jpg">
-
-
 
 - 테스트용 임의의 계정을 생성하여 로그인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUser.jpg">
 
-
-
 - 데이터베이스에 추가된 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUserDb.jpg">
-
-
 
 - 토근 정상 발급 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/token1.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/token2.jpg">
-
-
 
 - 로그인 상태에서 경매 물품 등록 글쓰기
 
@@ -1911,8 +1895,6 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/createBoard2.jpg">
 
 - POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
-
-
 
 ### (2) 직접 EC2 Instance 내부로 들어가서 작업
 
@@ -1931,8 +1913,6 @@ ubuntu 38537 38323 0 23:14 pts/0 00:00:00 grep --color=auto python3
 
 - Flask 서버는 현재 잘 작동되고 있음 (당연히 다른 서비스가 잘 동작하니 서버에 문제가 생긴 건 아님)
 
-
-
 ### (2-2) 백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인
 
 - 서비스 중인 Flask App 종료
@@ -1942,8 +1922,6 @@ ubuntu 38537 38323 0 23:14 pts/0 00:00:00 grep --color=auto python3
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ kill -9 38514
 
 ```
-
-
 
 - 종료된지 확인
 
@@ -1958,8 +1936,6 @@ ubuntu 38547 38323 0 23:15 pts/0 00:00:00 grep --color=auto python3
 ```
 
 - 정상적으로 종료됨
-
-
 
 - 다시 포그라운드로 실행
 
@@ -1977,8 +1953,6 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 ```
 
-
-
 - 재시도
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/retry.jpg">
@@ -1992,8 +1966,6 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 121.166.242.167 - - [23/Nov/2023 23:17:14] "POST /create HTTP/1.1" 500 -
 
 ```
-
-
 
 - server 전체 구성 확인
 
@@ -2046,21 +2018,15 @@ appspec.yml database.py node_modules package.json scripts
 
 ```
 
-
-
 ### (2-3) 디렉터리가 존재하지 않는 이유
 
 - 테스트용 빈 디렉터리(testDir)를 하나 더 만들어서 실험
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testDir.jpg">
 
-
-
 - GitHub commit을 하면 빈 디렉터리는 commit되지 않음
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/commitedGitHub1.jpg">
-
-
 
 - `touch` 명령어를 이용하여 크기가 0인 파일 생성
 
@@ -2074,8 +2040,6 @@ appspec.yml database.py node_modules package.json scripts
 
 - 정상적으로 commit됨
 
-
-
 - 그러나 여전히 다시 배포한 code deploy agent에 resources라는 디렉터리가 없음
 
 ```
@@ -2086,8 +2050,6 @@ app.py crontabFile historyUpdate.py package-lock.json requirements.txt
 appspec.yml database.py node_modules package.json scripts
 
 ```
-
-
 
 ### (3) AWS CodeDeploy를 잘못 이해하고 있었음
 
@@ -2114,8 +2076,6 @@ CGroup: /system.slice/codedeploy-agent.service
 
 ```
 
-
-
 - 실제 Flask App 서비스가 작동하고 있는 WorkDirectory는 `.server/scripts/runServer.sh`에 명시된 대로 `./home/ubuntu/ssgbay` 였음
 
 **./server/scrpts/runServer.sh**
@@ -2134,8 +2094,6 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 ```
 
 - `./opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/${DEPLOY_LATEST_DIRECTORY}/deployment-archive` 는 Amazon S3 Bucket에서 zip파일을 가져올 tmp 디렉터리였음
-
-
 
 ### (4) 해결 방법
 
@@ -2156,8 +2114,6 @@ mkdir resources
 
 ```
 
-
-
 - 정상적으로 폴더가 만들어진 것을 확인
 
 ```
@@ -2168,8 +2124,6 @@ ubuntu@ip-10-0-3-255:~/ssgbay$ ls
 app.py database.py node_modules package.json scripts
 
 ```
-
-
 
 ### (5) 재 배포 시 정상적으로 작동하는 것을 확인
 
@@ -2214,9 +2168,7 @@ chown -R ubuntu /home/ubuntu/ssgbay
 
 - 당연히 Crontab 관련 명시를 안 했으니 동작이 할리가 없음
 
-
-
-### (2) 해결 방법**
+### (2) 해결 방법\*\*
 
 - 다음의 내용들을 추가
 
@@ -2251,8 +2203,6 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ```
 
-
-
 ### (3) 재 배포 시 정상적으로 작동하는 것을 확인
 
 - test1 user가 등록한 우영미 반팔1을 test2 user가 입찰
@@ -2262,8 +2212,6 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt2.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt3.jpg">
-
-
 
 - 작동 확인
 
@@ -2277,4 +2225,4 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 # 6. 후기
 
-```
+123123
