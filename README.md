@@ -390,7 +390,7 @@
 
 ### (3) Amazon S3 Bucket에 배포
 
-- React 앱 빌드
+### (3-1) React 앱 빌드
 
 ```
 .\client>npm install
@@ -418,7 +418,7 @@
             main.37105d08.js.map
 ```
 
-- 빌드한 React 앱 소스 코드를 S3 Bucket에 등록
+### (3-2) 빌드한 React 앱 소스 코드를 S3 Bucket에 등록
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket1.jpg">
 
@@ -426,7 +426,7 @@
 
 ### (4) 서비스 정상 작동 확인
 
-- 브라우저로 Amazon S3 Bucket의 웹 사이트 앤드포인트로 접근
+### (4-1) 브라우저로 Amazon S3 Bucket의 웹 사이트 앤드포인트로 접근
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
 
