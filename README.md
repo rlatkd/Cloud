@@ -38,19 +38,19 @@
 
 ## [Amazon Web Service](#2-Amazon-Web-Service)
 
-### 2.1 Frontend (Amazon S3 Bucket)
+### 2.1 Frontend (Amazon S3)
 
 (1) 초기 설정
 
-(2) Amazon S3 Bucket 설정
+(2) Amazon S3 설정
 
-(3) Amazon S3 Bucket에 배포
+(3) Amazon S3에 배포
 
 (4) 서비스 정상 작동 확인
 
 ### 2.2 Frontend (AWS CloudFront)
 
-(1) Amazon S3 Bucket만으로 정적 웹 호스팅을 서비스할 때 문제점
+(1) Amazon S3만으로 정적 웹 호스팅을 서비스할 때 문제점
 
 (2) AWS CloudFront
 
@@ -60,7 +60,7 @@
 
 (1) 초기 설정
 
-(2) Amazon EC2 Instance 설정
+(2) Amazon EC2 설정
 
 ### 2.4 Database (Amazon RDS)
 
@@ -86,9 +86,9 @@
 
 (1) VPC 구성 확인
 
-(2) Amazon EC2 Instance 확인
+(2) Amazon EC2 확인
 
-(3) Amazon S3 Bucket 확인
+(3) Amazon S3 확인
 
 (4) Amazon RDS 확인
 
@@ -150,7 +150,7 @@
 
 (1) 이미지 업로드가 안 됨
 
-(2) 직접 EC2 Instance 내부로 들어가서 작업
+(2) 직접 EC2 내부로 들어가서 작업
 
 (3) 백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인
 
@@ -254,7 +254,7 @@
 - **appspec.yml**
 
   - AWS CodeDeploy를 이용해 자동화한 작업 과정
-  - React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 사용하지 않음
+  - React 앱은 Amazon EC2가 아닌 Amazon S3에 정적 상태로 저장하기 때문에 사용하지 않음
 
 - **scripts**
 
@@ -290,7 +290,7 @@
 
 - **authority**
 
-  - 각 사용자 및 Amazon EC2 Instance에 쓰일 권한 모음 폴더
+  - 각 사용자 및 Amazon EC2에 쓰일 정책 모음 폴더
 
 - **module**
 
@@ -358,7 +358,7 @@
 
 # 2. Amazon Web Service
 
-## 2.1 Frontend (Amazon S3 Bucket)
+## 2.1 Frontend (Amazon S3)
 
 ### (1) 초기 설정
 
@@ -366,9 +366,9 @@
 
 ## <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
 
-### (2) Amazon S3 Bucket 설정
+### (2) Amazon S3 설정
 
-### (2-1) Amazon S3 Bucket 생성
+### (2-1) Amazon S3 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
 
@@ -392,7 +392,7 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority3.jpg">
 
-### (3) Amazon S3 Bucket에 배포
+### (3) Amazon S3에 배포
 
 ### (3-1) React 앱 빌드
 
@@ -422,7 +422,7 @@
             main.37105d08.js.map
 ```
 
-### (3-2) 빌드한 React 앱 소스 코드를 S3 Bucket에 등록
+### (3-2) 빌드한 React 앱 소스 코드를 Amazon S3에 등록
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket1.jpg">
 
@@ -430,17 +430,17 @@
 
 ### (4) 서비스 정상 작동 확인
 
-### (4-1) 브라우저로 Amazon S3 Bucket의 웹 사이트 앤드포인트로 접근
+### (4-1) 브라우저로 Amazon S3의 웹 사이트 앤드포인트로 접근
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
 
 ## 2.2 Frontend (AWS CloudFront)
 
-### (1) Amazon S3 Bucket만으로 정적 웹을 호스팅으로 서비스할 때 문제점
+### (1) Amazon S3만으로 정적 웹을 호스팅으로 서비스할 때 문제점
 
 - `https`가 아닌 `http` 통신을 해야 한다는 점
-- Amazon S3 Bucket이 퍼블릭 공개라는 점
-- Amazon S3 Bucket의 엔드포인트 주소를 그대로 사용해야 한다는 점
+- Amazon S3이 퍼블릭 공개라는 점
+- Amazon S3의 엔드포인트 주소를 그대로 사용해야 한다는 점
 - 해결하기 위해선 AWS CloudFront를 이용
 
 ### (2) AWS CloudFront
@@ -451,8 +451,8 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/OAI.jpg">
 
-- OAI를 설정하면 Amazon S3 Bucket에 퍼블릭으로 공개하지 않고도 AWS CloudFront를 통해서 Amazon S3 Bucket에 퍼블릭으로 접근할 수 있음
-- 동시에 AWS CloudFront를 우회하여 Amazon S3 Bucket에 직접 액세스할 수 없음
+- OAI를 설정하면 Amazon S3에 퍼블릭으로 공개하지 않고도 AWS CloudFront를 통해서 Amazon S3에 퍼블릭으로 접근할 수 있음
+- 동시에 AWS CloudFront를 우회하여 Amazon S3에 직접 액세스할 수 없음
 
 ### (2-2) Origin Shield
 
@@ -517,9 +517,9 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createSg.jpg">
 
-### (2) Amazon EC2 Instance 설정
+### (2) Amazon EC2 설정
 
-### (2-1) Public Subnet에 Amazon EC2 Instance를 생성
+### (2-1) Public Subnet에 Amazon EC2를 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance1.jpg">
 
@@ -527,7 +527,7 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance3.jpg">
 
-### (2-2) Amazon EC2 Instance의 Public IP 주소로 SSH 접속
+### (2-2) Amazon EC2의 Public IP 주소로 SSH 접속
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessSSH.jpg">
 
@@ -620,7 +620,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS5.jpg">
 
-### (2-2) Amazon RDS에서 Flask EC2 Instance로의 연결 설정
+### (2-2) Amazon RDS에서 Amazon EC2(Flask)로의 연결 설정
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance1.jpg">
 
@@ -628,7 +628,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance3.jpg">
 
-- Flask EC2 Instance는 Backend server를 포함하며 Bastion Host 역할을 함
+- Amazon EC2(Flask)는 Backend server를 포함하며 Bastion Host 역할을 함
 
 ### (2-3) Bastion Host
 
@@ -875,11 +875,11 @@ Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/vpc.jpg">
 
-### (2) Amazon EC2 Instance 확인
+### (2) Amazon EC2 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/ec2.jpg">
 
-### (3) Amazon S3 Bucket 확인
+### (3) Amazon S3확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/s3.jpg">
 
@@ -893,7 +893,7 @@ Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 ### (1) GitHub Actions
 
-**React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 AWS CodeDeploy가 필요하지 않음**
+**React 앱은 Amazon EC2가 아닌 Amazon S3에 정적 상태로 저장하기 때문에 AWS CodeDeploy가 필요하지 않음**
 
 ### (1-1) Access Key 생성
 
@@ -997,7 +997,7 @@ jobs:
 
 ### (1) AWS CodeDeploy
 
-### (1-1) rlatkdWebServer EC2 Instance에 적용할 정책 생성
+### (1-1) rlatkdWebServer EC2에 적용할 정책 생성
 
 **rlatkdCodeDeployEC2Policy**
 
@@ -1018,7 +1018,7 @@ jobs:
 }
 ```
 
-### (1-2) rlatkdWebServer EC2 Instance에 적용할 역할 생성 후 적용
+### (1-2) rlatkdWebServer EC2에 적용할 역할 생성 후 적용
 
 **rlatkdEC2AccessS3Role**
 
@@ -1095,7 +1095,7 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployGroup3.jpg">
 
-### (1-7) AWS CodeDeploy Agent가 앱을 가져올 S3 Bucket 생성
+### (1-7) AWS CodeDeploy Agent가 앱을 가져올 Amazon S3 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/flaskS3Bucket.jpg">
 
@@ -1519,7 +1519,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
 
-### (1-1) Flask EC2 내부에서 접속
+### (1-1) Amazon EC2(Flask) 내부에서 접속
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/ec2rdsrule.jpg">
 
@@ -1577,7 +1577,7 @@ mysql> show databases;
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/dummyData.jpg">
 
-### (1-3) Flask EC2에서도 정상으로 작동하는 것을 확인
+### (1-3) Amazon EC2(Flask)에서도 정상으로 작동하는 것을 확인
 
 ```
 mysql> show databases;
@@ -1671,7 +1671,7 @@ This request has been blocked; the content must be served over HTTPS.
 
 ### (4) SSL 인증-1
 
-### (4-1) 모든 SSL 관련 작업을 처리하기 위해 Flask Amazon EC2 Instance에 Nginx를 추가 (현재는 Apache)
+### (4-1) 모든 SSL 관련 작업을 처리하기 위해 Flask Amazon EC2에 Nginx를 추가 (현재는 Apache)
 
 ```
 $ sudo apt install nginx
@@ -1810,7 +1810,7 @@ sudo vi /etc/caddy/Caddyfile
 {
 admin 0.0.0.0:2020
 }
-<EC2 인스턴스의 퍼블릭 IPv4 주소>.nip.io {
+<EC2의 퍼블릭 IPv4 주소>.nip.io {
 reverse_proxy localhost:8080 # 들어오는 요청을 8080포트로 포워딩
 }
 
@@ -1908,9 +1908,9 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 - POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
 
-### (2) 직접 EC2 Instance 내부로 들어가서 작업
+### (2) 직접 Amazon EC2 내부로 들어가서 작업
 
-### (2-1) Flask EC2 Instance 내부로 들어가서 확인
+### (2-1) Amazon EC2 내부로 들어가서 확인
 
 ```
 
@@ -2067,7 +2067,7 @@ appspec.yml database.py node_modules package.json scripts
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/awsCodeDeploy.jpg">
 
-- AWS CodeDeploy는 Amazon S3 Bucket에서 빌드 산출물을 압축 파일로 가져와서 배포해줌
+- AWS CodeDeploy는 Amazon S3에서 빌드 산출물을 압축 파일로 가져와서 배포해줌
 - AWS CodeDeploy에는 빌드 기능이 없기 때문에 별도의 빌드 과정이 필요함
 - AWS CodeDeploy가 시행되기 위해선 Amazon EC2의 CodeDeploy Agent가 반드시 실행중이어야함
 
@@ -2105,7 +2105,7 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ```
 
-- `./opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/${DEPLOY_LATEST_DIRECTORY}/deployment-archive` 는 Amazon S3 Bucket에서 zip파일을 가져올 tmp 디렉터리였음
+- `./opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/${DEPLOY_LATEST_DIRECTORY}/deployment-archive` 는 Amazon S3에서 zip파일을 가져올 tmp 디렉터리였음
 
 ### (6) 해결 방법
 
