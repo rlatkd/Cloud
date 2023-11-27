@@ -168,9 +168,9 @@
 
 ### [6. 후기](#6-후기)
 
-## 1. 개요
+# 1. 개요
 
-### 1.1 프로젝트 개요
+## 1.1 프로젝트 개요
 
 - 프로젝트 이름: DevOps
 - 프로젝트 목적:
@@ -180,21 +180,21 @@
   - 해당 서비스 앱의 main branch에서 커밋하면 자동으로 배포
 - 프로젝트 기간: 2023.11.22 ~ 진행중(Terraform)
 
-### 1.2 서비스
+## 1.2 서비스
 
-**(1) Deployment**
+### (1) Deployment
 
 - Amazon Web Service (EC2, S3, RDS)
 
-**(2) Iac (Infrastructure as Code)**
+### (2) Iac (Infrastructure as Code)
 
 - Terraform
 
-**(3) CI/CD (Continuous Integration/Continuos Delivery)**
+### (3) CI/CD (Continuous Integration/Continuos Delivery)
 
 - GitHub Actions & AWS CodeDeploy
 
-### 1.3 프로젝트 진행 과정
+## 1.3 프로젝트 진행 과정
 
 | 일별                    | 내용                                |
 | ----------------------- | ----------------------------------- |
@@ -204,9 +204,9 @@
 | 7일차 (11.01)           | 44                                  |
 | 8일차 (11.02)           | 55                                  |
 
-### 1.4 전체 구조
+## 1.4 전체 구조
 
-**(1) Frontend GitHub Repository**
+### (1) Frontend GitHub Repository
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
 
@@ -220,7 +220,7 @@
 ...
 ```
 
-**(2) Backend GitHub Repository**
+### (2) Backend GitHub Repository
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
 
@@ -239,7 +239,7 @@
 
 ```
 
-**(3) 앱 디렉터리 구조**
+### (3) 앱 디렉터리 구조
 
 - workflows/deploy.yml
 
@@ -257,7 +257,7 @@
 
   - appspec.yml에 사용할 shell script들이 있는 폴더
 
-**(4) Terraform GitHub Repository**
+### (4) Terraform GitHub Repository
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/devopsTerraform.jpg">
 
@@ -283,7 +283,7 @@
 ...
 ```
 
-**(5) Terraform 디렉터리 구조**
+### (5) Terraform 디렉터리 구조
 
 - authority
 
@@ -296,7 +296,7 @@
 - main.tf
   - `terraform apply` 명령어를 실행하면 각 resource 들에 명시된대로 인프라 구성 및 설정
 
-### 1.5 AWS 설정 구조
+## 1.5 AWS 설정 구조
 
 **(1) 계정 권한**
 
