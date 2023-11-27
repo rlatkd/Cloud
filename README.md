@@ -114,7 +114,7 @@
 
 (1) autoprefixer
 
-(2) eslint: <img> alt
+(2) eslint: img alt
 
 (3) eslint: eqeqeq
 
