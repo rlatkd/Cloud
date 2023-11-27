@@ -1,24 +1,25 @@
 # Development Operations project using AWS & Terraform & GitHub Actions
 
-## 0. 목차
+# 0. 목차
 
-- [개요](#1-개요)
-  - 1.1 프로젝트 개요
-  - 1.2 서비스
-    - (1) Deployment
-    - (2) Iac (Infrastructure as Code)
-    - (3) CI/CD (Continuous Integration/Continuos Delivery)
-  - 1.3 프로젝트 진행 과정
-  - 1.4 전체 구조
-    - (1) Frontend GitHub Repository
-    - (2) Backend GitHub Repository
-    - (3) 디렉터리 구조
-  - 1.5 AWS 설정 구조
-    - (1) 계정 권한
-    - (2) 키
-    - (3) 그룹 당 규칙
-    - (4) 역할
-  - 1.6 인프라 구조
+## [개요](#1-개요)
+
+- 1.1 프로젝트 개요
+- 1.2 서비스
+  - (1) Deployment
+  - (2) Iac (Infrastructure as Code)
+  - (3) CI/CD (Continuous Integration/Continuos Delivery)
+- 1.3 프로젝트 진행 과정
+- 1.4 전체 구조
+  - (1) Frontend GitHub Repository
+  - (2) Backend GitHub Repository
+  - (3) 디렉터리 구조
+- 1.5 AWS 설정 구조
+  - (1) 계정 권한
+  - (2) 키
+  - (3) 그룹 당 규칙
+  - (4) 역할
+- 1.6 인프라 구조
 - [Amazon Web Service](#2-Amazon-Web-Service)
   - 2.1 Frontend (Amazon S3 Bucket)
     - (1) 초기 설정
@@ -41,7 +42,7 @@
     - (1) 초기 설정-1
     - (2) 초기 설정-2
   - 3.2 Terrform을 이용해 인프라 구성
-    - (1) `terraform apply`
+    - (1) terraform apply
   - 3.3 자동으로 구성된 인프라
     - (1) VPC 구성 확인
     - (2) Amazon EC2 Instance 확인
