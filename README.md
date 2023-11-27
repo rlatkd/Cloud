@@ -2236,6 +2236,55 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/preHistory2.jpg">
 
-# 6. 후기
+## 5.7 배포 시간 단축
 
-123123
+### (1) deploy.yml 템플릿 수정
+
+```
+...
+...
+      - name: Cache node modules    ⇐ 캐시 액션 설치 및 설정 → 배포 시간 단축
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - if: steps.npm-cache.outputs.cache-hit == 'true'    ⇐ 캐싱 여부를 출력
+        run: echo 'npm cache hit!'
+      - if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: echo 'npm cache missed!'
+
+      - name: Install Dependencies    ⇐ 캐시가 없거나 다른 경우에만 모듈 설치 → 배포 시간 단축
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Remove template files    ⇐ 실행과 관련 없는 파일/디렉터리 삭제 → 배포 시간 단축
+        run: rm -rf node_modules public src index.html package*
+...
+...
+      - name: CloudFront delete cache    ⇐ 캐시 무력화 설정 → 배포 시간 단축
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ env.CLOUDFRONT_NAME }}
+          PATHS: "/*"
+          AWS_REGION: ${{ env.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+```
+
+### (2) 캐시 사용 전
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/beforeCache.jpg">
+
+### (3) 캐시 사용 후
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/afterCache.jpg">
+
+### (3-1) Amazon S3로 전송한 파일에 불필요한 파일 포함 여부
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/afterCache.jpg">
+
+# 6. 후기
