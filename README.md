@@ -171,21 +171,26 @@
 
 **(1) 계정 권한**
 
-| User        | Authority                               |
-| ----------- | --------------------------------------- |
-| rlatkdReact | AmazonS3FullAccess                      |
-| rlatkdFlask | AmazonEC2FullAccess                     |
-| rlatkdMySQL | AmazonS3FullAccess, AmazonRDSFullAccess |
+| User            | Authority                               |
+| --------------- | --------------------------------------- |
+| rlatkdReact     | AmazonS3FullAccess                      |
+| rlatkdFlask     | AmazonEC2FullAccess                     |
+| rlatkdMySQL     | AmazonS3FullAccess, AmazonRDSFullAccess |
+| rlatkdTerraform | AdministratorAccess                     |
 
 ---
 
 **(2) 키**
 
-| Service               | Key                       |
-| --------------------- | ------------------------- |
-| Amazon EC2            | KeyPair: rlatkdKeyPair    |
-| GitHubActions - React | AccessKey: rlatkdReact AK |
-| GitHubActions - Flask | AccessKey: rlatkdFlask AK |
+| Service    | KeyPair                |
+| ---------- | ---------------------- |
+| Amazon EC2 | KeyPair: rlatkdKeyPair |
+
+| Service               | AccessKey       |
+| --------------------- | --------------- |
+| Terraform             | rlatkdTerraform |
+| GitHubActions - React | rlatkdReact     |
+| GitHubActions - Flask | rlatkdFlask     |
 
 ---
 
