@@ -162,7 +162,7 @@
 
 (1) Crontab 작동이 안함
 
-(2) 해결 바법
+(2) 해결 방법
 
 (3) 재 배포 시 정상적으로 작동하는 것을 확인
 
@@ -460,9 +460,9 @@
 - 캐시 적중률을 높이고 오리진 서버의 부하를 줄여주어 로드 속도를 향상시키는 효과가 있음
 - Origin Shield를 활성화하면 요청이 Origin Shield를 경유할 때마다 비용이 추가로 발생
 
-### (3) 기타 설정
+### (3) 초기 설정
 
-### (3-1) 기타 설정-1
+### (3-1) 초기 설정-1
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings1.jpg">
 
@@ -470,26 +470,26 @@
 - 뷰어 프로토콜 정책는 **Redirect HTTP to HTTPS**로 설정 -> HTTP 프로토콜로 접속 시 자동으로 HTTPS로 리다이렉트됨
 - 허용된 HTTP 방법은 **GET, HEAD**로 설정 -> 정적 리소스를 배포할 것이기 때문에 다른 HTTP Method를 허용하지 않아도 됨
 
-### (3-2) 기타 설정-2
+### (3-2) 초기 설정-2
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings2.jpg">
 
 - 캐시 키 및 원본 요청은 **CachingOptimized**를 선택 -> 대부분의 상황에서 적절한 캐시 정책을 바로 적용할 수 있음
 
-### (3-3) 기타 설정-3
+### (3-3) 초기 설정-3
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings3.jpg">
 
 - 보통 모든 엣지 로케이션에서 사용(최고의 성능)을 사용하면 되지만, 비용을 절약해야 하는 상황이거나 서비스 지역 타겟이 정해져 있을 때 적절한 항목을 선택하면 됨
 
-### (3-4) 기타 설정-4
+### (3-4) 초기 설정-4
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings4.jpg">
 
 - 기본값 루트 객체에 인덱스 페이지의 파일명을 입력
 - `/`는 입력하면 안 됨
 
-### (3-5) 기타 설정-5
+### (3-5) 초기 설정-5
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings5.jpg">
 
@@ -1392,7 +1392,7 @@ Line 38:20:  Expected '===' and instead saw '=='                   eqeqeq
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/cannotAccess.jpg">
 
-- deployment-archive 에서 확인하면 파일들이 제대로 있음
+### (1-1) deployment-archive 에서 확인하면 파일들이 제대로 있음
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive$ ls
@@ -1401,7 +1401,7 @@ app.py       crontabFile  historyUpdate.py  package-lock.json  requirements.txt 
 appspec.yml  database.py  node_modules      package.json       resources
 ```
 
-- 그러나 pip가 인스턴스 내부에 안 깔려있음
+### (1-2) 그러나 pip가 인스턴스 내부에 안 깔려있음
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3L7DPAI12/deployment-archive$ python app.py
@@ -1425,7 +1425,7 @@ sudo apt install python3-pip
 
 ### (2) 해결 방법
 
-- pip를 다운로드
+### (2-1) pip를 다운로드
 
 ```
 ubuntu@ip-10-0-3-255:/$ sudo apt-get install python3-pip
@@ -1433,7 +1433,7 @@ ubuntu@ip-10-0-3-255:/$ pip --version
 pip 22.0.2 from /usr/lib/python3/dist-packages/pip (python 3.10)
 ```
 
-- python3 app.py로 테스트
+### (2-2) python3 app.py로 테스트
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive$ python3 app.py
@@ -1448,7 +1448,7 @@ Traceback (most recent call last):
 ImportError: cannot import name 'DecodeError' from 'jwt' (/usr/local/lib/python3.10/dist-packages/jwt/__init__.py)
 ```
 
-- jwt가 문제인거같아 pip install jwt
+### (2-3) jwt가 문제인거같아 pip install jwt
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive$ pip install jwt
@@ -1462,7 +1462,7 @@ Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packa
 
 ---
 
-- PyJWT에 문제가 있는것을 발견
+### (2-4) PyJWT에 문제가 있는것을 발견
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-VTU4ZNI12/deployment-archive$ pip list
@@ -1478,7 +1478,7 @@ pyOpenSSL 21.0.0
 
 ```
 
-- PyJWT 버전 변경
+### (2-5) PyJWT 버전 변경
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-G5SGOXI12/deployment-archive$ sudo pip install PyJWT==v1.7.1
@@ -1505,7 +1505,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
 
-- Flask EC2 내부에서 접속
+### (1-1) Flask EC2 내부에서 접속
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/ec2rdsrule.jpg">
 
@@ -1559,11 +1559,11 @@ mysql> show databases;
 5 rows in set (0.00 sec)
 ```
 
-- dummy data를 넣은 후 확인
+### (1-2) dummy data를 넣은 후 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/dummyData.jpg">
 
-- Flask EC2에서도 정상으로 작동하는 것을 확인
+### (1-3) Flask EC2에서도 정상으로 작동하는 것을 확인
 
 ```
 mysql> show databases;
@@ -1604,13 +1604,13 @@ mysql> select * from history
 1 row in set (0.00 sec)
 ```
 
-- 그래도 연결이 안됨
+### (1-4) 그래도 연결이 안됨
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
 
 ### (2) 해결 방법
 
-- database.py historyupdate.py 의 dbconnection을 수정
+### (2-1) database.py historyupdate.py 의 dbconnection을 수정
 
 ```
 ...
@@ -1647,9 +1647,9 @@ This request has been blocked; the content must be served over HTTPS.
 
 ### (2) 해결 방법
 
-- https로 접속하여 오류가 난 것
+### (2-1) https로 접속하여 오류가 난 것
 
-- http로 접속 후 다시 확인
+### (2-2) 접속 후 다시 확인
 
 ### (3) 정상 작동 확인
 
@@ -1657,20 +1657,20 @@ This request has been blocked; the content must be served over HTTPS.
 
 ### (4) SSL 인증-1
 
-- 모든 SSL 관련 작업을 처리하기 위해 Flask Amazon EC2 Instance에 Nginx를 추가 (현재는 Apache)
+### (4-1) 모든 SSL 관련 작업을 처리하기 위해 Flask Amazon EC2 Instance에 Nginx를 추가 (현재는 Apache)
 
 ```
 $ sudo apt install nginx
 $ sudo service nginx start
 ```
 
-- Certbot 설치 (Ubuntu ^20 부터는 동작하지 않음)
+### (4-2) Certbot 설치 (Ubuntu ^20 부터는 동작하지 않음)
 
 ```
 $ wget https://dl.eff.org/certbot-auto
 ```
 
-- Ubuntu ^20인 경우: Snapd를 이용하여 Certbot 설치
+### (4-3) Ubuntu ^20인 경우: Snapd를 이용하여 Certbot 설치
 
 ```
 $ sudo snap install core
@@ -1680,7 +1680,7 @@ $ sudo snap install --classic certbot
 $ ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
-- certbot을 이용해 ssl 인증서를 받아온 뒤 Certbot이 스스로 Nginx 설정을 해주도록 함
+### (4-4) certbot을 이용해 ssl 인증서를 받아온 뒤 Certbot이 스스로 Nginx 설정을 해주도록 함
 
 ```
 $ sudo certbot --nginx
@@ -1710,7 +1710,7 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 ```
 
-- 설정 상태
+### (4-5) 설정 상태
 
 ```
 # 443 포트로 접근시 ssl을 적용한 뒤 3000포트로 요청을 전달해주도록 하는 설정.
@@ -1755,7 +1755,7 @@ $ [cron 형식] /usr/bin/certbot renew --renew-hook="sudo systemctl restart apac
 
 ### (5) SSL 인증-2
 
-- Caddy config 생성
+### (5-1) Caddy config 생성
 
 ```
 sudo vi /etc/systemd/system/caddy.service
@@ -1785,7 +1785,7 @@ AmbientCapabilities=CAP_NET_BIND_SERVICE
 WantedBy=multi-user.target
 ```
 
-- Caddyfile 생성
+### (5-2) Caddyfile 생성
 
 ```
 sudo vi /etc/caddy/Caddyfile
@@ -1808,7 +1808,7 @@ reverse_proxy localhost:8080
 
 ```
 
-- Caddy 동작 확인
+### (5-3) Caddy 동작 확인
 
 ```
 sudo systemctl daemon-reload
@@ -1830,7 +1830,7 @@ CGroup: /system.slice/caddy.service
 
 ```
 
-- 설정 상태
+### (5-4) 설정 상태
 
 ```
 
@@ -1858,7 +1858,7 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 ### (1) 이미지 업로드가 안 됨
 
-- 현재 아무런 데이터도 없음
+### (1-1) 현재 아무런 데이터도 없음
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas1.jpg">
 
@@ -1868,31 +1868,31 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas4.jpg">
 
-- 임의의 아이디와 비밀번호로 로그인 시도
+### (1-2) 임의의 아이디와 비밀번호로 로그인 시도
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/randUser.jpg">
 
-- 테스트용 임의의 계정을 생성하여 로그인
+### (1-3) 테스트용 임의의 계정을 생성하여 로그인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUser.jpg">
 
-- 데이터베이스에 추가된 것을 확인
+### (1-4) 데이터베이스에 추가된 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUserDb.jpg">
 
-- 토근 정상 발급 확인
+### (1-5) 토근 정상 발급 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/token1.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/token2.jpg">
 
-- 로그인 상태에서 경매 물품 등록 글쓰기
+### (1-6) 로그인 상태에서 경매 물품 등록 글쓰기
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/createBoard1.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/createBoard2.jpg">
 
-- POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
+### (1-7) POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
 
 ### (2) 직접 EC2 Instance 내부로 들어가서 작업
 
@@ -1911,9 +1911,9 @@ ubuntu 38537 38323 0 23:14 pts/0 00:00:00 grep --color=auto python3
 
 - Flask 서버는 현재 잘 작동되고 있음 (당연히 다른 서비스가 잘 동작하니 서버에 문제가 생긴 건 아님)
 
-### (2-2) 백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인
+### (3) 백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인
 
-- 서비스 중인 Flask App 종료
+### (3-1) 서비스 중인 Flask App 종료
 
 ```
 
@@ -1921,7 +1921,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 ```
 
-- 종료된지 확인
+### (3-2) 종료된지 확인
 
 ```
 
@@ -1935,7 +1935,7 @@ ubuntu 38547 38323 0 23:15 pts/0 00:00:00 grep --color=auto python3
 
 - 정상적으로 종료됨
 
-- 다시 포그라운드로 실행
+### (3-3) 다시 포그라운드로 실행
 
 ```
 
@@ -1951,11 +1951,11 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 ```
 
-- 재시도
+### (3-4) 재시도
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/retry.jpg">
 
-- 파일이나 디렉터리를 찾을 수 없음
+### (3-5) 파일이나 디렉터리를 찾을 수 없음
 
 ```
 
@@ -1965,11 +1965,11 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 ```
 
-- server 전체 구성 확인
+### (3-6) server 전체 구성 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/server.jpg">
 
-- resources라는 정적 디렉터리에 이미지 파일을 저장하는 형식
+### (3-7) resources라는 정적 디렉터리에 이미지 파일을 저장하는 형식
 
 ```
 
@@ -2005,7 +2005,7 @@ return database.addItemInfo( itemName, itemContent, itemPrice, image_url, endTim
 
 ```
 
-- 근데 배포한 code deploy agent에 resources라는 디렉터리가 없음
+### (3-8) 근데 배포한 code deploy agent에 resources라는 디렉터리가 없음
 
 ```
 
@@ -2016,17 +2016,17 @@ appspec.yml database.py node_modules package.json scripts
 
 ```
 
-### (2-3) 디렉터리가 존재하지 않는 이유
+### (4) 디렉터리가 존재하지 않는 이유
 
-- 테스트용 빈 디렉터리(testDir)를 하나 더 만들어서 실험
+### (4-1) 테스트용 빈 디렉터리(testDir)를 하나 더 만들어서 실험
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testDir.jpg">
 
-- GitHub commit을 하면 빈 디렉터리는 commit되지 않음
+### (4-2) GitHub commit을 하면 빈 디렉터리는 commit되지 않음
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/commitedGitHub1.jpg">
 
-- `touch` 명령어를 이용하여 크기가 0인 파일 생성
+### (4-3) `touch` 명령어를 이용하여 크기가 0인 파일 생성
 
 ```
 
@@ -2038,7 +2038,7 @@ appspec.yml database.py node_modules package.json scripts
 
 - 정상적으로 commit됨
 
-- 그러나 여전히 다시 배포한 code deploy agent에 resources라는 디렉터리가 없음
+### (4-4) 그러나 여전히 다시 배포한 code deploy agent에 resources라는 디렉터리가 없음
 
 ```
 
@@ -2049,7 +2049,7 @@ appspec.yml database.py node_modules package.json scripts
 
 ```
 
-### (3) AWS CodeDeploy를 잘못 이해하고 있었음
+### (5) AWS CodeDeploy를 잘못 이해하고 있었음
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/awsCodeDeploy.jpg">
 
@@ -2093,9 +2093,9 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 - `./opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/${DEPLOY_LATEST_DIRECTORY}/deployment-archive` 는 Amazon S3 Bucket에서 zip파일을 가져올 tmp 디렉터리였음
 
-### (4) 해결 방법
+### (6) 해결 방법
 
-- 서비스가 작동하고 있는 디렉터리에 resources 디렉터리를 만들어 static folder 경로로 사용하면 됨
+### (6-1) 서비스가 작동하고 있는 디렉터리에 resources 디렉터리를 만들어 static folder 경로로 사용하면 됨
 
 **./server/scripts/afterInstall.sh**
 
@@ -2112,7 +2112,7 @@ mkdir resources
 
 ```
 
-- 정상적으로 폴더가 만들어진 것을 확인
+### (6-2) 정상적으로 폴더가 만들어진 것을 확인
 
 ```
 
@@ -2123,7 +2123,7 @@ app.py database.py node_modules package.json scripts
 
 ```
 
-### (5) 재 배포 시 정상적으로 작동하는 것을 확인
+### (7) 재 배포 시 정상적으로 작동하는 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/normal1.jpg">
 
@@ -2133,10 +2133,11 @@ app.py database.py node_modules package.json scripts
 
 ### (1) Crontab 작동이 안함
 
-- Crontab: 정해 놓은 일정 시각이 되면 설정해둔 작업을 실행
-  - 경매글 쓰기에서 경매 만료 시간을 설정
-  - 다른 유저가 해당 상품을 입찰
-  - 경매 만료 시간까지 자신의 입찰가가 최고가이면 구매 확정이 되어 해당 상품의 입찰 내역을 구매내역에서 볼 수 있음
+**Crontab**: 정해 놓은 일정 시각이 되면 설정해둔 작업을 실행
+
+- 경매글 쓰기에서 경매 만료 시간을 설정
+- 다른 유저가 해당 상품을 입찰
+- 경매 만료 시간까지 자신의 입찰가가 최고가이면 구매 확정이 되어 해당 상품의 입찰 내역을 구매내역에서 볼 수 있음
 
 **./server/scripts/afterInstall.sh**
 
@@ -2166,9 +2167,9 @@ chown -R ubuntu /home/ubuntu/ssgbay
 
 - 당연히 Crontab 관련 명시를 안 했으니 동작이 할리가 없음
 
-### (2) 해결 방법\*\*
+### (2) 해결 방법
 
-- 다음의 내용들을 추가
+### (2-1) 다음의 내용들을 추가
 
 **./server/scripts/afterInstall.sh**
 
@@ -2203,7 +2204,7 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ### (3) 재 배포 시 정상적으로 작동하는 것을 확인
 
-- test1 user가 등록한 우영미 반팔1을 test2 user가 입찰
+### (3-1) test1 user가 등록한 우영미 반팔1을 test2 user가 입찰
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt1.jpg">
 
@@ -2211,7 +2212,7 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt3.jpg">
 
-- 작동 확인
+### (3-2) 작동 확인
 
 **2023-11-24 am10:30 전**
 
