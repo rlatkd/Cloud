@@ -1421,7 +1421,113 @@ This request has been blocked; the content must be served over HTTPS.
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/connectedFrontend.jpg">
 
-# SSL 인증서 관리 해야됨
+---
+
+**(4) SSL 인증-1**
+
+- 모든 SSL 관련 작업을 처리하기 위해 Flask Amazon EC2 Instance에 Nginx를 추가 (현재는 Apache)
+
+```
+$ sudo apt install nginx
+$ sudo service nginx start
+```
+
+---
+
+- Certbot 설치 (Ubuntu ^20 부터는 동작하지 않음)
+
+```
+$ wget https://dl.eff.org/certbot-auto
+```
+
+---
+
+- Ubuntu ^20인 경우: Snapd를 이용하여 Certbot 설치
+
+```
+$ sudo snap install core
+$ sudo snap refresh core
+$ sudo apt remove certbot
+$ sudo snap install --classic certbot
+$ ln -s /snap/bin/certbot /usr/bin/certbot
+```
+
+---
+
+- certbot을 이용해 ssl 인증서를 받아온 뒤 Certbot이 스스로 Nginx 설정을 해주도록 함
+
+```
+$ sudo certbot --nginx
+```
+
+```
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Your existing certificate has been successfully renewed, and the new certificate
+has been installed.
+
+The new certificate covers the following domains: AWS CLOUDFRONT ENDPOINT # https가 설정된 도메인
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Subscribe to the EFF mailing list (email: woorimprog@gmail.com).
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/idu-market.shop/fullchain.pem    # 공개키 경로
+   Your key file has been saved at:
+   /etc/letsencrypt/live/idu-market.shop/privkey.pem    # 비밀키 경로
+   Your certificate will expire on 2021-08-15. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again with the "certonly" option. To non-interactively
+   renew *all* of your certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+```
+
+---
+
+- 설정 상태
+
+```
+# 443 포트로 접근시 ssl을 적용한 뒤 3000포트로 요청을 전달해주도록 하는 설정.
+server {
+        server_name SSGBAY;
+
+        location / {
+                proxy_pass AWS CLOUDFRONT ENDPOINT;
+        }
+
+        listen 443 ssl; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/SSGBAY/fullchain.pem; # managed by Cert>
+        ssl_certificate_key /etc/letsencrypt/live/SSGBAY/privkey.pem; # managed by Cert>
+
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+# 80 포트로 접근시 443 포트로 리다이렉트 시켜주는 설정
+server {
+        if ($host = SSGBAY) {
+                return 301 https://$host$request_uri;
+        } # managed by Certbot
+
+
+        listen 80;
+        server_name SSGBAY;
+        return 404; # managed by Certbot
+}
+```
+
+---
+
+- certbot을 이용하여 ssl인증서를 발급할 경우 3개월 마다 갱신을 해줘야 함 - `$ certbot renew`
+
+- 인증서의 유효기간이 끝나가면 본인이 certbot을 통해 ssl인증서를 받아올 때 입력해 준 이메일로 알림이 옴
+
+- 3개월 마다 자동 갱신을 하도록 해줄 수도 있음 - crontab 이용
+
+**(5) SSL 인증-2**
 
 ### 5.5 시연
 
