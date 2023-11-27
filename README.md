@@ -41,8 +41,8 @@
     - (1) 초기 설정-1
     - (2) 초기 설정-2
   - 3.2 Terrform을 이용해 인프라 구성
-    - (1) Terraform apply
-  - 3.3 구성된 인프라 확인
+    - (1) `terraform apply`
+  - 3.3 자동으로 구성된 인프라
     - (1) VPC 구성 확인
     - (2) Amazon EC2 Instance 확인
     - (3) Amazon S3 Bucket 확인
@@ -671,7 +671,7 @@ GRANT ALL ON auction.* TO 'user1'@'%';
 
 ## 3. Terraform
 
-### 3.1
+### 3.1 초기 설정
 
 **(1) 초기 설정-1**
 
@@ -741,7 +741,9 @@ commands will detect it and remind you to do so if necessary.
 
 ---
 
-**(3) Terraform으로 인프라 구성**
+### 3.2 Terraform을 이용해 인프라 구성
+
+**(1) `terraform apply`**
 
 ```
 C:\aws> terraform apply
@@ -807,21 +809,23 @@ Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 ---
 
-**(4) 구성된 인프라 확인**
+### 3.3 자동으로 구성된 인프라
 
-- VPC 구성 확인
+**(1) VPC 구성 확인**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/vpc.jpg">
+
+**(2) Amazon EC2 Instance 확인**
 
 - Amazon EC2 Instance 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/ec2.jpg">
 
-- Amazon S3 Bucket 확인
+**(3) Amazon S3 Bucket 확인**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/s3.jpg">
 
-- Amazon RDS 확인
+**(4) Amazon RDS 확인**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/rds.jpg">
 
