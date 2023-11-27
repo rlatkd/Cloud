@@ -1,12 +1,11 @@
 # VPC 생성
 resource "aws_vpc" "rlatkdVPC" {
-  cidr_block           = "10.0.0.0/16" # VPC의 CIDR 블록을 설정해주세요.
+  cidr_block           = "10.0.0.0/16"
   enable_dns_support   = true
   enable_dns_hostnames = true
-  instance_tenancy     = "default" # 인스턴스 테넌시를 설정해주세요. (default 또는 dedicated 중 선택)
+  instance_tenancy     = "default"
   tags = {
     Name = "rlatkdVPC"
-    # 필요에 따라 다른 태그들을 추가할 수 있습니다.
   }
 }
 

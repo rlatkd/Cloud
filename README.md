@@ -149,7 +149,7 @@
 
 ```
 
-**(3) 디렉터리 구조**
+**(3) 앱 디렉터리 구조**
 
 - workflows/deploy.yml
 
@@ -166,6 +166,45 @@
 - scripts
 
   - appspec.yml에 사용할 shell script들이 있는 폴더
+
+**(4) Terraform GitHub Repository**
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/devopsTerraform.jpg">
+
+```
+📁 terraform
+ ├──── 📁 authority
+ │      ├──── 📄 iamPolicyFlask.tf
+ │      ├──── 📄 iamPolicyMySQL.tf
+ │      ├──── 📄 iamPolicyReact.tf
+ │      └──── 📄 rlatkdCodeDeployEC2Policy.tf
+ ├──── 📁 module
+ │      ├──── 📄 ec2.tf
+ │      ├──── 📄 ec2RdsSg.tf
+ │      ├──── 📄 ec2Sg.tf
+ │      ├──── 📄 iam.tf
+ │      ├──── 📄 rds.tf
+ │      ├──── 📄 rdsEc2Sg.tf
+ │      ├──── 📄 role.tf
+ │      ├──── 📄 s3React.tf
+ │      └──── 📄 vpc.tf
+ └─────────── 📄 main.tf
+...
+...
+```
+
+**(5) Terraform 디렉터리 구조**
+
+- authority
+
+  - 각 사용자 및 Amazon EC2 Instance에 쓰일 권한 모음 폴더
+
+- module
+
+  - 서비스 별로 나누어 권한, 정책, 생성 등을 명시한 폴더
+
+- main.tf
+  - `terraform apply` 명령어를 실행하면 각 resource 들에 명시된대로 인프라 구성 및 설정
 
 ### 1.5 AWS 설정 구조
 
@@ -618,13 +657,163 @@ GRANT ALL ON auction.* TO 'user1'@'%';
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createSchemaTable.jpg">
 
-# Terraform 해야됨
+---
 
 ## 3. Terraform
 
 ### 3.1
 
-**(1) d**
+**(1) 초기 설정-1**
+
+- rlatkdTerraform 계정 생성 후 로그인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/tfUser.jpg">
+
+- 액세스 키 생성
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/tfAccessKey.jpg">
+
+---
+
+**(2) 초기 설정-2**
+
+- AWS CLI에 로그인
+
+```
+.\terraform>aws configure
+
+AWS Access Key ID [****************QNIN]: ****
+AWS Secret Access Key [****************5d04]: ****
+Default region name [ap-northeast-2]:
+Default output format [json]:
+```
+
+- AWS 명령어 작동 확인
+
+```
+.\terraform>aws s3 ls
+
+2023-11-23 17:11:34 backfirststep-bucket
+2023-11-24 10:15:45 cicd-bucket-jgwow
+2023-11-22 20:39:35 firststep-bucket
+2023-11-22 11:57:41 project3-shyun-bucket
+2023-11-22 19:02:59 rlatkd-flask-bucket
+2023-11-22 14:36:01 rlatkd-react-bucket
+```
+
+- Terraform 설정 초기화
+
+```
+.\terraform>terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding latest version of hashicorp/aws...
+- Installing hashicorp/aws v5.26.0...
+- Installed hashicorp/aws v5.26.0 (signed by HashiCorp)
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
+---
+
+**(3) Terraform으로 인프라 구성**
+
+```
+C:\aws> terraform apply
+aws_instance.example: Refreshing state... [id=i-060ecf5b27718c689]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # aws_instance.example must be replaced
+-/+ resource "aws_instance" "rlatkdWebServer" {
+      ~ arn                                  = "arn:aws:ec2:ap-northeast-2:561845507088:instance/i-086cae3329a3f7d75" -> (known after apply)
+      ~ associate_public_ip_address          = true -> (known after apply)
+...
+...
+      + user_data                            = "67e34b406ab639a606a64fe06965b26bf8036a9c" # forces replacement
+      + user_data_base64                     = (known after apply)
+      ~ user_data_replace_on_change          = false -> true
+      ~ vpc_security_group_ids               = [
+          - "sg-0380b404f6530ca72",
+        ] -> (known after apply)
+        # (5 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+...
+...
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = false -> null
+          - iops                  = 3000 -> null
+          - tags                  = {} -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-037350e565483e3a9" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+        }
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_instance.rlatkdWebServer: Destroying... [id=i-086cae3329a3f7d75]
+aws_instance.rlatkdWebServer: Still destroying... [id=i-086cae3329a3f7d75, 10s elapsed]
+aws_instance.rlatkdWebServer: Still destroying... [id=i-086cae3329a3f7d75, 20s elapsed]
+aws_instance.rlatkdWebServer: Destruction complete after 30s
+aws_instance.rlatkdWebServer: Creating...
+aws_instance.rlatkdWebServer: Still creating... [10s elapsed]
+aws_instance.rlatkdWebServer: Still creating... [20s elapsed]
+aws_instance.rlatkdWebServer: Creation complete after 22s [id=i-086cae3329a3f7d75]
+
+Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
+```
+
+---
+
+**(4) 구성된 인프라 확인**
+
+- VPC 구성 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/vpc.jpg">
+
+- Amazon EC2 Instance 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/ec2.jpg">
+
+- Amazon S3 Bucket 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/s3.jpg">
+
+- Amazon RDS 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/rds.jpg">
 
 ## 4. GitHub Actions & AWS CodeDeploy
 
