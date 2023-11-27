@@ -298,7 +298,7 @@
 
 ## 1.5 AWS 설정 구조
 
-**(1) 계정 권한**
+### (1) 계정 권한
 
 | User            | Authority                                                        |
 | --------------- | ---------------------------------------------------------------- |
@@ -307,9 +307,7 @@
 | rlatkdMySQL     | AmazonEC2FullAccess, AmazonRDSFullAccess                         |
 | rlatkdTerraform | AdministratorAccess                                              |
 
----
-
-**(2) 키**
+### (2) 키
 
 | Service    | KeyPair                |
 | ---------- | ---------------------- |
@@ -321,9 +319,7 @@
 | GitHubActions - React | rlatkdReact     |
 | GitHubActions - Flask | rlatkdFlask     |
 
----
-
-**(3) 그룹 당 규칙**
+### (3) 그룹 당 규칙
 
 | InBound Rule | Security Group: rlatkdFlaskWebServserSg |
 | ------------ | --------------------------------------- |
@@ -345,9 +341,7 @@
 | Port         | 3306                              |
 | Source       | rlatkd-ec2-rds-Sg                 |
 
----
-
-**(4) 역할**
+### (4) 역할
 
 | Service               | Role                                              |
 | --------------------- | ------------------------------------------------- |
@@ -355,23 +349,21 @@
 | AWS CodeDeploy Group  | rlatkdCodeDeployRole                              |
 | GitHubActions - Flask | AccessKey: rlatkdFlask AK                         |
 
-### 1.6 인프라 구조
+## 1.6 인프라 구조
 
 # 미완
 
-## 2. Amazon Web Service
+# 2. Amazon Web Service
 
-### 2.1 Frontend (Amazon S3 Bucket)
+## 2.1 Frontend (Amazon S3 Bucket)
 
-**(1) 초기 설정**
+### (1) 초기 설정
 
 - rlatkdReact 계정 생성 후 로그인
 
 ## <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
 
----
-
-**(2) Amazon S3 Bucket 설정**
+### (2) Amazon S3 Bucket 설정
 
 - Amazon S3 Bucket 생성
 
@@ -397,9 +389,7 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority3.jpg">
 
----
-
-**(3) Amazon S3 Bucket에 배포**
+### (3) Amazon S3 Bucket에 배포
 
 - React 앱 빌드
 
@@ -435,24 +425,22 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket2.jpg">
 
----
-
-**(4) 서비스 정상 작동 확인**
+### (4) 서비스 정상 작동 확인
 
 - 브라우저로 Amazon S3 Bucket의 웹 사이트 앤드포인트로 접근
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
 
-### 2.2 Frontend (AWS CloudFront)
+## 2.2 Frontend (AWS CloudFront)
 
-**(1) Amazon S3 Bucket만으로 정적 웹을 호스팅으로 서비스할 때 문제점**
+### (1) Amazon S3 Bucket만으로 정적 웹을 호스팅으로 서비스할 때 문제점
 
 - `https`가 아닌 `http` 통신을 해야 한다는 점
 - Amazon S3 Bucket이 퍼블릭 공개라는 점
 - Amazon S3 Bucket의 엔드포인트 주소를 그대로 사용해야 한다는 점
 - 해결하기 위해선 AWS CloudFront를 이용
 
-**(2) AWS CloudFront**
+### (2) AWS CloudFront
 
 **AWS CloudFront란**
 
@@ -462,8 +450,6 @@
 
 - OAI를 설정하면 Amazon S3 Bucket에 퍼블릭으로 공개하지 않고도 AWS CloudFront를 통해서 Amazon S3 Bucket에 퍼블릭으로 접근할 수 있음
 - 동시에 AWS CloudFront를 우회하여 Amazon S3 Bucket에 직접 액세스할 수 없음
-
----
 
 **Origin Shield**
 
@@ -475,8 +461,6 @@
 - 캐시 적중률을 높이고 오리진 서버의 부하를 줄여주어 로드 속도를 향상시키는 효과가 있음
 - Origin Shield를 활성화하면 요청이 Origin Shield를 경유할 때마다 비용이 추가로 발생
 
----
-
 **기타 설정-1**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings1.jpg">
@@ -485,23 +469,17 @@
 - 뷰어 프로토콜 정책는 **Redirect HTTP to HTTPS**로 설정 -> HTTP 프로토콜로 접속 시 자동으로 HTTPS로 리다이렉트됨
 - 허용된 HTTP 방법은 **GET, HEAD**로 설정 -> 정적 리소스를 배포할 것이기 때문에 다른 HTTP Method를 허용하지 않아도 됨
 
----
-
 **기타 설정-2**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings2.jpg">
 
 - 캐시 키 및 원본 요청은 **CachingOptimized**를 선택 -> 대부분의 상황에서 적절한 캐시 정책을 바로 적용할 수 있음
 
----
-
 **기타 설정-3**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings3.jpg">
 
 - 보통 모든 엣지 로케이션에서 사용(최고의 성능)을 사용하면 되지만, 비용을 절약해야 하는 상황이거나 서비스 지역 타겟이 정해져 있을 때 적절한 항목을 선택하면 됨
-
----
 
 **기타 설정-4**
 
@@ -510,17 +488,15 @@
 - 기본값 루트 객체에 인덱스 페이지의 파일명을 입력
 - `/`는 입력하면 안 됨
 
----
-
 **기타 설정-5**
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings5.jpg">
 
 - React와 같은 SPA를 배포하는 상황이라면 Fallback Redirect 설정을 해주어야 함
 
-### 2.3 Backend (Amazon EC2)
+## 2.3 Backend (Amazon EC2)
 
-**(1) 초기 설정**
+## (1) 초기 설정
 
 - rlatkdFlask 계정 생성 후 로그인
 
@@ -536,9 +512,7 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createSg.jpg">
 
----
-
-**(2) Amazon EC2 Instance 설정**
+### (2) Amazon EC2 Instance 설정
 
 - Public Subnet에 Amazon EC2 Instance를 생성
 
@@ -619,9 +593,9 @@ ubuntu@ip-10-0-3-255:/var/www/html$ sudo rm -rf *
 ubuntu@ip-10-0-3-255:/var/www/html$ ls
 ```
 
-### 2.4 Database (Amazon RDS)
+## 2.4 Database (Amazon RDS)
 
-**(1) 초기 설정**
+### (1) 초기 설정
 
 - rlatkdMySQL 계정 생성 후 로그인
 
@@ -629,7 +603,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 ---
 
-**(2) RDS 설정**
+### (2) RDS 설정
 
 - Private Subnet에 RDS를 생성
 
@@ -656,13 +630,13 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
   - Bastion Host
     - 1
 
+# 바스티온 해야함
+
 - MySQL Workbench를 실행해서 RDS로의 연결 설정
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectWorkbench.jpg">
 
----
-
-**(3) Database 설정**
+### (3) Database 설정
 
 - MySQL Workbench에서 schema 및 table 생성
 
@@ -747,13 +721,11 @@ GRANT ALL ON auction.* TO 'user1'@'%';
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createSchemaTable.jpg">
 
----
+# 3. Terraform
 
-## 3. Terraform
+## 3.1 초기 설정
 
-### 3.1 초기 설정
-
-**(1) 초기 설정-1**
+### (1) 초기 설정-1
 
 - rlatkdTerraform 계정 생성 후 로그인
 
@@ -763,9 +735,7 @@ GRANT ALL ON auction.* TO 'user1'@'%';
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/tfAccessKey.jpg">
 
----
-
-**(2) 초기 설정-2**
+### (2) 초기 설정-2
 
 - AWS CLI에 로그인
 
@@ -819,11 +789,9 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
----
+## 3.2 Terraform을 이용해 인프라 구성
 
-### 3.2 Terraform을 이용해 인프라 구성
-
-**(1) `terraform apply`**
+### (1) `terraform apply`
 
 ```
 C:\aws> terraform apply
@@ -887,33 +855,31 @@ aws_instance.rlatkdWebServer: Creation complete after 22s [id=i-086cae3329a3f7d7
 Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 ```
 
----
+## 3.3 자동으로 구성된 인프라
 
-### 3.3 자동으로 구성된 인프라
-
-**(1) VPC 구성 확인**
+### (1) VPC 구성 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/vpc.jpg">
 
-**(2) Amazon EC2 Instance 확인**
+### (2) Amazon EC2 Instance 확인
 
 - Amazon EC2 Instance 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/ec2.jpg">
 
-**(3) Amazon S3 Bucket 확인**
+### (3) Amazon S3 Bucket 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/s3.jpg">
 
-**(4) Amazon RDS 확인**
+### (4) Amazon RDS 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/rds.jpg">
 
-## 4. GitHub Actions & AWS CodeDeploy
+# 4. GitHub Actions & AWS CodeDeploy
 
-### 4.1 Frontend
+## 4.1 Frontend
 
-**(1) GitHub Actions**
+### (1) GitHub Actions
 
 **React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 AWS CodeDeploy가 필요하지 않음**
 
@@ -1001,9 +967,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ```
 
----
-
-**(2) React test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포**
+### (2) React test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
 
 - 배포 진행
 
@@ -1017,9 +981,9 @@ jobs:
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/commitedReact.jpg">
 
-### 4.2 Backend
+## 4.2 Backend
 
-**(1) AWS CodeDeploy**
+### (1) AWS CodeDeploy
 
 - rlatkdWebServer EC2 Instance에 적용할 정책 생성
 
@@ -1208,9 +1172,7 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ```
 
----
-
-**(2) GitHub Actions**
+### (2) GitHub Actions
 
 - Access Key 생성
 
@@ -1277,9 +1239,7 @@ jobs:
           --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
 ```
 
----
-
-**(3) Flask test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포**
+### (3) Flask test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
 
 - 배포 진행
 
@@ -1295,11 +1255,11 @@ jobs:
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/commitedFlask.jpg">
 
-## 5. Trouble Shooting
+# 5. Trouble Shooting
 
-### 5.1 Frontend
+## 5.1 Frontend
 
-**(1) autoprefixer**
+### (1) autoprefixer
 
 ```
 Warning
@@ -1359,9 +1319,7 @@ Warning
 > ...
 > ```
 
----
-
-**(2) eslint: `<img> alt`**
+### (2) eslint: `<img> alt`
 
 ```
 Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
@@ -1388,9 +1346,7 @@ Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tag
 > ...
 > ```
 
----
-
-**(3) eslint: `eqeqeq`**
+### (3) eslint: `eqeqeq`
 
 ```
 ...
@@ -1432,13 +1388,11 @@ Line 38:20:  Expected '===' and instead saw '=='                   eqeqeq
 >
 > ```
 
-### 5.2 Backend
+## 5.2 Backend
 
-**(1) 배포했으나 연결할 수 없음**
+### (1) 배포했으나 연결할 수 없음
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/cannotAccess.jpg">
-
----
 
 - deployment-archive 에서 확인하면 파일들이 제대로 있음
 
@@ -1448,8 +1402,6 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 app.py       crontabFile  historyUpdate.py  package-lock.json  requirements.txt  scripts
 appspec.yml  database.py  node_modules      package.json       resources
 ```
-
----
 
 - 그러나 pip가 인스턴스 내부에 안 깔려있음
 
@@ -1473,7 +1425,7 @@ Command 'pip' not found, but can be installed with:
 sudo apt install python3-pip
 ```
 
-**(2) 해결 방법**
+### (2) 해결 방법
 
 - pip를 다운로드
 
@@ -1482,8 +1434,6 @@ ubuntu@ip-10-0-3-255:/$ sudo apt-get install python3-pip
 ubuntu@ip-10-0-3-255:/$ pip --version
 pip 22.0.2 from /usr/lib/python3/dist-packages/pip (python 3.10)
 ```
-
----
 
 - python3 app.py로 테스트
 
@@ -1499,8 +1449,6 @@ Traceback (most recent call last):
     from jwt import DecodeError
 ImportError: cannot import name 'DecodeError' from 'jwt' (/usr/local/lib/python3.10/dist-packages/jwt/__init__.py)
 ```
-
----
 
 - jwt가 문제인거같아 pip install jwt
 
@@ -1532,8 +1480,6 @@ pyOpenSSL 21.0.0
 
 ```
 
----
-
 - PyJWT 버전 변경
 
 ```
@@ -1541,7 +1487,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 ```
 
-**(3) 정상 작동 확인**
+### (3) 정상 작동 확인
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-G5SGOXI12/deployment-archive$ python3 app.py
@@ -1555,9 +1501,9 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
   Press CTRL+C to quit
 ```
 
-### 5.3 Backend - Database
+## 5.3 Backend - Database
 
-**(1) Backend와 Database 연동이 안 됨**
+### (1) Backend와 Database 연동이 안 됨
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
 
@@ -1664,7 +1610,7 @@ mysql> select * from history
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
 
-**(2) 해결 방법**
+### (2) 해결 방법
 
 - database.py historyupdate.py 의 dbconnection을 수정
 
@@ -1684,13 +1630,13 @@ connectionString = {
 ...
 ```
 
-**(3) 재 배포 시 정상으로 작동하는 것을 확인**
+### (3) 재 배포 시 정상으로 작동하는 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/reDeployJSON.jpg">
 
-### 5.4 Frontend - Backend
+## 5.4 Frontend - Backend
 
-**(1) Frontend와 Backend 연동이 안 됨**
+### (1) Frontend와 Backend 연동이 안 됨
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/disconnectFrontend1.jpg">
 
@@ -1701,19 +1647,17 @@ This request has been blocked; the content must be served over HTTPS.
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/disconnectFrontend2.jpg">
 
-**(2) 해결 방법**
+### (2) 해결 방법
 
 - https로 접속하여 오류가 난 것
 
 - http로 접속 후 다시 확인
 
-**(3) 정상 작동 확인**
+### (3) 정상 작동 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/connectedFrontend.jpg">
 
----
-
-**(4) SSL 인증-1**
+### (4) SSL 인증-1
 
 - 모든 SSL 관련 작업을 처리하기 위해 Flask Amazon EC2 Instance에 Nginx를 추가 (현재는 Apache)
 
@@ -1722,15 +1666,11 @@ $ sudo apt install nginx
 $ sudo service nginx start
 ```
 
----
-
 - Certbot 설치 (Ubuntu ^20 부터는 동작하지 않음)
 
 ```
 $ wget https://dl.eff.org/certbot-auto
 ```
-
----
 
 - Ubuntu ^20인 경우: Snapd를 이용하여 Certbot 설치
 
@@ -1741,8 +1681,6 @@ $ sudo apt remove certbot
 $ sudo snap install --classic certbot
 $ ln -s /snap/bin/certbot /usr/bin/certbot
 ```
-
----
 
 - certbot을 이용해 ssl 인증서를 받아온 뒤 Certbot이 스스로 Nginx 설정을 해주도록 함
 
@@ -1773,8 +1711,6 @@ IMPORTANT NOTES:
    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
    Donating to EFF:                    https://eff.org/donate-le
 ```
-
----
 
 - 설정 상태
 
@@ -1809,8 +1745,6 @@ server {
 }
 ```
 
----
-
 - certbot을 이용하여 ssl인증서를 발급할 경우 3개월 마다 갱신을 해줘야 함 - `$ certbot renew`
 
 - 인증서의 유효기간이 끝나가면 본인이 certbot을 통해 ssl인증서를 받아올 때 입력해 준 이메일로 알림이 옴
@@ -1821,9 +1755,7 @@ server {
 $ [cron 형식] /usr/bin/certbot renew --renew-hook="sudo systemctl restart apache2"
 ```
 
----
-
-**(5) SSL 인증-2**
+### (5) SSL 인증-2
 
 - Caddy config 생성
 
@@ -1855,76 +1787,84 @@ AmbientCapabilities=CAP_NET_BIND_SERVICE
 WantedBy=multi-user.target
 ```
 
----
-
 - Caddyfile 생성
 
-```
 sudo vi /etc/caddy/Caddyfile
+
 ```
 
 ```
+
 {
-    admin 0.0.0.0:2020
+admin 0.0.0.0:2020
 }
 <EC2 인스턴스의 퍼블릭 IPv4 주소>.nip.io {
-    reverse_proxy localhost:8080    # 들어오는 요청을 8080포트로 포워딩
+reverse_proxy localhost:8080 # 들어오는 요청을 8080포트로 포워딩
 }
+
 # 예시 :
+
 10.100.100.100.nip.io {
-    reverse_proxy localhost:8080
+reverse_proxy localhost:8080
 }
+
 ```
 
----
+
 
 - Caddy 동작 확인
 
 ```
+
 sudo systemctl daemon-reload
 sudo systemctl enable --now caddy
 sudo systemctl status -l caddy
+
 ```
 
 ```
+
 $ sudo systemctl status caddy.service
 
 ● caddy.service - Caddy
-   Loaded: loaded (/etc/systemd/system/caddy.service; enabled; vendor preset: disabled)
-   Active: active (running) since 화 2023-04-11 13:27:50 UTC; 5s ago
-     Docs: https://caddyserver.com/docs/
- Main PID: 11243 (caddy)
-   CGroup: /system.slice/caddy.service
-           └─11243 /usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+Loaded: loaded (/etc/systemd/system/caddy.service; enabled; vendor preset: disabled)
+Active: active (running) since 화 2023-04-11 13:27:50 UTC; 5s ago
+Docs: https://caddyserver.com/docs/
+Main PID: 11243 (caddy)
+CGroup: /system.slice/caddy.service
+└─11243 /usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+
 ```
 
----
+
 
 - 설정 상태
 
 ```
-2023/11/25 13:56:33.748	INFO	using adjacent Caddyfile
-2023/11/25 13:56:33.749	WARN	Caddyfile input is not formatted; run the 'caddy fmt' command to fix inconsistencies	{"adapter": "caddyfile", "file": "Caddyfile", "line": 2}
-2023/11/25 13:56:33.749	INFO	admin	admin endpoint started	{"address": "0.0.0.0:2020", "enforce_origin": false, "origins": ["//0.0.0.0:2020"]}
-2023/11/25 13:56:33.750	WARN	admin	admin endpoint on open interface; host checking disabled	{"address": "0.0.0.0:2020"}
-2023/11/25 13:56:33.750	INFO	http	server is listening only on the HTTPS port but has no TLS connection policies; adding one to enable TLS	{"server_name": "srv0", "https_port": 443}
-2023/11/25 13:56:33.750	INFO	http	enabling automatic HTTP->HTTPS redirects	{"server_name": "srv0"}
-2023/11/25 13:56:33.751	INFO	http	enabling HTTP/3 listener	{"addr": ":443"}
-2023/11/25 13:56:33.751	INFO	failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 2048 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Receive-Buffer-Size for details.
-2023/11/25 13:56:33.751	INFO	http.log	server running	{"name": "srv0", "protocols": ["h1", "h2", "h3"]}
-2023/11/25 13:56:33.751	INFO	http.log	server running	{"name": "remaining_auto_https_redirects", "protocols": ["h1", "h2", "h3"]}
-2023/11/25 13:56:33.752	INFO	http	enabling automatic TLS certificate management	{"domains": ["10.100.100.100.nip.io"]}
-2023/11/25 13:56:33.752	INFO	autosaved config (load with --resume flag)	{"file": "/root/.config/caddy/autosave.json"}
-2023/11/25 13:56:33.752	INFO	serving initial configuration
-2023/11/25 13:56:33.753	INFO	tls	cleaning storage unit	{"description": "FileStorage:/root/.local/share/caddy"}
-2023/11/25 13:56:33.754	INFO	tls	finished cleaning storage units
-2023/11/25 13:56:33.754	INFO	tls.cache.maintenance	started background certificate maintenance	{"cache": "0xc000335490"}
+
+2023/11/25 13:56:33.748 INFO using adjacent Caddyfile
+2023/11/25 13:56:33.749 WARN Caddyfile input is not formatted; run the 'caddy fmt' command to fix inconsistencies {"adapter": "caddyfile", "file": "Caddyfile", "line": 2}
+2023/11/25 13:56:33.749 INFO admin admin endpoint started {"address": "0.0.0.0:2020", "enforce_origin": false, "origins": ["//0.0.0.0:2020"]}
+2023/11/25 13:56:33.750 WARN admin admin endpoint on open interface; host checking disabled {"address": "0.0.0.0:2020"}
+2023/11/25 13:56:33.750 INFO http server is listening only on the HTTPS port but has no TLS connection policies; adding one to enable TLS {"server_name": "srv0", "https_port": 443}
+2023/11/25 13:56:33.750 INFO http enabling automatic HTTP->HTTPS redirects {"server_name": "srv0"}
+2023/11/25 13:56:33.751 INFO http enabling HTTP/3 listener {"addr": ":443"}
+2023/11/25 13:56:33.751 INFO failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 2048 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Receive-Buffer-Size for details.
+2023/11/25 13:56:33.751 INFO http.log server running {"name": "srv0", "protocols": ["h1", "h2", "h3"]}
+2023/11/25 13:56:33.751 INFO http.log server running {"name": "remaining_auto_https_redirects", "protocols": ["h1", "h2", "h3"]}
+2023/11/25 13:56:33.752 INFO http enabling automatic TLS certificate management {"domains": ["10.100.100.100.nip.io"]}
+2023/11/25 13:56:33.752 INFO autosaved config (load with --resume flag) {"file": "/root/.config/caddy/autosave.json"}
+2023/11/25 13:56:33.752 INFO serving initial configuration
+2023/11/25 13:56:33.753 INFO tls cleaning storage unit {"description": "FileStorage:/root/.local/share/caddy"}
+2023/11/25 13:56:33.754 INFO tls finished cleaning storage units
+2023/11/25 13:56:33.754 INFO tls.cache.maintenance started background certificate maintenance {"cache": "0xc000335490"}
 Successfully started Caddy (pid=23624) - Caddy is running in the background
+
 ```
 
-### 5.5 시연
+## 5.5 시연
 
-**(1) 이미지 업로드가 안 됨**
+### (1) 이미지 업로드가 안 됨
 
 - 현재 아무런 데이터도 없음
 
@@ -1936,25 +1876,25 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas4.jpg">
 
----
+
 
 - 임의의 아이디와 비밀번호로 로그인 시도
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/randUser.jpg">
 
----
+
 
 - 테스트용 임의의 계정을 생성하여 로그인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUser.jpg">
 
----
+
 
 - 데이터베이스에 추가된 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUserDb.jpg">
 
----
+
 
 - 토근 정상 발급 확인
 
@@ -1962,7 +1902,7 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/token2.jpg">
 
----
+
 
 - 로그인 상태에서 경매 물품 등록 글쓰기
 
@@ -1972,64 +1912,72 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 - POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
 
----
 
-**(2) 직접 EC2 Instance 내부로 들어가서 작업**
 
-**(2-1) Flask EC2 Instance 내부로 들어가서 확인**
+### (2) 직접 EC2 Instance 내부로 들어가서 작업
+
+### (2-1) Flask EC2 Instance 내부로 들어가서 확인
 
 ```
+
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ps -ef | grep python3
 
-root         398       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
-root         567       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
-ubuntu     38514       1  0 23:12 ?        00:00:00 python3 -u app.py
-ubuntu     38537   38323  0 23:14 pts/0    00:00:00 grep --color=auto python3
+root 398 1 0 Nov22 ? 00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root 567 1 0 Nov22 ? 00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+ubuntu 38514 1 0 23:12 ? 00:00:00 python3 -u app.py
+ubuntu 38537 38323 0 23:14 pts/0 00:00:00 grep --color=auto python3
+
 ```
 
 - Flask 서버는 현재 잘 작동되고 있음 (당연히 다른 서비스가 잘 동작하니 서버에 문제가 생긴 건 아님)
 
----
 
-**(2-2) 백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인**
+
+### (2-2) 백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인
 
 - 서비스 중인 Flask App 종료
 
 ```
+
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ kill -9 38514
+
 ```
 
----
+
 
 - 종료된지 확인
 
 ```
+
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ps -ef | grep python3
 
-root         398       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
-root         567       1  0 Nov22 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
-ubuntu     38547   38323  0 23:15 pts/0    00:00:00 grep --color=auto python3
+root 398 1 0 Nov22 ? 00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root 567 1 0 Nov22 ? 00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+ubuntu 38547 38323 0 23:15 pts/0 00:00:00 grep --color=auto python3
+
 ```
 
 - 정상적으로 종료됨
 
----
+
 
 - 다시 포그라운드로 실행
 
 ```
+
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ python3 app.py
 
- * Serving Flask app 'app'
- * Debug mode: off
-WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5000
- * Running on http://10.0.3.255:5000
-Press CTRL+C to quit
+- Serving Flask app 'app'
+- Debug mode: off
+  WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+- Running on all addresses (0.0.0.0)
+- Running on http://127.0.0.1:5000
+- Running on http://10.0.3.255:5000
+  Press CTRL+C to quit
+
 ```
 
----
+
 
 - 재시도
 
@@ -2038,12 +1986,14 @@ Press CTRL+C to quit
 - 파일이나 디렉터리를 찾을 수 없음
 
 ```
+
 121.166.242.167 - - [23/Nov/2023 23:16:45] "GET /?sort=date&keyword= HTTP/1.1" 200 -
 [Errno 2] No such file or directory: './resources/우영미1.JPEG'
 121.166.242.167 - - [23/Nov/2023 23:17:14] "POST /create HTTP/1.1" 500 -
+
 ```
 
----
+
 
 - server 전체 구성 확인
 
@@ -2052,85 +2002,94 @@ Press CTRL+C to quit
 - resources라는 정적 디렉터리에 이미지 파일을 저장하는 형식
 
 ```
+
 ...
 ...
-app = Flask(__name__, static_folder='./resources/')
+app = Flask(**name**, static_folder='./resources/')
 UPLOAD_FOLDER = path.join('.', 'resources/')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ...
 ...
 @app.route('/create', methods=['POST'])
 def create():
-    try:
-        file = request.files['itemImage']
-        filename = file.filename
-        itemName = request.form.get('itemName')
-        itemContent = request.form.get('itemContent')
-        itemPrice = request.form.get('itemPrice')
-        itemImage = filename
-        userId = request.form.get('userId')
-        endTime = request.form.get('endTime')
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-        image_url = 'http://43.202.66.215:5000/resources/' + file.filename
-        print(image_url)
-        return database.addItemInfo( itemName, itemContent, itemPrice, image_url, endTime, userId)
+try:
+file = request.files['itemImage']
+filename = file.filename
+itemName = request.form.get('itemName')
+itemContent = request.form.get('itemContent')
+itemPrice = request.form.get('itemPrice')
+itemImage = filename
+userId = request.form.get('userId')
+endTime = request.form.get('endTime')
+file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+image_url = 'http://43.202.66.215:5000/resources/' + file.filename
+print(image_url)
+return database.addItemInfo( itemName, itemContent, itemPrice, image_url, endTime, userId)
 
     except Exception as e:
         print(e)
         return jsonify({"message": "요청중 에러가 발생"}), 500, {'Content-Type': 'application/json'}
+
 ...
 ...
+
 ```
 
 - 근데 배포한 code deploy agent에 resources라는 디렉터리가 없음
 
 ```
+
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ls
 
-app.py       crontabFile  historyUpdate.py  package-lock.json  requirements.txt
-appspec.yml  database.py  node_modules      package.json       scripts
+app.py crontabFile historyUpdate.py package-lock.json requirements.txt
+appspec.yml database.py node_modules package.json scripts
+
 ```
 
----
 
-**(2-3) 디렉터리가 존재하지 않는 이유**
+
+### (2-3) 디렉터리가 존재하지 않는 이유
 
 - 테스트용 빈 디렉터리(testDir)를 하나 더 만들어서 실험
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testDir.jpg">
 
----
+
 
 - GitHub commit을 하면 빈 디렉터리는 commit되지 않음
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/commitedGitHub1.jpg">
 
----
+
 
 - `touch` 명령어를 이용하여 크기가 0인 파일 생성
 
 ```
+
 (venv) C:\Users\User\Desktop\project123\server\resources>touch .placeholder
+
 ```
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/commitedGitHub2.jpg">
 
 - 정상적으로 commit됨
 
----
+
 
 - 그러나 여전히 다시 배포한 code deploy agent에 resources라는 디렉터리가 없음
 
 ```
+
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-BCL59RJ22/deployment-archive$ ls
 
-app.py       crontabFile  historyUpdate.py  package-lock.json  requirements.txt
-appspec.yml  database.py  node_modules      package.json       scripts
+app.py crontabFile historyUpdate.py package-lock.json requirements.txt
+appspec.yml database.py node_modules package.json scripts
+
 ```
 
----
 
-**(3) AWS CodeDeploy를 잘못 이해하고 있었음**
+
+### (3) AWS CodeDeploy를 잘못 이해하고 있었음
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/awsCodeDeploy.jpg">
 
@@ -2139,80 +2098,88 @@ appspec.yml  database.py  node_modules      package.json       scripts
 - AWS CodeDeploy가 시행되기 위해선 Amazon EC2의 CodeDeploy Agent가 반드시 실행중이어야함
 
 ```
+
 ubuntu@ip-10-0-3-255:$ sudo service codedeploy-agent status
 
 ● codedeploy-agent.service - LSB: AWS CodeDeploy Host Agent
-     Loaded: loaded (/etc/init.d/codedeploy-agent; generated)
-     Active: active (running) since Wed 2023-11-22 10:32:17 UTC; 1 day 14h ago
-       Docs: man:systemd-sysv-generator(8)
-      Tasks: 4 (limit: 1121)
-     Memory: 91.5M
-        CPU: 29.000s
-     CGroup: /system.slice/codedeploy-agent.service
-             ├─22869 "codedeploy-agent: master 22869" "" "" "" "" "" "" "" "" "" "" "" "">
-             └─22871 "codedeploy-agent: InstanceAgent::Plugins::CodeDeployPlugin::Command>
+Loaded: loaded (/etc/init.d/codedeploy-agent; generated)
+Active: active (running) since Wed 2023-11-22 10:32:17 UTC; 1 day 14h ago
+Docs: man:systemd-sysv-generator(8)
+Tasks: 4 (limit: 1121)
+Memory: 91.5M
+CPU: 29.000s
+CGroup: /system.slice/codedeploy-agent.service
+├─22869 "codedeploy-agent: master 22869" "" "" "" "" "" "" "" "" "" "" "" "">
+└─22871 "codedeploy-agent: InstanceAgent::Plugins::CodeDeployPlugin::Command>
+
 ```
 
----
+
 
 - 실제 Flask App 서비스가 작동하고 있는 WorkDirectory는 `.server/scripts/runServer.sh`에 명시된 대로 `./home/ubuntu/ssgbay` 였음
 
 **./server/scrpts/runServer.sh**
 
 ```
+
 #!/bin/bash
 
-cd  /home/ubuntu/ssgbay
+cd /home/ubuntu/ssgbay
 
 echo ">>> run app -------------------------------------------------------"
 
 cron
 python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
+
 ```
 
 - `./opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/${DEPLOY_LATEST_DIRECTORY}/deployment-archive` 는 Amazon S3 Bucket에서 zip파일을 가져올 tmp 디렉터리였음
 
----
 
-**(4) 해결 방법**
+
+### (4) 해결 방법
 
 - 서비스가 작동하고 있는 디렉터리에 resources 디렉터리를 만들어 static folder 경로로 사용하면 됨
 
 **./server/scripts/afterInstall.sh**
 
 ```
+
 #!/bin/bash
 
-cd      /home/ubuntu/ssgbay
+cd /home/ubuntu/ssgbay
 
-echo    ">>> make static directory for upload images -----------------------"
-mkdir   resources
+echo ">>> make static directory for upload images -----------------------"
+mkdir resources
 ...
 ...
+
 ```
 
----
+
 
 - 정상적으로 폴더가 만들어진 것을 확인
 
 ```
+
 ubuntu@ip-10-0-3-255:~/ssgbay$ ls
 
-__pycache__  crontabFile  historyUpdate.py  package-lock.json  resources
-app.py       database.py  node_modules      package.json       scripts
+**pycache** crontabFile historyUpdate.py package-lock.json resources
+app.py database.py node_modules package.json scripts
+
 ```
 
----
 
-**(5) 재 배포 시 정상적으로 작동하는 것을 확인**
+
+### (5) 재 배포 시 정상적으로 작동하는 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/normal1.jpg">
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/normal2.jpg">
 
-### 5.6 Crontab
+## 5.6 Crontab
 
-**(1) Crontab 작동이 안함**
+### (1) Crontab 작동이 안함
 
 - Crontab: 정해 놓은 일정 시각이 되면 설정해둔 작업을 실행
   - 경매글 쓰기에서 경매 만료 시간을 설정
@@ -2222,65 +2189,71 @@ app.py       database.py  node_modules      package.json       scripts
 **./server/scripts/afterInstall.sh**
 
 ```
+
 #!/bin/bash
 
-cd      /home/ubuntu/ssgbay
+cd /home/ubuntu/ssgbay
 
-echo    ">>> make static directory for upload images -----------------------"
-mkdir   resources
+echo ">>> make static directory for upload images -----------------------"
+mkdir resources
 
-echo    ">>> pip install ---------------------------------------------------"
-pip     install -r requirements.txt
+echo ">>> pip install ---------------------------------------------------"
+pip install -r requirements.txt
 
-echo     ">>> npm install --------------------------------------------------"
-npm     install
-npm     run build
+echo ">>> npm install --------------------------------------------------"
+npm install
+npm run build
 
-echo    ">>> remove template files -----------------------------------------"
-rm      -rf  appspec.yml requirements.txt
+echo ">>> remove template files -----------------------------------------"
+rm -rf appspec.yml requirements.txt
 
-echo    ">>> change owner to ubuntu ----------------------------------------"
-chown   -R ubuntu /home/ubuntu/ssgbay
+echo ">>> change owner to ubuntu ----------------------------------------"
+chown -R ubuntu /home/ubuntu/ssgbay
+
 ```
 
 - 당연히 Crontab 관련 명시를 안 했으니 동작이 할리가 없음
 
----
 
-**(2) 해결 방법**
+
+### (2) 해결 방법**
 
 - 다음의 내용들을 추가
 
 **./server/scripts/afterInstall.sh**
 
 ```
+
 #!/bin/bash
 
 ...
 ...
-echo    ">>> cron settings -------------------------------------------------"
-crontab -l | { cat; echo "* * * * * /usr/bin/python3 /home/ubuntu/ssgbay/historyUpdate.py >> /var/log/cron.log 2>&1"; } | crontab -
+echo ">>> cron settings -------------------------------------------------"
+crontab -l | { cat; echo "\* \* \* \* \* /usr/bin/python3 /home/ubuntu/ssgbay/historyUpdate.py >> /var/log/cron.log 2>&1"; } | crontab -
 ...
 ...
+
 ```
 
 **./server/scripts/runServer.sh**
 
 ```
+
 #!/bin/bash
 
-cd      /home/ubuntu/ssgbay
+cd /home/ubuntu/ssgbay
 
-echo    ">>> run app -------------------------------------------------------"
+echo ">>> run app -------------------------------------------------------"
 
 cron
 
 python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
+
 ```
 
----
 
-**(3) 재 배포 시 정상적으로 작동하는 것을 확인**
+
+### (3) 재 배포 시 정상적으로 작동하는 것을 확인
 
 - test1 user가 등록한 우영미 반팔1을 test2 user가 입찰
 
@@ -2290,7 +2263,7 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt3.jpg">
 
----
+
 
 - 작동 확인
 
@@ -2302,4 +2275,6 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/preHistory2.jpg">
 
-## 6. 후기
+# 6. 후기
+
+```
