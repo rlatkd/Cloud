@@ -4,7 +4,7 @@ resource "aws_iam_user" "rlatkdReact" {
 }
 
 module "iam_policy_react" {
-  source = "./policy/iamPolicyReact.tf"
+  source = "../authority/iamPolicyReact.tf"
 }
 
 resource "aws_iam_user_policy_attachment" "attach_policy_to_user" {
@@ -19,7 +19,7 @@ resource "aws_iam_user" "rlatkdFlask" {
 }
 
 module "iam_policy_flask" {
-  source = "./policy/iamPolicyFlask.tf"
+  source = "../authority/iamPolicyFlask.tf"
 }
 
 resource "aws_iam_user_policy_attachment" "attach_policy_to_user" {
@@ -34,7 +34,7 @@ resource "aws_iam_user" "rlatkdMySQL" {
 }
 
 module "iam_policy_mysql" {
-  source = "./policy/iamPolicyMySQL.tf"
+  source = "../authority/iamPolicyMySQL.tf"
 }
 
 resource "aws_iam_user_policy_attachment" "attach_policy_to_user" {
