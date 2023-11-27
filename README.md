@@ -358,13 +358,13 @@
 
 ### (1) 초기 설정
 
-#### rlatkdReact 계정 생성 후 로그인
+### rlatkdReact 계정 생성 후 로그인
 
 ## <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
 
 ### (2) Amazon S3 Bucket 설정
 
-#### Amazon S3 Bucket 생성
+### Amazon S3 Bucket 생성
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
 
@@ -374,7 +374,7 @@
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket4.jpg">
 
-#### 정적 웹 사이트 호스팅 활성화
+### 정적 웹 사이트 호스팅 활성화
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate1.jpg">
 
