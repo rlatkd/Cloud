@@ -171,12 +171,12 @@
 
 **(1) 계정 권한**
 
-| User            | Authority                               |
-| --------------- | --------------------------------------- |
-| rlatkdReact     | AmazonS3FullAccess                      |
-| rlatkdFlask     | AmazonEC2FullAccess                     |
-| rlatkdMySQL     | AmazonS3FullAccess, AmazonRDSFullAccess |
-| rlatkdTerraform | AdministratorAccess                     |
+| User            | Authority                                                        |
+| --------------- | ---------------------------------------------------------------- |
+| rlatkdReact     | AmazonS3FullAccess                                               |
+| rlatkdFlask     | AmazonEC2FullAccess, AmazonS3FullAccess, AWSCodeDeployFullAccess |
+| rlatkdMySQL     | AmazonEC2FullAccess, AmazonRDSFullAccess                         |
+| rlatkdTerraform | AdministratorAccess                                              |
 
 ---
 

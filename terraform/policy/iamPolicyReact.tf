@@ -1,15 +1,13 @@
-resource "aws_iam_policy" {
-  name        = "iamReact"
+# rlatkdReact Authority
+resource "aws_iam_policy" "iamPolicyReact" {
+  name        = "iamPolicyReact"
   path        = "/"
   description = "policy for rlatkdReact"
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-      {
-        "Effect" : "Allow",
-        "Action" : "*",
-        "Resource" : "*"
-      },
+
+      # AmazonS3FullAccess
       {
         "Effect" : "Allow",
         "Action" : [
