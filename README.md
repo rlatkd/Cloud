@@ -172,13 +172,13 @@
 
 ## 1.1 프로젝트 개요
 
-- 프로젝트 이름: DevOps
-- 프로젝트 목적:
+- **프로젝트 이름**: DevOps
+- **프로젝트 목적**:
   - 기존의 SSGBay 애플리케이션을 AWS에 배포
   - Terraform을 이용해 인프라를 코드로 자동 구성
   - GitHub Actions와 AWS CodeDeploy를 이용해 CI/CD 파이프라인 구축
   - 해당 서비스 앱의 main branch에서 커밋하면 자동으로 배포
-- 프로젝트 기간: 2023.11.22 ~ 진행중(Terraform)
+- **프로젝트 기간**: 2023.11.22 ~ 2023.11.28
 
 ## 1.2 서비스
 
@@ -196,13 +196,12 @@
 
 ## 1.3 프로젝트 진행 과정
 
-| 일별                    | 내용                                |
-| ----------------------- | ----------------------------------- |
-| 1일차 (11.22)           | AWS를 이용한 기본 배포              |
-| 2일차 (11.23)           | Terraform을 이용한 인프라 구축      |
-| 3~4일차 (11.24 ~ 11.25) | GitHub Actions를 이용한 배포 자동화 |
-| 7일차 (11.01)           | 44                                  |
-| 8일차 (11.02)           | 55                                  |
+| 일별                    | 내용                                                 |
+| ----------------------- | ---------------------------------------------------- |
+| 1일차 (11.22)           | AWS를 이용한 기본 배포                               |
+| 2일차 (11.23)           | Terraform을 이용한 인프라 구축                       |
+| 3일차 (11.24)           | GitHub Actions와 AWS CodeDeploy를 이용한 배포 자동화 |
+| 4~7일차 (11.25 ~ 11.28) | Trouble Shooting                                     |
 
 ## 1.4 전체 구조
 
@@ -241,19 +240,19 @@
 
 ### (3) 앱 디렉터리 구조
 
-- workflows/deploy.yml
+- **workflows/deploy.yml**
 
   - Github Actions를 이용해 자동화한 작업 과정
   - 폴더 아래에 위치한 YAML 파일로 작업 과정을 설정
   - 하나의 코드 저장소(GitHub Repository)에 여러 개의 워크플로우 설정이 가능
   - 해당 워크플로우는 `on` 속성을 이용해 언제 실행되는지와 `job` 속성을 이용해 구체적으로 어떤 일을 하는지 명시
 
-- appspec.yml
+- **appspec.yml**
 
   - AWS CodeDeploy를 이용해 자동화한 작업 과정
   - React 앱은 Amazon EC2가 아닌 Amazon S3 Bucket에 정적 상태로 저장하기 때문에 사용하지 않음
 
-- scripts
+- **scripts**
 
   - appspec.yml에 사용할 shell script들이 있는 폴더
 
@@ -285,15 +284,15 @@
 
 ### (5) Terraform 디렉터리 구조
 
-- authority
+- **authority**
 
   - 각 사용자 및 Amazon EC2 Instance에 쓰일 권한 모음 폴더
 
-- module
+- **module**
 
   - 서비스 별로 나누어 권한, 정책, 생성 등을 명시한 폴더
 
-- main.tf
+- **main.tf**
   - `terraform apply` 명령어를 실행하면 각 resource 들에 명시된대로 인프라 구성 및 설정
 
 ## 1.5 AWS 설정 구조
@@ -359,7 +358,7 @@
 
 ### (1) 초기 설정
 
-- rlatkdReact 계정 생성 후 로그인
+#### rlatkdReact 계정 생성 후 로그인
 
 ## <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
 
