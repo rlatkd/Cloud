@@ -37,6 +37,16 @@
     - (2) Amazon RDS 설정
     - (3) Database 설정
 - [Terraform](#3-Terraform)
+  - 3.1 초기 설정
+    - (1) 초기 설정-1
+    - (2) 초기 설정-2
+  - 3.2 Terrform을 이용해 인프라 구성
+    - (1) Terraform apply
+  - 3.3 구성된 인프라 확인
+    - (1) VPC 구성 확인
+    - (2) Amazon EC2 Instance 확인
+    - (3) Amazon S3 Bucket 확인
+    - (4) Amazon RDS 확인
 - [Github Actions & AWS CodeDeploy](#4-Github-Actions--AWS-CodeDeploy)
   - 4.1 Frontend
     - (1) GitHub Actions
