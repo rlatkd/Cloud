@@ -152,11 +152,15 @@
 
 (2) 직접 EC2 Instance 내부로 들어가서 작업
 
-(3) AWS CodeDeploy를 잘못 이해하고 있었음
+(3) 백그라운드로 실행시키고 있는 Flask를 종료 후 포그라운드로 실행한 다음 요청 및 응답을 확인
 
-(4) 해결 방법
+(4) 디렉터리가 존재하지 않는 이유
 
-(5) 재 배포 시 정상적으로 작동하는 것을 확인
+(5) AWS CodeDeploy를 잘못 이해하고 있었음
+
+(6) 해결 방법
+
+(7) 재 배포 시 정상적으로 작동하는 것을 확인
 
 ### 5.6 Crontab
 
@@ -1892,7 +1896,7 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/createBoard2.jpg">
 
-### (1-7) POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
+- POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
 
 ### (2) 직접 EC2 Instance 내부로 들어가서 작업
 
