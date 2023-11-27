@@ -6,84 +6,124 @@
 
 ### 1.1 프로젝트 개요
 
-- 1.2 서비스
-  - (1) Deployment
-  - (2) Iac (Infrastructure as Code)
-  - (3) CI/CD (Continuous Integration/Continuos Delivery)
-- 1.3 프로젝트 진행 과정
-- 1.4 전체 구조
-  - (1) Frontend GitHub Repository
-  - (2) Backend GitHub Repository
-  - (3) 디렉터리 구조
-- 1.5 AWS 설정 구조
-  - (1) 계정 권한
-  - (2) 키
-  - (3) 그룹 당 규칙
-  - (4) 역할
-- 1.6 인프라 구조
-- [Amazon Web Service](#2-Amazon-Web-Service)
-  - 2.1 Frontend (Amazon S3 Bucket)
-    - (1) 초기 설정
-    - (2) Amazon S3 Bucket 설정
-    - (3) Amazon S3 Bucket에 배포
-    - (4) 서비스 정상 작동 확인
-  - 2.2 Frontend (AWS CloudFront)
-    - (1) Amazon S3 Bucket만으로 정적 웹 호스팅을 서비스할 때 문제점
-    - (2) AWS CloudFront
-    - (3) 기타 설정
-  - 2.3 Backend (Amazon EC2)
-    - (1) 초기 설정
-    - (2) Amazon EC2 Instance 설정
-  - 2.4 Database (Amazon RDS)
-    - (1) 초기 설정
-    - (2) Amazon RDS 설정
-    - (3) Database 설정
-- [Terraform](#3-Terraform)
-  - 3.1 초기 설정
+### 1.2 서비스
+
+- (1) Deployment
+- (2) Iac (Infrastructure as Code)
+- (3) CI/CD (Continuous Integration/Continuos Delivery)
+
+### 1.3 프로젝트 진행 과정
+
+### 1.4 전체 구조
+
+- (1) Frontend GitHub Repository
+- (2) Backend GitHub Repository
+- (3) 디렉터리 구조
+
+### 1.5 AWS 설정 구조
+
+- (1) 계정 권한
+- (2) 키
+- (3) 그룹 당 규칙
+- (4) 역할
+
+### 1.6 인프라 구조
+
+## [Amazon Web Service](#2-Amazon-Web-Service)
+
+### 2.1 Frontend (Amazon S3 Bucket)
+
+- (1) 초기 설정
+- (2) Amazon S3 Bucket 설정
+- (3) Amazon S3 Bucket에 배포
+- (4) 서비스 정상 작동 확인
+
+### 2.2 Frontend (AWS CloudFront)
+
+- (1) Amazon S3 Bucket만으로 정적 웹 호스팅을 서비스할 때 문제점
+- (2) AWS CloudFront
+- (3) 기타 설정
+
+### 2.3 Backend (Amazon EC2)
+
+- (1) 초기 설정
+- (2) Amazon EC2 Instance 설정
+
+### 2.4 Database (Amazon RDS)
+
+- (1) 초기 설정
+- (2) Amazon RDS 설정
+- (3) Database 설정
+
+## [Terraform](#3-Terraform)
+
+### 3.1 초기 설정
+
     - (1) 초기 설정-1
     - (2) 초기 설정-2
-  - 3.2 Terrform을 이용해 인프라 구성
+
+### 3.2 Terrform을 이용해 인프라 구성
+
     - (1) terraform apply
-  - 3.3 자동으로 구성된 인프라
+
+### 3.3 자동으로 구성된 인프라
+
     - (1) VPC 구성 확인
     - (2) Amazon EC2 Instance 확인
     - (3) Amazon S3 Bucket 확인
     - (4) Amazon RDS 확인
-- [Github Actions & AWS CodeDeploy](#4-Github-Actions--AWS-CodeDeploy)
-  - 4.1 Frontend
+
+## [Github Actions & AWS CodeDeploy](#4-Github-Actions--AWS-CodeDeploy)
+
+### 4.1 Frontend
+
     - (1) GitHub Actions
     - (2) React test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
-  - 4.2 Backend
+
+### 4.2 Backend
+
     - (1) AWS CodeDeploy
     - (2) GitHub Actions
     - (3) Flask test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
-- [Trouble Shooting](#5-Trouble-Shooting)
 
-  - 5.1 Frontend
+## [Trouble Shooting](#5-Trouble-Shooting)
+
+### 5.1 Frontend
+
     - (1) autoprefixer
     - (2) eslint: <img> alt
     - (3) eslint: eqeqeq
-  - 5.2 Backend
+
+### 5.2 Backend
+
     - (1) 배포했으나 연결할 수 없음
     - (2) 해결 방법
     - (3) 정상 작동 확인
-  - 5.3 Backend - Database
+
+### 5.3 Backend - Database
+
     - (1) Backend와 Database 연동이 안 됨
     - (2) 해결 방법
     - (3) 재 배포 시 정상으로 작동하는 것을 확인
-  - 5.4 Frontend - Backend
+
+### 5.4 Frontend - Backend
+
     - (1) Frotnend와 Backend 연동이 안 됨
     - (2) 해결 방법
     - (3) 재 배포 시 정상으로 작동하는 것을 확인
     - (4) SSL 인증-1
     - (5) SSL 인증-2
-  - 5.5 시연
+
+### 5.5 시연
+
     - (1) 이미지 업로드가 안 됨
     - (2) 직접 EC2 Instance 내부로 들어가서 작업
     - (3) AWS CodeDeploy를 잘못 이해하고 있었음
     - (4) 해결 방법
     - (5) 재 배포 시 정상적으로 작동하는 것을 확인
-  - 5.6 Crontab
+
+### 5.6 Crontab
+
     - (1) Crontab 작동이 안함
     - (2) 해결 바법
     - (3) 재 배포 시 정상적으로 작동하는 것을 확인
