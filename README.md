@@ -1640,47 +1640,47 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 - 현재 아무런 데이터도 없음
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/emptyDatas1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/emptyDatas2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/emptyDatas3.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas3.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/emptyDatas4.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas4.jpg">
 
 ---
 
 - 임의의 아이디와 비밀번호로 로그인 시도
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/randUser.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/randUser.jpg">
 
 ---
 
 - 테스트용 임의의 계정을 생성하여 로그인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/testUser.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUser.jpg">
 
 ---
 
 - 데이터베이스에 추가된 것을 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/testUserDb.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUserDb.jpg">
 
 ---
 
 - 토근 정상 발급 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/token1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/token1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/token2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/token2.jpg">
 
 ---
 
 - 로그인 상태에서 경매 물품 등록 글쓰기
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/createBoard1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/createBoard1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/createBoard2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/createBoard2.jpg">
 
 - POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
 
@@ -1745,7 +1745,7 @@ Press CTRL+C to quit
 
 - 재시도
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/retry.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/retry.jpg">
 
 - 파일이나 디렉터리를 찾을 수 없음
 
@@ -1759,7 +1759,7 @@ Press CTRL+C to quit
 
 - server 전체 구성 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/server.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/server.jpg">
 
 - resources라는 정적 디렉터리에 이미지 파일을 저장하는 형식
 
@@ -1809,13 +1809,13 @@ appspec.yml  database.py  node_modules      package.json       scripts
 
 - 테스트용 빈 디렉터리(testDir)를 하나 더 만들어서 실험
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/testDir.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testDir.jpg">
 
 ---
 
 - GitHub commit을 하면 빈 디렉터리는 commit되지 않음
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/commitedGitHub1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/commitedGitHub1.jpg">
 
 ---
 
@@ -1825,7 +1825,7 @@ appspec.yml  database.py  node_modules      package.json       scripts
 (venv) C:\Users\User\Desktop\project123\server\resources>touch .placeholder
 ```
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/commitedGitHub2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/commitedGitHub2.jpg">
 
 - 정상적으로 commit됨
 
@@ -1844,7 +1844,7 @@ appspec.yml  database.py  node_modules      package.json       scripts
 
 **(3) AWS CodeDeploy를 잘못 이해하고 있었음**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/awsCodeDeploy.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/awsCodeDeploy.jpg">
 
 - AWS CodeDeploy는 Amazon S3 Bucket에서 빌드 산출물을 압축 파일로 가져와서 배포해줌
 - AWS CodeDeploy에는 빌드 기능이 없기 때문에 별도의 빌드 과정이 필요함
@@ -1918,9 +1918,9 @@ app.py       database.py  node_modules      package.json       scripts
 
 **(5) 재 배포 시 정상적으로 작동하는 것을 확인**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/normal1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/normal1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/normal2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/normal2.jpg">
 
 ### 5.6 Crontab
 
@@ -1996,11 +1996,11 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 - test1 user가 등록한 우영미 반팔1을 test2 user가 입찰
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/buyTshirt1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/buyTshirt2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/buyTshirt3.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt3.jpg">
 
 ---
 
@@ -2008,10 +2008,10 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 **2023-11-24 am10:30 전**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/preHistory1.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/preHistory1.jpg">
 
 **2023-11-24 am10:30 후**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/rehearsal/preHistory2.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/preHistory2.jpg">
 
 ## 6. 후기
