@@ -2,7 +2,7 @@
 
 # 0. 목차
 
-## [1. 개요](#1-개요)
+## [개요](#1-개요)
 
 ### 1.1 프로젝트 개요
 
@@ -36,7 +36,7 @@
 
 ### 1.6 인프라 구조
 
-## [2. Amazon Web Service](#2-Amazon-Web-Service)
+## [Amazon Web Service](#2-Amazon-Web-Service)
 
 ### 2.1 Frontend (Amazon S3 Bucket)
 
@@ -70,7 +70,7 @@
 
 (3) Database 설정
 
-## [3. Terraform](#3-Terraform)
+## [Terraform](#3-Terraform)
 
 ### 3.1 초기 설정
 
@@ -92,7 +92,7 @@
 
 (4) Amazon RDS 확인
 
-## [4. Github Actions & AWS CodeDeploy](#4-Github-Actions--AWS-CodeDeploy)
+## [Github Actions & AWS CodeDeploy](#4-Github-Actions--AWS-CodeDeploy)
 
 ### 4.1 Frontend
 
@@ -108,7 +108,7 @@
 
 (3) Flask test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
 
-## [5. Trouble Shooting](#5-Trouble-Shooting)
+## [Trouble Shooting](#5-Trouble-Shooting)
 
 ### 5.1 Frontend
 
@@ -166,7 +166,7 @@
 
 (3) 재 배포 시 정상적으로 작동하는 것을 확인
 
-### [6. 후기](#6-후기)
+## [후기](#6-후기)
 
 # 1. 개요
 
