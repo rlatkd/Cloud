@@ -4,7 +4,8 @@
 
 ## [개요](#1-개요)
 
-- 1.1 프로젝트 개요
+### 1.1 프로젝트 개요
+
 - 1.2 서비스
   - (1) Deployment
   - (2) Iac (Infrastructure as Code)
