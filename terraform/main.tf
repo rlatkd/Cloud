@@ -27,5 +27,19 @@ module "custom_vpc" {
 }
 
 
-
 # ec2.tf를 참조하여 EC2 생성
+module "ec2_instance" {
+  source = "./module/ec2.tf"
+}
+
+
+# s3React.tf를 참조하여 s3 생성
+module "s3" {
+  source = "./module/s3React.tf"
+}
+
+
+# rds.tf를 참조하여 rds 생성
+module "rds" {
+  source = "./module/rds.tf"
+}

@@ -60,7 +60,6 @@ resource "aws_subnet" "rlatkdVPC-subnet-private2-ap-northeast-2a" {
 # 인터넷 게이트웨이 생성 (퍼블릭용)
 resource "aws_internet_gateway" "rlatkdVPC-igw" {
   vpc_id = aws_vpc.rlatkdVPC.id
-
   tags = {
     Name = "rlatkdVPC-igw"
   }
@@ -70,12 +69,10 @@ resource "aws_internet_gateway" "rlatkdVPC-igw" {
 # VPC에 대한 라우팅 테이블 생성 및 인터넷 게이트웨이 연결 (퍼블릭용)
 resource "aws_route_table" "rlatkdVPC-rtb-public" {
   vpc_id = aws_vpc.rlatkdVPC.id
-
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.rlatkdVPC-igw.id
   }
-
   tags = {
     Name = "rlatkdVPC-rtb-public"
   }
