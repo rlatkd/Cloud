@@ -548,6 +548,8 @@
 
 ### (4) 서비스 정상 작동 확인
 
+### (4-1) 브라우저로 AWS CloudFront의 웹 사이트 앤드포인트로 접근
+
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/connectedFrontend.jpg">
 
 ## 2.3 Backend (Amazon EC2)
