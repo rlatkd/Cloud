@@ -540,7 +540,7 @@
 - 기본값 루트 객체에 인덱스 페이지의 파일명을 입력
 - `/`는 입력하면 안 됨
 
-### (3-5) 초기 설정-5
+### (3-5) 설정-5
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings5.jpg">
 
