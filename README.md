@@ -862,6 +862,7 @@ commands will detect it and remind you to do so if necessary.
 
 ```
 C:\aws> terraform apply
+
 aws_instance.example: Refreshing state... [id=i-060ecf5b27718c689]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
@@ -1041,7 +1042,6 @@ jobs:
 ```
 ...
 ...
-
           {
             isLogin  ? (<button onClick={handlerLogout}>로그아웃</button>) :
             (<button><Link to='/login'>테스트/회원가입</Link></button>)
@@ -1227,10 +1227,6 @@ pip     install -r requirements.txt
 echo    ">>> cron settings -------------------------------------------------"
 crontab -l | { cat; echo "* * * * * /usr/bin/python3 /home/ubuntu/ssgbay/historyUpdate.py >> /var/log/cron.log 2>&1"; } | crontab -
 
-echo     ">>> npm install --------------------------------------------------"
-npm     install
-npm     run build
-
 echo    ">>> remove template files -----------------------------------------"
 rm      -rf  appspec.yml requirements.txt
 
@@ -1250,7 +1246,6 @@ echo    ">>> run app -------------------------------------------------------"
 cron
 
 python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
-
 ```
 
 ### (2) GitHub Actions
@@ -1466,7 +1461,6 @@ Line 38:20:  Expected '===' and instead saw '=='                   eqeqeq
 > }
 > ...
 > ...
->
 > ```
 
 ## 5.2 Backend
@@ -1558,14 +1552,12 @@ PyMySQL 1.1.0
 pyOpenSSL 21.0.0
 ...
 ...
-
 ```
 
 ### (2-5) PyJWT 버전 변경
 
 ```
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-G5SGOXI12/deployment-archive$ sudo pip install PyJWT==v1.7.1
-
 ```
 
 ### (3) 정상 작동 확인
@@ -1589,8 +1581,6 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
 
 ### (1-1) Amazon EC2(Flask) 내부에서 접속
-
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/ec2rdsrule.jpg">
 
 ```
 ubuntu@ip-10-0-3-255:~$ sudo apt-get update
@@ -1693,7 +1683,7 @@ mysql> select * from history
 
 ### (2) 해결 방법
 
-### (2-1) database.py historyupdate.py 의 dbconnection을 수정
+### (2-1) database.py와 historyupdate.py 의 dbconnection을 수정
 
 ```
 ...
@@ -1833,7 +1823,7 @@ server {
 - 3개월 마다 자동 갱신을 하도록 해줄 수도 있음 - crontab 이용
 
 ```
-$ [cron 형식] /usr/bin/certbot renew --renew-hook="sudo systemctl restart apache2"
+$ [CRON 형식] /usr/bin/certbot renew --renew-hook="sudo systemctl restart apache2"
 ```
 
 ### (5) SSL 인증-2
@@ -1872,7 +1862,6 @@ WantedBy=multi-user.target
 
 ```
 sudo vi /etc/caddy/Caddyfile
-
 ```
 
 ```
@@ -1888,7 +1877,6 @@ reverse_proxy localhost:8080 # 들어오는 요청을 8080포트로 포워딩
 10.100.100.100.nip.io {
 reverse_proxy localhost:8080
 }
-
 ```
 
 ### (5-3) Caddy 동작 확인
@@ -1897,7 +1885,6 @@ reverse_proxy localhost:8080
 sudo systemctl daemon-reload
 sudo systemctl enable --now caddy
 sudo systemctl status -l caddy
-
 ```
 
 ```
@@ -1910,13 +1897,11 @@ Docs: https://caddyserver.com/docs/
 Main PID: 11243 (caddy)
 CGroup: /system.slice/caddy.service
 └─11243 /usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
-
 ```
 
 ### (5-4) 설정 상태
 
 ```
-
 2023/11/25 13:56:33.748 INFO using adjacent Caddyfile
 2023/11/25 13:56:33.749 WARN Caddyfile input is not formatted; run the 'caddy fmt' command to fix inconsistencies {"adapter": "caddyfile", "file": "Caddyfile", "line": 2}
 2023/11/25 13:56:33.749 INFO admin admin endpoint started {"address": "0.0.0.0:2020", "enforce_origin": false, "origins": ["//0.0.0.0:2020"]}
@@ -1934,7 +1919,6 @@ CGroup: /system.slice/caddy.service
 2023/11/25 13:56:33.754 INFO tls finished cleaning storage units
 2023/11/25 13:56:33.754 INFO tls.cache.maintenance started background certificate maintenance {"cache": "0xc000335490"}
 Successfully started Caddy (pid=23624) - Caddy is running in the background
-
 ```
 
 ## 5.5 시연
@@ -1982,14 +1966,12 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 ### (2-1) Amazon EC2 내부로 들어가서 확인
 
 ```
-
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ps -ef | grep python3
 
 root 398 1 0 Nov22 ? 00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
 root 567 1 0 Nov22 ? 00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
 ubuntu 38514 1 0 23:12 ? 00:00:00 python3 -u app.py
 ubuntu 38537 38323 0 23:14 pts/0 00:00:00 grep --color=auto python3
-
 ```
 
 - Flask 서버는 현재 잘 작동되고 있음 (당연히 다른 서비스가 잘 동작하니 서버에 문제가 생긴 건 아님)
@@ -1999,21 +1981,17 @@ ubuntu 38537 38323 0 23:14 pts/0 00:00:00 grep --color=auto python3
 ### (3-1) 서비스 중인 Flask App 종료
 
 ```
-
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ kill -9 38514
-
 ```
 
 ### (3-2) 종료된지 확인
 
 ```
-
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ps -ef | grep python3
 
 root 398 1 0 Nov22 ? 00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
 root 567 1 0 Nov22 ? 00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
 ubuntu 38547 38323 0 23:15 pts/0 00:00:00 grep --color=auto python3
-
 ```
 
 - 정상적으로 종료됨
@@ -2021,7 +1999,6 @@ ubuntu 38547 38323 0 23:15 pts/0 00:00:00 grep --color=auto python3
 ### (3-3) 다시 포그라운드로 실행
 
 ```
-
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ python3 app.py
 
 - Serving Flask app 'app'
@@ -2031,7 +2008,6 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 - Running on http://127.0.0.1:5000
 - Running on http://10.0.3.255:5000
   Press CTRL+C to quit
-
 ```
 
 ### (3-4) 재시도
@@ -2041,11 +2017,9 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 ### (3-5) 파일이나 디렉터리를 찾을 수 없음
 
 ```
-
 121.166.242.167 - - [23/Nov/2023 23:16:45] "GET /?sort=date&keyword= HTTP/1.1" 200 -
 [Errno 2] No such file or directory: './resources/우영미1.JPEG'
 121.166.242.167 - - [23/Nov/2023 23:17:14] "POST /create HTTP/1.1" 500 -
-
 ```
 
 ### (3-6) server 전체 구성 확인
@@ -2055,7 +2029,6 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 ### (3-7) resources라는 정적 디렉터리에 이미지 파일을 저장하는 형식
 
 ```
-
 ...
 ...
 app = Flask(**name**, static_folder='./resources/')
@@ -2085,18 +2058,15 @@ return database.addItemInfo( itemName, itemContent, itemPrice, image_url, endTim
 
 ...
 ...
-
 ```
 
 ### (3-8) 근데 배포한 code deploy agent에 resources라는 디렉터리가 없음
 
 ```
-
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-3XWE5BBQE/deployment-archive$ ls
 
 app.py crontabFile historyUpdate.py package-lock.json requirements.txt
 appspec.yml database.py node_modules package.json scripts
-
 ```
 
 ### (4) 디렉터리가 존재하지 않는 이유
@@ -2112,9 +2082,7 @@ appspec.yml database.py node_modules package.json scripts
 ### (4-3) `touch` 명령어를 이용하여 크기가 0인 파일 생성
 
 ```
-
 (venv) C:\Users\User\Desktop\project123\server\resources>touch .placeholder
-
 ```
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/commitedGitHub2.jpg">
@@ -2124,12 +2092,10 @@ appspec.yml database.py node_modules package.json scripts
 ### (4-4) 그러나 여전히 다시 배포한 code deploy agent에 resources라는 디렉터리가 없음
 
 ```
-
 ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/d-BCL59RJ22/deployment-archive$ ls
 
 app.py crontabFile historyUpdate.py package-lock.json requirements.txt
 appspec.yml database.py node_modules package.json scripts
-
 ```
 
 ### (5) AWS CodeDeploy를 잘못 이해하고 있었음
@@ -2141,7 +2107,6 @@ appspec.yml database.py node_modules package.json scripts
 - AWS CodeDeploy가 시행되기 위해선 Amazon EC2의 CodeDeploy Agent가 반드시 실행중이어야함
 
 ```
-
 ubuntu@ip-10-0-3-255:$ sudo service codedeploy-agent status
 
 ● codedeploy-agent.service - LSB: AWS CodeDeploy Host Agent
@@ -2154,7 +2119,6 @@ CPU: 29.000s
 CGroup: /system.slice/codedeploy-agent.service
 ├─22869 "codedeploy-agent: master 22869" "" "" "" "" "" "" "" "" "" "" "" "">
 └─22871 "codedeploy-agent: InstanceAgent::Plugins::CodeDeployPlugin::Command>
-
 ```
 
 - 실제 Flask App 서비스가 작동하고 있는 WorkDirectory는 `.server/scripts/runServer.sh`에 명시된 대로 `./home/ubuntu/ssgbay` 였음
@@ -2162,16 +2126,15 @@ CGroup: /system.slice/codedeploy-agent.service
 **./server/scrpts/runServer.sh**
 
 ```
-
 #!/bin/bash
 
-cd /home/ubuntu/ssgbay
+cd      /home/ubuntu/ssgbay
 
-echo ">>> run app -------------------------------------------------------"
+echo    ">>> run app -------------------------------------------------------"
 
 cron
-python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
+python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 ```
 
 - `./opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1ff-97a1ce4c55d7/${DEPLOY_LATEST_DIRECTORY}/deployment-archive` 는 Amazon S3에서 zip파일을 가져올 tmp 디렉터리였음
@@ -2183,27 +2146,23 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 **./server/scripts/afterInstall.sh**
 
 ```
-
 #!/bin/bash
 
-cd /home/ubuntu/ssgbay
+cd      /home/ubuntu/ssgbay
 
-echo ">>> make static directory for upload images -----------------------"
-mkdir resources
+echo    ">>> make static directory for upload images -----------------------"
+mkdir   resources
 ...
 ...
-
 ```
 
 ### (6-2) 정상적으로 폴더가 만들어진 것을 확인
 
 ```
-
 ubuntu@ip-10-0-3-255:~/ssgbay$ ls
 
 **pycache** crontabFile historyUpdate.py package-lock.json resources
 app.py database.py node_modules package.json scripts
-
 ```
 
 ### (7) 재 배포 시 정상적으로 작동하는 것을 확인
@@ -2225,27 +2184,21 @@ app.py database.py node_modules package.json scripts
 **./server/scripts/afterInstall.sh**
 
 ```
-
 #!/bin/bash
 
-cd /home/ubuntu/ssgbay
+cd      /home/ubuntu/ssgbay
 
-echo ">>> make static directory for upload images -----------------------"
-mkdir resources
+echo    ">>> make static directory for upload images -----------------------"
+mkdir   resources
 
-echo ">>> pip install ---------------------------------------------------"
-pip install -r requirements.txt
+echo    ">>> pip install ---------------------------------------------------"
+pip     install -r requirements.txt
 
-echo ">>> npm install --------------------------------------------------"
-npm install
-npm run build
+echo    ">>> remove template files -----------------------------------------"
+rm      -rf  appspec.yml requirements.txt
 
-echo ">>> remove template files -----------------------------------------"
-rm -rf appspec.yml requirements.txt
-
-echo ">>> change owner to ubuntu ----------------------------------------"
-chown -R ubuntu /home/ubuntu/ssgbay
-
+echo    ">>> change owner to ubuntu ----------------------------------------"
+chown   -R ubuntu /home/ubuntu/ssgbay
 ```
 
 - 당연히 Crontab 관련 명시를 안 했으니 동작이 할리가 없음
@@ -2257,32 +2210,28 @@ chown -R ubuntu /home/ubuntu/ssgbay
 **./server/scripts/afterInstall.sh**
 
 ```
-
 #!/bin/bash
 
 ...
 ...
-echo ">>> cron settings -------------------------------------------------"
-crontab -l | { cat; echo "\* \* \* \* \* /usr/bin/python3 /home/ubuntu/ssgbay/historyUpdate.py >> /var/log/cron.log 2>&1"; } | crontab -
+echo    ">>> cron settings -------------------------------------------------"
+crontab -l | { cat; echo "* * * * * /usr/bin/python3 /home/ubuntu/ssgbay/historyUpdate.py >> /var/log/cron.log 2>&1"; } | crontab -
 ...
 ...
-
 ```
 
 **./server/scripts/runServer.sh**
 
 ```
-
 #!/bin/bash
 
-cd /home/ubuntu/ssgbay
+cd      /home/ubuntu/ssgbay
 
-echo ">>> run app -------------------------------------------------------"
+echo    ">>> run app -------------------------------------------------------"
 
 cron
 
 python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
-
 ```
 
 ### (3) 재 배포 시 정상적으로 작동하는 것을 확인
