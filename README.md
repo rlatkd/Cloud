@@ -62,9 +62,11 @@
 
 (1) Amazon S3만으로 정적 웹 호스팅을 서비스할 때 문제점
 
-(2) AWS CloudFront
+(2) 초기 설정
 
-(3) 초기 설정
+(3) AWS CloudFront 설정
+
+(4) 서비스 정상 작동 확인
 
 ### 2.3 Backend (Amazon EC2)
 
@@ -488,7 +490,7 @@
 - Amazon S3의 엔드포인트 주소를 그대로 사용해야 한다는 점
 - 해결하기 위해선 AWS CloudFront를 이용
 
-### (2) AWS CloudFront
+### (2) 초기 설정
 
 ### (2-1) AWS CloudFront란
 
@@ -509,9 +511,9 @@
 - 캐시 적중률을 높이고 오리진 서버의 부하를 줄여주어 로드 속도를 향상시키는 효과가 있음
 - Origin Shield를 활성화하면 요청이 Origin Shield를 경유할 때마다 비용이 추가로 발생
 
-### (3) 초기 설정
+### (3) AWS CloudFront 설정
 
-### (3-1) 초기 설정-1
+### (3-1) 설정-1
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings1.jpg">
 
@@ -519,19 +521,19 @@
 - 뷰어 프로토콜 정책는 **Redirect HTTP to HTTPS**로 설정 -> HTTP 프로토콜로 접속 시 자동으로 HTTPS로 리다이렉트됨
 - 허용된 HTTP 방법은 **GET, HEAD**로 설정 -> 정적 리소스를 배포할 것이기 때문에 다른 HTTP Method를 허용하지 않아도 됨
 
-### (3-2) 초기 설정-2
+### (3-2) 설정-2
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings2.jpg">
 
 - 캐시 키 및 원본 요청은 **CachingOptimized**를 선택 -> 대부분의 상황에서 적절한 캐시 정책을 바로 적용할 수 있음
 
-### (3-3) 초기 설정-3
+### (3-3) 설정-3
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings3.jpg">
 
 - 보통 모든 엣지 로케이션에서 사용(최고의 성능)을 사용하면 되지만, 비용을 절약해야 하는 상황이거나 서비스 지역 타겟이 정해져 있을 때 적절한 항목을 선택하면 됨
 
-### (3-4) 초기 설정-4
+### (3-4) 설정-4
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings4.jpg">
 
@@ -543,6 +545,10 @@
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings5.jpg">
 
 - React와 같은 SPA를 배포하는 상황이라면 Fallback Redirect 설정을 해주어야 함
+
+### (4) 서비스 정상 작동 확인
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/connectedFrontend.jpg">
 
 ## 2.3 Backend (Amazon EC2)
 
