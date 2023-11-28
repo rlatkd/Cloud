@@ -12,7 +12,7 @@
 
 (2) Iac (Infrastructure as Code)
 
-(3) CI/CD (Continuous Integration/Continuos Delivery)
+(3) CI/CD (Continuous Integration/Continuous Delivery)
 
 ### 1.3 프로젝트 진행 과정
 
@@ -24,7 +24,11 @@
 
 (2) Backend GitHub Repository
 
-(3) 디렉터리 구조
+(3) 앱 디렉터리 구조
+
+(4) Terraform GitHub Repository
+
+(5) Terraform 디렉터리 구조
 
 ### 1.6 AWS 설정 구조
 
@@ -297,9 +301,7 @@
  ├─────────── 📄 .terraform.lock.hcl
  ├─────────── 📄 main.tf
  ├─────────── 📄 terraform.tfstate
- ├─────────── 📄 terraform.tfstate.backup
-...
-...
+ └─────────── 📄 terraform.tfstate.backup
 ```
 
 ### (5) Terraform 디렉터리 구조
