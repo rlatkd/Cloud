@@ -16,7 +16,9 @@
 
 ### 1.3 프로젝트 진행 과정
 
-### 1.4 전체 구조
+### 1.4 인프라 구조
+
+### 1.5 전체 구조
 
 (1) Frontend GitHub Repository
 
@@ -24,7 +26,7 @@
 
 (3) 디렉터리 구조
 
-### 1.5 AWS 설정 구조
+### 1.6 AWS 설정 구조
 
 (1) 계정 권한
 
@@ -33,8 +35,6 @@
 (3) 그룹 당 규칙
 
 (4) 역할
-
-### 1.6 인프라 구조
 
 ## [Amazon Web Service](#2-Amazon-Web-Service)
 
@@ -170,6 +170,14 @@
 
 (3) 재 배포 시 정상적으로 작동하는 것을 확인
 
+### 5.7 배포 시간 단축
+
+(1) deploy.yml 템플릿 수정
+
+(2) 캐시 설정 전
+
+(3) 캐시 설정 후
+
 ## [후기](#6-후기)
 
 # 1. 개요
@@ -207,7 +215,11 @@
 | 3일차 (11.24)           | GitHub Actions와 AWS CodeDeploy를 이용한 배포 자동화 |
 | 4~7일차 (11.25 ~ 11.28) | Trouble Shooting                                     |
 
-## 1.4 전체 구조
+## 1.4 인프라 구조
+
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/infrastructure.jpg">
+
+## 1.5 전체 구조
 
 ### (1) Frontend GitHub Repository
 
@@ -299,7 +311,7 @@
 - **main.tf**
   - `terraform apply` 명령어를 실행하면 각 resource 들에 명시된대로 인프라 구성 및 설정
 
-## 1.5 AWS 설정 구조
+## 1.6 AWS 설정 구조
 
 ### (1) 계정 권한
 
@@ -351,10 +363,6 @@
 | Amazon EC2            | rlatkdEC2AccessS3Role (rlatkdCodeDeployEC2Policy) |
 | AWS CodeDeploy Group  | rlatkdCodeDeployRole                              |
 | GitHubActions - Flask | AccessKey: rlatkdFlask AK                         |
-
-## 1.6 인프라 구조
-
-# 미완
 
 # 2. Amazon Web Service
 
@@ -2275,16 +2283,36 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ```
 
-### (2) 캐시 사용 전
+### (2) 캐시 설정 전
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/beforeCache.jpg">
 
-### (3) 캐시 사용 후
+### (3) 캐시 설정 후
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/afterCache.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/afterCache1.jpg">
 
 ### (3-1) Amazon S3로 전송한 파일에 불필요한 파일 포함 여부
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/afterCache.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/afterCache2.jpg">
 
 # 6. 후기
+
+- 기본적인 3계층 구조를 퍼블릭 클라우드로 배포해서 Docker & Kubernetes와는 색다르게 재밌었습니다.
+
+- 또한 시연을 한 번에 성공한 것이 아닌 실패를 반복하며 구조들의 유기적인 흐름을 이해하는데 도움이 되었습니다.
+
+- 그 중 가장 중요하다고 생각하는 보안과 연관된 설정(ex. 그룹, 액세스, 정책, 권한 등)들을 많이 배웠고 이렇게 실습 형식이 아닌, 실무에서 적용할 수 있도록 더 공부해야 할 것 같습니다.
+
+- 모르는 것을 찾아볼 때 기존엔 구글링을 열심히 했지만 이번 기회 덕에 공식 문서를 자주 찾아봤고, 이를 통해 공식 문서에서 먼저 찾아보는 습관을 들였습니다.
+
+- 프로젝트를 일찍 완료하고 다른 사람들과 공유하고 도와주며, 저와는 다른 환경에서의 배포에 대해 Trouble Shooting을 같이 하며 많은 시간을 할애했습니다.
+
+- 이를 통해 정말 다양한 환경에서의 배포 과정에 대해 학습했으며, 일찍 완료했지만 다른 서비스들(ex. LB+ASG, EKS, GA를 이용한 Docker Image 생성, Lambda 등)을 시도하지 못 해 아쉽습니다.
+
+- 그래도 다음 최종 프로젝트는 약 2달 간의 기간이 있기때문에 이번 기회에 기본기를 확실히 다져놓은 것 같아 기대가 됩니다.
+
+- Terraform을 이용해 코드로 내가 구상한 인프라가 자동으로 생성되는 것이 너무 신기하고 재밌었으며, GitHub Actions와 AWS CodeDeploy를 통해 배포 자동화를 함으로써 안 그래도 재밌는 공부 더욱더 재밌어졌습니다.
+
+- 하루하루 지날 때마다 성장하고 있음을 느끼며 제 목표에 다다르는데 이제 시작이고, 앞으로의 내일들이 너무 기대가 됩니다.
+
+- 박창렴 강사님을 만난 건 제 인생 최고의 행운이었던 것 같습니다. 감사합니다.
