@@ -293,7 +293,7 @@
  │      ├──── 📄 role.tf
  │      ├──── 📄 s3React.tf
  │      └──── 📄 vpc.tf
- └─────────── 📄 main.tf
+ ├─────────── 📄 main.tf
 ...
 ...
 ```
@@ -324,9 +324,9 @@
 
 ### (2) 키
 
-| Service    | KeyPair                |
-| ---------- | ---------------------- |
-| Amazon EC2 | KeyPair: rlatkdKeyPair |
+| Service    | KeyPair       |
+| ---------- | ------------- |
+| Amazon EC2 | rlatkdKeyPair |
 
 | Service               | AccessKey       |
 | --------------------- | --------------- |
@@ -989,15 +989,31 @@ jobs:
 
 ### (2) React test 코드를 삽입 후 GitHub에 commit 시 자동으로 배포
 
-### (2-1) 배포 진행
+### (2-1) Header.js의 로그인/회원가입을 테스트/회원가입으로 변경
+
+**./client/src/styles/Header.js**
+
+```
+...
+...
+
+          {
+            isLogin  ? (<button onClick={handlerLogout}>로그아웃</button>) :
+            (<button><Link to='/login'>테스트/회원가입</Link></button>)
+          }
+...
+...
+```
+
+### (2-2) 배포 진행
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/deploy.jpg">
 
-### (2-2) 배포 성공
+### (2-3) 배포 성공
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/deploySuccess.jpg">
 
-### (2-3) 수정된 코드가 자동으로 배포되어 적용된 것을 확인
+### (2-4) 수정된 코드가 자동으로 배포되어 적용된 것을 확인
 
 <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/commitedReact.jpg">
 
