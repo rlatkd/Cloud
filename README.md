@@ -1397,7 +1397,7 @@ Warning
 
 ### (2) eslint: `<img> alt`
 
-### (2-1) ESLint란
+**(2-1) ESLint란**
 
 - ECMAScipt 코드에서 문제점을 검사하고 일부는 더 나은 코드로 정정하는 린트 도구
 
