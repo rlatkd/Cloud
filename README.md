@@ -1397,6 +1397,16 @@ Warning
 
 ### (2) eslint: `<img> alt`
 
+### (2-1) ESLint란
+
+- ECMAScipt 코드에서 문제점을 검사하고 일부는 더 나은 코드로 정정하는 린트 도구
+
+- 코드의 가독성을 높이고 잠재적인 오류와 버그를 제거해 단단한 코드를 만드는 목적
+
+- 코드에서 검사하는 항목
+  - 포맷팅: 일관된 코드 스타일을 유지하도록 하고 개발자로 하여금 쉽게 읽히는 코드를 만들어줌
+  - 코드 품질: 애플리케이션의 잠재적인 오류나 버그를 예방
+
 ```
 Line 160:15:  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
 ```
