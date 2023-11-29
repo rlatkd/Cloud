@@ -297,7 +297,7 @@
 ```
 📁 terraform
  ├──── 📁 .terraform
- ├──── 📁 authority
+ ├──── 📁 permission
  │      ├──── 📄 iamPolicyFlask.tf
  │      ├──── 📄 iamPolicyMySQL.tf
  │      ├──── 📄 iamPolicyReact.tf
@@ -324,7 +324,7 @@
 
   - `terrform init` 명령어를 실행하면 프로바이더를 참조하여 해당 환경을 설정해주는 파일을 모아둔 폴더
 
-- **authority**
+- **permission**
 
   - 각 사용자 및 Amazon EC2에 쓰일 정책 모음 폴더
 
@@ -354,7 +354,7 @@
 
 ### (1) 계정 권한
 
-| User            | Authority                                                        |
+| User            | permission                                                       |
 | --------------- | ---------------------------------------------------------------- |
 | rlatkdReact     | AmazonS3FullAccess                                               |
 | rlatkdFlask     | AmazonEC2FullAccess, AmazonS3FullAccess, AWSCodeDeployFullAccess |
