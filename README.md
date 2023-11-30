@@ -2341,4 +2341,4 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 # 7. 피드백
 
-# 미완
+-
