@@ -2341,28 +2341,28 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 # 7. 피드백
 
-- 개발 시 코딩 컨벤션 문서를 기반으로 lint 환경을 세팅하여 lint 에러가 발생할 때마다 왜 그런지 원인을 발견할 수 있도록 하는게 필요
+- 개발 시 코딩 컨벤션 문서를 기반으로 lint 환경을 세팅하여 lint 에러가 발생할 때마다 왜 그런지 원인을 발견할 수 있도록 하는게 필요함
 
 - 클린코드의 장점과 가독성이 좋은 코드의 장점을 살려 조화로운 코드를 짜야함
 
 - AWS SAA를 공부하며 다양한 서비스를 알게 되었는데, AWS CloudFront 말고도 다른 걸 시도해봤어야함
 
-- Amazon Route 53을 이용해 레코드를 연결할 생각 안 해봤나?
+- Amazon Route 53을 이용해 레코드를 연결할 생각해야함
 
 - 정책이나 역할 등의 권한을 해당하는 내용은 다 허용한다 했는데 명확히 제약 조건을 거는 것이 중요함
 
-- Amazon DynamoDB에 Terraform lock 파일 연동시킬 생각 안 했나?
+- Amazon DynamoDB에 Terraform lock 파일 연동시킬 생각해야함
 
-- GitHub Actions를 이용해서 Docker image 생성할 생각 안 했나?
+- GitHub Actions를 이용해서 Docker image 생성할 생각해야함
 
-- 보안 상의 이유로 허점을 좀 더 깊게 공부해서 명확하게 구분하고 파악할 수 있어야 함
+- 보안 상의 이유로 허점을 좀 더 깊게 공부해서 명확하게 구분하고 파악할 수 있어야함
 
 - 실시간 모니터링이나 로그 분석에 대한 생각을 좀 더 해야함
 
-- 조금 더 사용자의 관점에서 깊게 생각해봐야 함
+- 조금 더 사용자의 관점에서 깊게 생각해봐야함
 
-- SQS, SNS, Fargate, QuickSight, KMS, Backup 등 생소한 AWS 서비스들에 대해 이해를 높여야 함
+- SQS, SNS, Fargate, QuickSight, KMS, Backup 등 생소한 AWS 서비스들에 대해 이해를 높여야함
 
-- Redis, Jenkins, ArgoCD, ElasticSearch, Apache Kafka 등 생소한 외부 서비스들에 대한 이해를 높여야 함
+- Redis, Jenkins, ArgoCD, ElasticSearch, Apache Kafka 등 생소한 외부 서비스들에 대한 이해를 높여야함
 
-- 어떤 서비스가 어떤 역할을 하는지에 대해 끈임없이 공부해서 명확히 구분하고 적용할 생각을 해야 함
+- 어떤 서비스가 어떤 역할을 하는지에 대해 끈임없이 공부해서 명확히 구분하고 적용할 생각을 해야함
