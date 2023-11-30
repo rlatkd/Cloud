@@ -2365,4 +2365,4 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 - Redis, Jenkins, ArgoCD, ElasticSearch, Apache Kafka 등 생소한 외부 서비스들에 대한 이해를 높여야함
 
-- 어떤 서비스가 어떤 역할을 하는지에 대해 끈임없이 공부해서 명확히 구분하고 적용할 생각을 해야함
+- 어떤 서비스가 어떤 역할을 하는지에 대해 끊임없이 공부해서 명확히 구분하고 적용할 생각을 해야함
