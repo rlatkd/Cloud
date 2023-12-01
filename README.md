@@ -237,7 +237,7 @@
 
 ### (1) 인프라 구조
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/infrastructure.jpg">
+<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/infrastructure1.jpg">
 
 ## 1.5 전체 구조
 
