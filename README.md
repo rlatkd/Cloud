@@ -1,6 +1,6 @@
 # Development Operations project using AWS & Terraform & GitHub Actions
 
-# 0. 목차1
+# 0. 목차
 
 ## [개요](#1-개요)
 
