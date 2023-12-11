@@ -90,7 +90,7 @@
 
 (2) 초기 설정-2
 
-### 3.2 Terrform을 이용해 인프라 구성
+### 3.2 Terraform을 이용해 인프라 자동화
 
 (1) terraform apply
 
@@ -324,7 +324,7 @@
 
 - **.terraform**
 
-  - `terrform init` 명령어를 실행하면 프로바이더를 참조하여 해당 환경을 설정해주는 파일을 모아둔 폴더
+  - `terraform init` 명령어를 실행하면 프로바이더를 참조하여 해당 환경을 설정해주는 파일을 모아둔 폴더
 
 - **permission**
 
@@ -338,7 +338,7 @@
 
   - 파일 위치를 잠금으로서 두 작업이 비동기적으로 처리되게 설정하는 파일
 
-  - `terrform init` 명령어를 실행할 때 마다 자동으로 생성하거나 업데이트
+  - `terraform init` 명령어를 실행할 때 마다 자동으로 생성하거나 업데이트
 
 - **main.tf**
 
@@ -858,7 +858,7 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-## 3.2 Terraform을 이용해 인프라 구성
+## 3.2 Terraform을 이용해 인프라 자동화
 
 ### (1) `terraform apply`
 
