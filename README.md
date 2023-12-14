@@ -212,7 +212,7 @@
 
 ### (1) Deployment
 
-- Amazon Web Service (EC2, S3, RDS)
+- Amazon Web Service (EC2, S3, CloudFront, RDS)
 
 ### (2) Iac (Infrastructure as Code)
 
