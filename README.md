@@ -237,13 +237,13 @@
 
 ### (1) 인프라 구조
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/infrastructure1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/infrastructure1.jpg">
 
 ## 1.5 전체 구조
 
 ### (1) Frontend GitHub Repository
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/devopsReact.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/devopsReact.jpg">
 
 ```
 📁 client
@@ -257,7 +257,7 @@
 
 ### (2) Backend GitHub Repository
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/devopsFlask.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/devopsFlask.jpg">
 
 ```
 📁 server
@@ -294,7 +294,7 @@
 
 ### (4) Terraform GitHub Repository
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/devopsTerraform.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/terraform/devopsTerraform.jpg">
 
 ```
 📁 terraform
@@ -413,33 +413,33 @@
 
 ### (1-1) rlatkdReact 계정 생성 후 로그인
 
-## <img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactUser.jpg">
+## <img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/addReactUser.jpg">
 
 ### (2) Amazon S3 설정
 
 ### (2-1) Amazon S3 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/makeS3Bucket1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/makeS3Bucket2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/makeS3Bucket3.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/makeS3Bucket4.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/makeS3Bucket4.jpg">
 
 ### (2-2) 정적 웹 사이트 호스팅 활성화
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/staticWebHostingActivate1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/staticWebHostingActivate2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/staticWebHostingActivate2.jpg">
 
 ### (2-3) 버킷과 객체에 퍼블릭 액세스 권한 부여
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/addS3PublicAccessAutority1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/addS3PublicAccessAutority2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addS3PublicAccessAutority3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/addS3PublicAccessAutority3.jpg">
 
 ### (3) Amazon S3에 배포
 
@@ -473,15 +473,15 @@
 
 ### (3-2) 빌드한 React 앱 소스 코드를 Amazon S3에 등록
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/addReactCodeToBucket1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/addReactCodeToBucket2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/addReactCodeToBucket2.jpg">
 
 ### (4) 서비스 정상 작동 확인
 
 ### (4-1) 브라우저로 Amazon S3의 웹 사이트 앤드포인트로 접근
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/bucketEndpoint.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/bucketEndpoint.jpg">
 
 ## 2.2 Frontend (AWS CloudFront)
 
@@ -498,16 +498,16 @@
 
 - AWS Global Edge Server를 통해 CDN(Content Delivery Network) 역할을 해주는 AWS 서비스
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/OAI.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/OAI.jpg">
 
 - OAI를 설정하면 Amazon S3에 퍼블릭으로 공개하지 않고도 AWS CloudFront를 통해서 Amazon S3에 퍼블릭으로 접근할 수 있음
 - 동시에 AWS CloudFront를 우회하여 Amazon S3에 직접 액세스할 수 없음
 
 ### (2-2) Origin Shield
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/originShield1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/originShield1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/originShield2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/originShield2.jpg">
 
 - AWS CloudFront에서 캐싱 계층을 하나 더 추가하여 사용자(클라이언트)와 엣지 서버간의 거리를 줄이는 기능
 - 캐시 적중률을 높이고 오리진 서버의 부하를 줄여주어 로드 속도를 향상시키는 효과가 있음
@@ -517,7 +517,7 @@
 
 ### (3-1) 설정-1
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/settings1.jpg">
 
 - 자동으로 객체 압축을 **Yes**로 설정 -> 요청할 리소스의 파일 크기를 비약적으로 줄여줄 수 있음
 - 뷰어 프로토콜 정책는 **Redirect HTTP to HTTPS**로 설정 -> HTTP 프로토콜로 접속 시 자동으로 HTTPS로 리다이렉트됨
@@ -525,26 +525,26 @@
 
 ### (3-2) 설정-2
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/settings2.jpg">
 
 - 캐시 키 및 원본 요청은 **CachingOptimized**를 선택 -> 대부분의 상황에서 적절한 캐시 정책을 바로 적용할 수 있음
 
 ### (3-3) 설정-3
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/settings3.jpg">
 
 - 보통 모든 엣지 로케이션에서 사용(최고의 성능)을 사용하면 되지만, 비용을 절약해야 하는 상황이거나 서비스 지역 타겟이 정해져 있을 때 적절한 항목을 선택하면 됨
 
 ### (3-4) 설정-4
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings4.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/settings4.jpg">
 
 - 기본값 루트 객체에 인덱스 페이지의 파일명을 입력
 - `/`는 입력하면 안 됨
 
 ### (3-5) 설정-5
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/settings5.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/settings5.jpg">
 
 - React와 같은 SPA를 배포하는 상황이라면 Fallback Redirect 설정을 해주어야 함
 
@@ -552,7 +552,7 @@
 
 ### (4-1) 브라우저로 AWS CloudFront의 웹 사이트 앤드포인트로 접근
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/connectedFrontend.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/connectedFrontend.jpg">
 
 ## 2.3 Backend (Amazon EC2)
 
@@ -560,31 +560,31 @@
 
 ### (1-1) rlatkdFlask 계정 생성 후 로그인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/addFlaskUser.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/addFlaskUser.jpg">
 
 ### (1-2) VPC 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createVPC.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/createVPC.jpg">
 
 ### (1-3) 보안 그룹 생성
 
 `rlatkdFlaskWebServerSg`
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createSg.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/createSg.jpg">
 
 ### (2) Amazon EC2 설정
 
 ### (2-1) Public Subnet에 Amazon EC2를 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/createEC2Instance1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/createEC2Instance2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createEC2Instance3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/createEC2Instance3.jpg">
 
 ### (2-2) Amazon EC2의 Public IP 주소로 SSH 접속
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessSSH.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/accessSSH.jpg">
 
 ### (2-3) Apache HTTP Server 설치
 
@@ -612,7 +612,7 @@ Nov 22 09:37:20 ip-10-0-3-255 systemd[1]: Starting The Apache HTTP Server...
 Nov 22 09:37:20 ip-10-0-3-255 systemd[1]: Started The Apache HTTP Server.
 ```
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/installApache.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/installApache.jpg">
 
 ### (2-4) PHP 설치
 
@@ -659,35 +659,35 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 ### (1-1) rlatkdMySQL 계정 생성 후 로그인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/addMySQLUser.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/addMySQLUser.jpg">
 
 ### (2) Amazon RDS 설정
 
 ### (2-1) Private Subnet에 Amazon RDS를 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/createRDS1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/createRDS2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/createRDS3.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS4.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/createRDS4.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createRDS5.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/createRDS5.jpg">
 
 ### (2-2) Amazon RDS에서 Amazon EC2(Flask)로의 연결 설정
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/connectEC2Instance1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/connectEC2Instance2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectEC2Instance3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/connectEC2Instance3.jpg">
 
 - Amazon EC2(Flask)는 Backend server를 포함하며 Bastion Host 역할을 함
 
 ### (2-3) Bastion Host
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/bastionHost.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/bastionHost.jpg">
 
 - 배스천 호스트(Bation Host)는 내부 네트워크와 외부 네트워크 사이에 위치하는 게이트웨이
 
@@ -703,7 +703,7 @@ ubuntu@ip-10-0-3-255:/var/www/html$ ls
 
 ### (2-4) MySQL Workbench를 실행해서 RDS로의 연결 설정
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/connectWorkbench.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/connectWorkbench.jpg">
 
 ### (3) Database 설정
 
@@ -788,7 +788,7 @@ CREATE USER 'user1'@'%' IDENTIFIED BY '1234';
 GRANT ALL ON auction.* TO 'user1'@'%';
 ```
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/database/createSchemaTable.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/database/createSchemaTable.jpg">
 
 # 3. Terraform
 
@@ -798,11 +798,11 @@ GRANT ALL ON auction.* TO 'user1'@'%';
 
 ### (1-1) rlatkdTerraform 계정 생성 후 로그인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/tfUser.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/terraform/tfUser.jpg">
 
 ### (1-2) 액세스 키 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/tfAccessKey.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/terraform/tfAccessKey.jpg">
 
 ### (2) 초기 설정-2
 
@@ -929,19 +929,19 @@ Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 ### (1) VPC 구성 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/vpc.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/terraform/vpc.jpg">
 
 ### (2) Amazon EC2 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/ec2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/terraform/ec2.jpg">
 
 ### (3) Amazon S3확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/s3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/terraform/s3.jpg">
 
 ### (4) Amazon RDS 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/terraform/rds.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/terraform/rds.jpg">
 
 # 4. GitHub Actions & AWS CodeDeploy
 
@@ -953,15 +953,15 @@ Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 ### (1-1) Access Key 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/accessKey1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/accessKey1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/accessKey2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/accessKey2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/accessKey3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/accessKey3.jpg">
 
 ### (1-2) GitHub Repository(DevOps-React)에 Secret을 추가
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/githubReposSecrets.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/githubReposSecrets.jpg">
 
 ### (1-3) GitHub Actions를 이용해 자동화한 과정을 명시
 
@@ -1054,15 +1054,15 @@ jobs:
 
 ### (2-2) 배포 진행
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/deploy.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/deploy.jpg">
 
 ### (2-3) 배포 성공
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/deploySuccess.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/deploySuccess.jpg">
 
 ### (2-4) 수정된 코드가 자동으로 배포되어 적용된 것을 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/client/commitedReact.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/client/commitedReact.jpg">
 
 ## 4.2 Backend
 
@@ -1093,15 +1093,15 @@ jobs:
 
 **rlatkdEC2AccessS3Role**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/codedeployEC2role1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/codedeployEC2role2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployEC2role3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/codedeployEC2role3.jpg">
 
 ### (1-3) AWS Code Deploy Agent 설치
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployAgent.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/codedeployAgent.jpg">
 
 ```
 ubuntu@ip-10-0-3-255:/var/www/html$ sudo apt update
@@ -1148,27 +1148,27 @@ Nov 22 09:48:20 ip-10-0-3-255 systemd[1]: Started LSB: AWS CodeDeploy Host Agent
 
 **rlatkdCodeDeployRole**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createCodeDeployGroupRole1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/createCodeDeployGroupRole1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/createCodeDeployGroupRole2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/createCodeDeployGroupRole2.jpg">
 
 ### (1-6) AWS CodeDeploy 애플리케이션과 배포 그룹을 생성
 
 **애플리케이션**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployApp.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/codedeployApp.jpg">
 
 **배포 그룹**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployGroup1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/codedeployGroup1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployGroup2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/codedeployGroup2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/codedeployGroup3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/codedeployGroup3.jpg">
 
 ### (1-7) AWS CodeDeploy Agent가 앱을 가져올 Amazon S3 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/flaskS3Bucket.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/flaskS3Bucket.jpg">
 
 ### (1-8) AWS CodeDeploy를 이용해 자동화한 과정을 명시
 
@@ -1254,15 +1254,15 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ### (2-1) Access Key 생성
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/accessKey1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/accessKey2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/accessKey3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/accessKey3.jpg">
 
 ### (2-2) GitHub Repository(DevOps-Flask)에 Secret을 추가
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/githubReposSecrets.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/githubReposSecrets.jpg">
 
 ### (2-3) GitHub Actions를 이용해 자동화한 과정을 명시
 
@@ -1321,17 +1321,17 @@ jobs:
 
 ### (3-1) 배포 진행
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploy.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/deploy.jpg">
 
 ### (3-2) 배포 성공
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploySuccess1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/deploySuccess1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/deploySuccess2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/deploySuccess2.jpg">
 
 ### (3-3) 수정된 코드가 자동으로 배포되어 적용된 것을 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/commitedFlask.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/commitedFlask.jpg">
 
 # 5. Trouble Shooting
 
@@ -1479,7 +1479,7 @@ Line 38:20:  Expected '===' and instead saw '=='                   eqeqeq
 
 ### (1) 배포했으나 연결할 수 없음
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/cannotAccess.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/cannotAccess.jpg">
 
 ### (1-1) deployment-archive 에서 확인하면 파일들이 제대로 있음
 
@@ -1590,7 +1590,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 ### (1) Backend와 Database 연동이 안 됨
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/internalServerError.jpg">
 
 ### (1-1) Amazon EC2(Flask) 내부에서 접속
 
@@ -1646,7 +1646,7 @@ mysql> show databases;
 
 ### (1-2) dummy data를 넣은 후 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/dummyData.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/dummyData.jpg">
 
 ### (1-3) Amazon EC2(Flask)에서도 정상으로 작동하는 것을 확인
 
@@ -1691,7 +1691,7 @@ mysql> select * from history
 
 ### (1-4) 그래도 연결이 안됨
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/internalServerError.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/internalServerError.jpg">
 
 ### (2) 해결 방법
 
@@ -1715,20 +1715,20 @@ connectionString = {
 
 ### (3) 재 배포 시 정상으로 작동하는 것을 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/reDeployJSON.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/reDeployJSON.jpg">
 
 ## 5.4 Frontend - Backend
 
 ### (1) Frontend와 Backend 연동이 안 됨
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/disconnectFrontend1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/disconnectFrontend1.jpg">
 
 ```
 Mixed Content: The page at 'https://d3u6h8k7brrkx6.cloudfront.net/'    xhr. js:256 was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://43.202.66.215:5000/?sor=date&keyword='.
 This request has been blocked; the content must be served over HTTPS.
 ```
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/disconnectFrontend2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/disconnectFrontend2.jpg">
 
 ### (2) 해결 방법
 
@@ -1738,7 +1738,7 @@ This request has been blocked; the content must be served over HTTPS.
 
 ### (3) 정상 작동 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/server/connectedFrontend.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/server/connectedFrontend.jpg">
 
 ### (4) SSL 인증-1
 
@@ -1939,37 +1939,37 @@ Successfully started Caddy (pid=23624) - Caddy is running in the background
 
 ### (1-1) 현재 아무런 데이터도 없음
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/emptyDatas1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/emptyDatas2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/emptyDatas3.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/emptyDatas4.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/emptyDatas4.jpg">
 
 ### (1-2) 임의의 아이디와 비밀번호로 로그인 시도
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/randUser.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/randUser.jpg">
 
 ### (1-3) 테스트용 임의의 계정을 생성하여 로그인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUser.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/testUser.jpg">
 
 ### (1-4) 데이터베이스에 추가된 것을 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testUserDb.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/testUserDb.jpg">
 
 ### (1-5) 토근 정상 발급 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/token1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/token1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/token2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/token2.jpg">
 
 ### (1-6) 로그인 상태에서 경매 물품 등록 글쓰기
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/createBoard1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/createBoard1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/createBoard2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/createBoard2.jpg">
 
 - POST요청을 했는데 500 internal server Error가 발생 → 백엔드 문제인거 같음
 
@@ -2024,7 +2024,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 ### (3-4) 재시도
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/retry.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/retry.jpg">
 
 ### (3-5) 파일이나 디렉터리를 찾을 수 없음
 
@@ -2036,7 +2036,7 @@ ubuntu@ip-10-0-3-255:/opt/codedeploy-agent/deployment-root/2a2e556f-917b-4615-a1
 
 ### (3-6) server 전체 구성 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/server.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/server.jpg">
 
 ### (3-7) resources라는 정적 디렉터리에 이미지 파일을 저장하는 형식
 
@@ -2085,11 +2085,11 @@ appspec.yml database.py node_modules package.json scripts
 
 ### (4-1) 테스트용 빈 디렉터리(testDir)를 하나 더 만들어서 실험
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/testDir.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/testDir.jpg">
 
 ### (4-2) GitHub commit을 하면 빈 디렉터리는 commit되지 않음
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/commitedGitHub1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/commitedGitHub1.jpg">
 
 ### (4-3) `touch` 명령어를 이용하여 크기가 0인 파일 생성
 
@@ -2097,7 +2097,7 @@ appspec.yml database.py node_modules package.json scripts
 (venv) C:\Users\User\Desktop\project123\server\resources>touch .placeholder
 ```
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/commitedGitHub2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/commitedGitHub2.jpg">
 
 - 정상적으로 commit됨
 
@@ -2112,7 +2112,7 @@ appspec.yml database.py node_modules package.json scripts
 
 ### (5) AWS CodeDeploy를 잘못 이해하고 있었음
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/awsCodeDeploy.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/awsCodeDeploy.jpg">
 
 - AWS CodeDeploy는 Amazon S3에서 빌드 산출물을 압축 파일로 가져와서 배포해줌
 - AWS CodeDeploy에는 빌드 기능이 없기 때문에 별도의 빌드 과정이 필요함
@@ -2179,9 +2179,9 @@ app.py database.py node_modules package.json scripts
 
 ### (7) 재 배포 시 정상적으로 작동하는 것을 확인
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/normal1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/normal1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/normal2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/normal2.jpg">
 
 ## 5.6 Crontab
 
@@ -2250,21 +2250,21 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ### (3-1) test1 user가 등록한 우영미 반팔1을 test2 user가 입찰
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/buyTshirt1.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/buyTshirt2.jpg">
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/buyTshirt3.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/buyTshirt3.jpg">
 
 ### (3-2) 작동 확인
 
 **2023-11-24 am10:30 전**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/preHistory1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/preHistory1.jpg">
 
 **2023-11-24 am10:30 후**
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/preHistory2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/preHistory2.jpg">
 
 ## 5.7 배포 시간 단축
 
@@ -2307,15 +2307,15 @@ python3 -u app.py > /dev/null 2> /dev/null < /dev/null &
 
 ### (2) 캐시 설정 전
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/beforeCache.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/beforeCache.jpg">
 
 ### (3) 캐시 설정 후
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/afterCache1.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/afterCache1.jpg">
 
 ### (3-1) Amazon S3로 전송한 파일에 불필요한 파일 포함 여부
 
-<img src="https://github.com/rlatkd/DevOps/blob/main/assets/preview/afterCache2.jpg">
+<img src="https://github.com/rlatkd/SSGBay-v3/blob/main/assets/preview/afterCache2.jpg">
 
 # 6. 후기
 
