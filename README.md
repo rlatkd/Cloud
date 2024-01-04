@@ -1,4 +1,8 @@
-# Development Operations project using AWS & Terraform & GitHub Actions
+# 신세계아이앤씨 클라우드 엔지니어 양성과정 2기
+
+## 3차 미니프로젝트
+
+### v4 퍼블릭 클라우드 인프라 & 배포 자동화
 
 # 0. 목차
 
